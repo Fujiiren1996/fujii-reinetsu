@@ -6547,3 +6547,19 @@ section[id] { scroll-margin-top: 148px; }
 @media (prefers-reduced-motion: reduce) {
 	.p-mflow__row { animation: none; }
 }
+
+/* ---------------------------------------------------------------
+   39. ドロワーの直し（スマホ）
+   ・body を position:fixed にしていたため、iOS で閉じたあとに
+     スクロール位置がずれ、ページ上部に空白が残っていた
+   ・シートが画面の高さに満たないと、その下から背面が見えていた
+--------------------------------------------------------------- */
+/* 背面のスクロールは html 側で止める。位置はずれない */
+.is-drawer-open,
+.is-drawer-open body { overflow: hidden; }
+
+/* シートを画面いっぱいに広げて、背面が見えないようにする */
+.l-drawer__sheet {
+	min-height: 100%;
+	max-height: none;
+}

@@ -368,29 +368,21 @@
 		var btn = document.querySelector('.js-drawer');
 		var dr = document.getElementById('drawer');
 		if (!btn || !dr) return;
-		var y = 0;
-
 		function open() {
-			y = window.scrollY;
 			dr.hidden = false;
 			// hidden を外した直後だと transition が効かないので1フレーム待つ
 			setTimeout(function () { dr.classList.add('is-open'); }, 10);
 			btn.setAttribute('aria-expanded', 'true');
 			// ドロワーはヘッダーより上に重なるので、そのままだと
 			// 閉じるボタン（ヘッダー内）が押せなくなる。開いている間だけ持ち上げる。
+			// body を position:fixed にすると、iOS で復帰時にスクロール位置が
+			// ずれて上に空白が残る。html 側の overflow だけで止める。
 			document.documentElement.classList.add('is-drawer-open');
-			document.body.style.position = 'fixed';
-			document.body.style.top = -y + 'px';
-			document.body.style.width = '100%';
 		}
 		function close() {
 			dr.classList.remove('is-open');
 			btn.setAttribute('aria-expanded', 'false');
 			document.documentElement.classList.remove('is-drawer-open');
-			document.body.style.position = '';
-			document.body.style.top = '';
-			document.body.style.width = '';
-			window.scrollTo(0, y);
 			setTimeout(function () { dr.hidden = true; }, 320);
 		}
 		btn.addEventListener('click', function () {

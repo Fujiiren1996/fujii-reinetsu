@@ -6640,3 +6640,84 @@ h2.p-ceo__name { margin-top: 4px; }
 	.p-flow__list { gap: 10px; }
 	.p-flow__item { padding: 16px 16px 18px; }
 }
+
+/* ---------------------------------------------------------------
+   43. 求人ページのスマホ圧縮（第1段：余白と写真）
+   実測で recruit-work の1セクションが4,537px（5.6画面）。
+   内訳は 3ブロック × 約1,450px。まず文章を削らずに詰める。
+--------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+
+	/* --- 働き方3タイプ（recruit-work） -------------------------------- */
+	.p-type__ph { height: auto; aspect-ratio: 2 / 1; }
+	.p-type__head { gap: 14px; }
+	.p-type__grid { gap: 12px; }
+	.p-type__cell { padding: 15px 14px 16px; }
+	.p-type__cell b { font-size: 14.5px; }
+	.p-type__cell p { font-size: 13.5px; line-height: 1.8; }
+	.p-type__note { padding: 15px 16px; font-size: 13.5px; line-height: 1.8; }
+	.p-type + .p-type { margin-top: 40px; }
+
+	/* --- 3つの働き方カード（recruit） ---------------------------------- */
+	.p-choice__ph { height: auto; aspect-ratio: 2 / 1; }
+	.p-choice__body { padding: 16px 15px 18px; }
+	.p-choice__quote { font-size: 13.5px; line-height: 1.8; }
+	.p-choice__list { gap: 8px; margin-top: 12px; }
+	.p-choice__list li { font-size: 13px; line-height: 1.7; }
+	.p-choice__foot { margin-top: 14px; }
+
+	/* --- 1日の流れ（recruit-job）9項目で1,827px ----------------------- */
+	.p-day__list { gap: 0; }
+	.p-day__item { padding-block: 11px; }
+	.p-day__item p { font-size: 13.5px; line-height: 1.75; }
+	.p-day__t { font-size: 13px; }
+
+	/* --- 最初にやること／道具など、カードの内側を詰める --------------- */
+	.p-training__grid li,
+	.p-tools__grid > div { padding: 14px 14px 15px; }
+	.p-story__row { gap: 14px; }
+	.p-story__row p { font-size: 14px; line-height: 1.85; }
+}
+
+/* ---------------------------------------------------------------
+   44. 給与の図解をスマホ用に組み直す
+   PCは「金額の棒が5本」と「段階の説明が5件」を別ブロックで縦に
+   並べ、列で対応させている。SPだと2つの塊に分断され、
+   どの棒がどの段階なのか読み取れなくなっていた。
+   display:contents で両者の子を同じ格子に流し込み、
+   order で「棒 → その説明」の順に交互に並べ替える。
+   HTMLは触らないのでPCには影響しない。
+--------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+	#salary .l-inner { display: grid; grid-template-columns: 1fr; }
+	.p-salary__head { order: 0; }
+	.p-chart, .p-salary__foot { display: contents; }
+
+	/* .p-chart の子には SVG が2つ含まれるので nth-child だと数がずれる。
+	   div だけを数える nth-of-type を使う。 */
+	.p-chart__trend { display: none; }   /* PC用の推移線。SPでは意味を成さない */
+	.p-chart__bar:nth-of-type(1) { order: 2; }
+	.p-chart__bar:nth-of-type(2) { order: 4; }
+	.p-chart__bar:nth-of-type(3) { order: 6; }
+	.p-chart__bar:nth-of-type(4) { order: 8; }
+	.p-chart__bar:nth-of-type(5) { order: 10; }
+
+	.p-salary__foot > div:nth-of-type(1) { order: 3; }
+	.p-salary__foot > div:nth-of-type(2) { order: 5; }
+	.p-salary__foot > div:nth-of-type(3) { order: 7; }
+	.p-salary__foot > div:nth-of-type(4) { order: 9; }
+	.p-salary__foot > div:nth-of-type(5) { order: 11; }
+
+	.p-salary__disc { order: 20; }
+	.p-salary__axis { order: 21; }
+
+	/* 棒とその説明をひと組に見せる。棒の上に段階名を出す */
+	.p-chart__bar { margin-top: 18px; gap: 10px; }
+	.p-salary__foot > div {
+		margin-top: 6px;
+		padding: 0 0 14px 110px;
+		border-bottom: 1px solid rgba(255, 255, 255, .12);
+	}
+	.p-salary__foot > div p { font-size: 13px; line-height: 1.8; }
+	.p-salary__role { font-size: 12px; letter-spacing: .04em; }
+}

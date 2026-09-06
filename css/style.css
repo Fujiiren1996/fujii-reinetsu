@@ -6610,3 +6610,33 @@ section[id] { scroll-margin-top: 148px; }
 
 /* 代表名は節の見出し（h2）だが、見た目は名刺のままにする */
 h2.p-ceo__name { margin-top: 4px; }
+
+/* ---------------------------------------------------------------
+   42. スマホの縦の長さを詰める
+   実測でトップは13,817px（約17画面）。内訳を見ると
+   カードの縦積みと、写真枠の高すぎが大半を占めていた。
+   情報は削らず、並べ方と写真の高さで詰める。
+--------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+
+	/* --- 事業内容：短いカード4枚は2列に（658px → 約340px） -------------- */
+	.p-services__sub { grid-template-columns: 1fr 1fr; gap: 10px; }
+	.p-services__sub .c-card { padding: 14px 13px; }
+	.p-services__sub .c-card p { font-size: 12.5px; line-height: 1.75; }
+	.p-services__sub .c-tag { font-size: 9.5px; }
+
+	/* --- 主要3カードの写真を横長に。4:3だと縦を食いすぎる ------------- */
+	.p-services__thumb { height: auto; aspect-ratio: 2 / 1; }
+
+	/* --- 施工実績の写真も同様に詰める ---------------------------------- */
+	.p-works__leadph { height: auto; aspect-ratio: 16 / 9; }
+	.p-works__itemph { height: auto; aspect-ratio: 2 / 1; }
+
+	/* --- 私たちについて：縦長写真は場所を取りすぎる ------------------- */
+	.p-about__ph1 { width: 100%; height: auto; aspect-ratio: 4 / 3; }
+	.p-about__visual { gap: 10px; }
+
+	/* --- 対応の流れ：4項目の余白を詰める ------------------------------ */
+	.p-flow__list { gap: 10px; }
+	.p-flow__item { padding: 16px 16px 18px; }
+}

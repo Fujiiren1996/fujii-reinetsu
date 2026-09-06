@@ -6721,3 +6721,34 @@ h2.p-ceo__name { margin-top: 4px; }
 	.p-salary__foot > div p { font-size: 13px; line-height: 1.8; }
 	.p-salary__role { font-size: 12px; letter-spacing: .04em; }
 }
+
+/* 数字カードは3枚。2列だと4マス目が空いて灰色の穴になるので、
+   最後の1枚を横いっぱいに広げて埋める。 */
+@media screen and (max-width: 768px) {
+	.p-numbers__cell:last-child { grid-column: 1 / -1; }
+	.p-numbers__cell:last-child .p-numbers__v { font-size: 30px; }
+}
+
+/* ---------------------------------------------------------------
+   45. 写真の主役が切れないようにする（スマホ）
+   実測で「枠の比率」と「写真の比率」が大きく違う箇所を検出。
+   縦位置の写真を横長の枠に入れると、被写体が半分以上切れる。
+   枠のほうを写真に合わせる。
+--------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+	/* 縦位置（3:4）の職人写真。4:3の横枠だと44%が切れていた */
+	.p-about__ph1 { aspect-ratio: 1 / 1; }
+
+	/* タブレットの写真は16:9。ほぼ正方形の枠だと左右が半分消える */
+	.p-tech__ph,
+	.p-initiative__ph { height: auto; aspect-ratio: 16 / 9; }
+
+	/* 「もう少し、見てみませんか」のカード。
+	   3枚の写真は 4:3 / 1:1 / 3:4 とばらばら。
+	   枠を 4:3 にすると3枚とも切れが最小になる。 */
+	.p-next__ph { aspect-ratio: 4 / 3; }
+
+	/* 休日の写真。焼肉だけ2列ぶち抜きで16:9にしていたが、
+	   元が正方形なので44%切れる。3:2に緩める */
+	.p-ceo__hobby li:last-child .c-photo { aspect-ratio: 3 / 2; }
+}

@@ -6752,3 +6752,21 @@ h2.p-ceo__name { margin-top: 4px; }
 	   元が正方形なので44%切れる。3:2に緩める */
 	.p-ceo__hobby li:last-child .c-photo { aspect-ratio: 3 / 2; }
 }
+
+/* ---------------------------------------------------------------
+   46. 箇条書きの中に <b> があると横に分かれる問題
+   li を flex にしていたため、<b> と続きの地の文が別々の
+   フレックス要素になり、間に gap の隙間が空いて分断されていた。
+   チェック印を絶対配置にして、本文はインラインで流す。
+--------------------------------------------------------------- */
+.p-choice__list li {
+	display: block;
+	position: relative;
+	padding-left: 25px;
+}
+.p-choice__list li svg {
+	position: absolute;
+	left: 0;
+	top: 4px;
+}
+.p-choice__list li b { font-weight: 700; color: var(--ink); }

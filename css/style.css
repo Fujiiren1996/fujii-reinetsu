@@ -6563,3 +6563,20 @@ section[id] { scroll-margin-top: 148px; }
 	min-height: 100%;
 	max-height: none;
 }
+
+/* ---------------------------------------------------------------
+   40. アイコンのスプライトが場所を取らないようにする
+   reset.css の svg { height: auto } が、スプライトの
+   height="0" 属性を上書きしてしまう。
+   Chrome は 0 と解釈するが、Safari は置換要素の既定値 150px を
+   与えるため、iPhone だけページ上部に空白が出ていた。
+   display:none は <use> の参照が壊れる環境があるので使わない。
+--------------------------------------------------------------- */
+.u-sprite {
+	position: absolute;
+	width: 0 !important;
+	height: 0 !important;
+	overflow: hidden;
+	visibility: hidden;
+	pointer-events: none;
+}

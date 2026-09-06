@@ -300,7 +300,175 @@
 		window.addEventListener('scroll', onScroll, { passive: true });
 	}
 
+	/* ------------------------------------------------------------------
+	   10. アコーディオン（よくある質問）
+	       高さは触らず grid-template-rows で開閉する。
+	       中身の量が変わっても壊れない。
+	   ------------------------------------------------------------------ */
+	function initAccordion() {
+		document.querySelectorAll('.c-acc__q').forEach(function (btn) {
+			var item = btn.closest('.c-acc__item');
+			var panel = item && item.querySelector('.c-acc__a');
+			if (!panel) return;
+			if (!panel.id) panel.id = 'acc-' + Math.random().toString(36).slice(2, 8);
+			btn.setAttribute('aria-expanded', item.classList.contains('is-open') ? 'true' : 'false');
+			btn.setAttribute('aria-controls', panel.id);
+
+			btn.addEventListener('click', function () {
+				var open = item.classList.toggle('is-open');
+				btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+			});
+		});
+	}
+
+	/* ------------------------------------------------------------------
+	   11. カテゴリのタブ
+	   ------------------------------------------------------------------ */
+	function initTabs() {
+		document.querySelectorAll('[data-tabs]').forEach(function (nav) {
+			var btns = nav.querySelectorAll('button[data-tab]');
+			btns.forEach(function (btn) {
+				btn.addEventListener('click', function () {
+					var key = btn.getAttribute('data-tab');
+					btns.forEach(function (b) {
+						var on = b === btn;
+						b.classList.toggle('is-active', on);
+						b.setAttribute('aria-selected', on ? 'true' : 'false');
+					});
+					document.querySelectorAll('[data-tabpanel]').forEach(function (p) {
+						p.hidden = p.getAttribute('data-tabpanel') !== key;
+					});
+				});
+			});
+		});
+	}
+
+
+	/* ------------------------------------------------------------------
+	   10. アコーディオン
+	      高さは grid-template-rows: 0fr → 1fr で開く。
+	      max-height を決め打ちしないので、中身が伸びても破綻しない。
+	   ------------------------------------------------------------------ */
+	function initAcc() {
+		document.querySelectorAll('.c-acc__q').forEach(function (btn) {
+			var item = btn.closest('.c-acc__item');
+			if (!item) return;
+			btn.setAttribute('aria-expanded', 'false');
+			btn.addEventListener('click', function () {
+				var open = item.classList.toggle('is-open');
+				btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+			});
+		});
+	}
+
 	/* ------------------------------------------------------------------ */
+
+	/* スマホのメニュー。開いている間は背面をスクロールさせない。 */
+	function initDrawer() {
+		var btn = document.querySelector('.js-drawer');
+		var dr = document.getElementById('drawer');
+		if (!btn || !dr) return;
+		var y = 0;
+
+		function open() {
+			y = window.scrollY;
+			dr.hidden = false;
+			// hidden を外した直後だと transition が効かないので1フレーム待つ
+			setTimeout(function () { dr.classList.add('is-open'); }, 10);
+			btn.setAttribute('aria-expanded', 'true');
+			// ドロワーはヘッダーより上に重なるので、そのままだと
+			// 閉じるボタン（ヘッダー内）が押せなくなる。開いている間だけ持ち上げる。
+			document.documentElement.classList.add('is-drawer-open');
+			document.body.style.position = 'fixed';
+			document.body.style.top = -y + 'px';
+			document.body.style.width = '100%';
+		}
+		function close() {
+			dr.classList.remove('is-open');
+			btn.setAttribute('aria-expanded', 'false');
+			document.documentElement.classList.remove('is-drawer-open');
+			document.body.style.position = '';
+			document.body.style.top = '';
+			document.body.style.width = '';
+			window.scrollTo(0, y);
+			setTimeout(function () { dr.hidden = true; }, 320);
+		}
+		btn.addEventListener('click', function () {
+			dr.hidden ? open() : close();
+		});
+		// 背景を押したら閉じる
+		dr.addEventListener('click', function (e) {
+			if (e.target === dr) close();
+		});
+		// リンクを押したら閉じる（同じページ内のアンカーでも閉じる必要がある）
+		dr.querySelectorAll('a').forEach(function (a) {
+			a.addEventListener('click', close);
+		});
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape' && !dr.hidden) close();
+		});
+	}
+
+
+	/* 代表紹介の開閉。既定は閉じておく。 */
+	/* 折りたたみの中身は、共有の監視では扱えない。
+	   畳まれている間に一度「画面内」と判定されて監視を外されており、
+	   開いてから付け直しても再通知が来ないため。
+	   開くたびに専用の監視を作り直す。 */
+	function stage(panel) {
+		var nodes = [].slice.call(panel.querySelectorAll('.js-ceo-r'));
+		if (!nodes.length) return;
+		nodes.forEach(function (el) { el.classList.remove('is-inview', 'is-done'); });
+
+		function show(el) {
+			el.classList.add('is-inview');
+			var d = parseFloat(el.style.getPropertyValue('--d')) || 0;
+			setTimeout(function () { el.classList.add('is-done'); }, d + 1500);
+		}
+		if (reduce || !('IntersectionObserver' in window)) { nodes.forEach(show); return; }
+
+		// パネルが開ききってから監視を始める。
+		// 開いている途中は高さが足りず、画面内と判定されない。
+		setTimeout(function () {
+			var o = new IntersectionObserver(function (es) {
+				es.forEach(function (e) {
+					if (!e.isIntersecting) return;
+					show(e.target);
+					o.unobserve(e.target);
+				});
+			}, { rootMargin: '0px 0px -6% 0px', threshold: 0 });
+			nodes.forEach(function (el) { o.observe(el); });
+			// 監視が働かない環境でも必ず出す最終防衛線
+			setTimeout(function () { nodes.forEach(show); }, 6000);
+		}, 480);
+	}
+
+	function initCeo() {
+		var btn = document.querySelector('.js-ceo');
+		if (!btn) return;
+		/* ヒーローの丸写真から開く。開いてから移動しないと、
+		   スクロール先の高さが変わって位置がずれる。 */
+		var jump = document.querySelector('.js-open-ceo');
+		if (jump) {
+			jump.addEventListener('click', function () {
+				if (btn.getAttribute('aria-expanded') !== 'true') btn.click();
+				setTimeout(function () {
+					var sec = document.getElementById('ceo');
+					if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}, 60);
+			});
+		}
+		var panel = document.getElementById(btn.getAttribute('aria-controls'));
+		var label = btn.querySelector('.p-ceo__toggle__t');
+		btn.addEventListener('click', function () {
+			var open = btn.getAttribute('aria-expanded') !== 'true';
+			btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+			panel.classList.toggle('is-open', open);
+			if (open) stage(panel);
+			if (label) label.textContent = open ? '閉じる' : '代表の考えを読む';
+		});
+	}
+
 	function init() {
 		splitLines();
 		splitDigits();
@@ -310,7 +478,11 @@
 		initCount();
 		initButtons();
 		initTel();
+		initAccordion();
+		initTabs();
 		initHeader();
+		initDrawer();
+		initCeo();
 	}
 
 	if (document.readyState === 'loading') {

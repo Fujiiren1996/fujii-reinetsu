@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
 <!-- ↑ 公開前の確認用サイトのため検索避け。本番ドメインへ移す時にこの1行を消す。 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>東海3県の保温工事・断熱工事・板金工事｜藤井冷熱（名古屋市中川区）</title>
@@ -12,12 +11,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap">
 <script>document.documentElement.classList.add('js');</script>
 <link rel="icon" href="img/favicon.png" type="image/png">
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/reset.css?v=e600d7dc">
+<link rel="stylesheet" href="css/style.css?v=ad1f9fca">
 </head>
 <body>
 <svg class="u-sprite" width="0" height="0" aria-hidden="true" focusable="false"><defs>
-<symbol id="i-pipe" viewBox="0 0 24 24"><path d="M4 7h11a4 4 0 0 1 0 8H9"/><path d="M20 7v10"/><circle cx="6" cy="7" r="2"/></symbol>
+<symbol id="i-pipe" viewBox="0 0 24 24"><rect x="3.5" y="8.5" width="17" height="7" rx="1.6"/><path d="M3.5 6v12M20.5 6v12"/><path d="M9.5 8.5v7M14.5 8.5v7"/></symbol>
 <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-5.6 7-5.6s7 2 7 5.6"/></symbol>
 <symbol id="i-phone" viewBox="0 0 24 24"><path d="M4.5 5.5c0 8 6 14 14 14l2-3.4-4.3-2.1-2 2a14 14 0 0 1-6.2-6.2l2-2L7.9 3.5z"/></symbol>
 <symbol id="i-cam" viewBox="0 0 24 24"><path d="M3 7.5h4L9 5h6l2 2.5h4v12H3z"/><circle cx="12" cy="13" r="3.6"/></symbol>
@@ -45,9 +44,13 @@
 <header class="l-header">
 	<div class="l-header__inner">
 		<a class="l-header__logo" href="index.html">
-			<img class="l-header__mark" src="img/logo.png" width="240" height="141" alt="">
+			<img class="l-header__mark" src="img/logo.png" alt="藤井冷熱" width="240" height="141" alt="">
 			<span class="l-header__wordmark"><b>藤井冷熱</b><i>FUJII REINETSU</i></span>
 		</a>
+		<button type="button" class="l-header__menu js-drawer" aria-expanded="false" aria-controls="drawer">
+			<span class="l-header__menu__bars" aria-hidden="true"><i></i><i></i></span>
+			<span class="l-header__menu__txt">メニュー</span>
+		</button>
 		<nav class="l-header__nav" aria-label="メインメニュー">
 			<a href="#services">事業内容</a>
 			<a href="#works">施工実績</a>
@@ -60,23 +63,23 @@
 			<div class="l-header__door">
 				<div class="c-tel c-tel--head">
 					<button type="button" class="c-btn c-btn--oblue c-btn--sm c-tel__trigger" aria-expanded="false" data-open-text="閉じる">
-						<svg class="c-btn__ic c-btn__ic--ring"><use href="#i-phone"/></svg><span>お電話</span>
+						<svg class="c-btn__ic c-btn__ic--ring"><use href="#i-phone"/></svg><span class="l-header__lb">お電話</span><span class="l-header__lb--sp">電話</span>
 					</button>
 					<div class="c-tel__panel" hidden>
 						<span class="c-eyebrow c-eyebrow--client c-eyebrow--xs">担当 藤井 蓮</span>
 						<a class="c-tel__num" href="tel:09047994123">090-4799-4123</a>
-						<span class="c-tel__hours">8:00-19:00 ／ 土日祝も対応</span>
+						<span class="c-tel__hours">9:00-19:00 ／ 土日祝も対応</span>
 						<a class="c-btn c-btn--oblue c-btn--sm" href="tel:09047994123"><svg class="c-btn__ic c-btn__ic--ring"><use href="#i-phone"/></svg><span>この番号にかける</span></a>
 					</div>
 				</div>
-				<span>受付 8:00-19:00</span>
+				<span>受付 9:00-19:00</span>
 			</div>
 			<div class="l-header__door">
-				<a class="c-btn c-btn--blue c-btn--sm" href="#contact"><svg class="c-btn__ic"><use href="#i-pipe"/></svg><span>工事のご相談</span></a>
+				<a class="c-btn c-btn--blue c-btn--sm" href="#contact"><svg class="c-btn__ic"><use href="#i-pipe"/></svg><span class="l-header__lb">工事のご相談</span><span class="l-header__lb--sp">見積り</span></a>
 				<span>見積り・現場相談</span>
 			</div>
 			<div class="l-header__door">
-				<a class="c-btn c-btn--ocop c-btn--sm" href="recruit.html"><svg class="c-btn__ic"><use href="#i-user"/></svg><span>採用情報</span></a>
+				<a class="c-btn c-btn--ocop c-btn--sm" href="recruit.html"><svg class="c-btn__ic"><use href="#i-user"/></svg><span class="l-header__lb">採用情報</span><span class="l-header__lb--sp">採用</span></a>
 				<span>応募・会社見学</span>
 			</div>
 		</div>
@@ -91,38 +94,18 @@
 			<p class="js-fadein c-eyebrow c-eyebrow--client" style="--d:80ms">Insulation <i>／</i> Cladding <i>／</i> Sheet metal</p>
 			<h1 class="js-inview-lines u-dp p-hero__title" style="--d:180ms" data-line-step="115">東海3県の保温・断熱工事は<br>藤井冷熱へ。</h1>
 			<p class="js-fadein js-fadein--wipe-l u-dp7 p-hero__sub" style="--d:520ms">約50年続く、保温板金の会社です。</p>
-			<p class="js-fadein p-hero__lead" style="--d:640ms">愛知・岐阜・三重。配管・ダクトの保温から、冷媒管や屋外配管のラッキング、板金仕上げまで。曲がりも、分岐も、バルブまわりも。難しい形ほど、私たちの仕事です。</p>
+			<p class="js-fadein p-hero__lead" style="--d:640ms">愛知・岐阜・三重で、配管・ダクトの保温から、冷媒管や屋外配管のラッキング、板金仕上げまでを一貫して請け負います。曲がり、分岐、バルブまわり。納まりの難しい箇所ほど、技術の差が出る仕事です。</p>
 			<div class="js-fadein p-hero__cta" style="--d:760ms">
 				<a class="c-btn c-btn--blue" href="#contact"><span>工事のご相談・お見積もり</span><svg class="c-btn__ic c-btn__ic--go"><use href="#i-arrow"/></svg></a>
 				<a class="c-btn c-btn--oblue" href="#flow"><span>対応の流れを見る</span></a>
 			</div>
-			<p class="js-fadein p-hero__note" style="--d:880ms">図面がなくても、見積もりだけでも構いません。</p>
+			<p class="js-fadein p-hero__note" style="--d:880ms">図面がなくても、お見積もりだけでもご相談いただけます。</p>
 		</div>
 		<div class="p-hero__visual" data-reveal="load">
-			<figure class="c-photo p-hero__main js-fadein js-fadein--diag js-inview-sheen" style="--d:220ms">
-				<span class="c-photo__grid"></span>
-				<figcaption class="c-photo__note">
-					<span class="c-photo__hd"><svg class="c-ic c-ic--16"><use href="#i-cam"/></svg>Photo 01 ／ メインビジュアル</span>
-					<span class="c-photo__ti">保温された配管が奥へ走る、天井裏か機械室の引き</span>
-					<ul>
-						<li>広角。手前から奥へ配管が抜ける構図で、本数の多さを見せる</li>
-						<li>人物は入れない。設備そのものを主役に</li>
-						<li>暗い現場なら投光器を足す。カメラは必ず水平に</li>
-						<li>ラッキングが光って見える角度を探す</li>
-					</ul>
-					<span class="c-photo__rt">横 3:2 ／ 長辺 2400px 以上 ／ SP用に縦 3:4 も同じ場所で</span>
-				</figcaption>
-			</figure>
-			<figure class="c-photo c-photo--circ c-photo--tiny p-hero__circ js-fadein js-fadein--pop" style="--d:700ms">
-				<figcaption class="c-photo__note">
-					<span class="c-photo__hd">Photo 02</span>
-					<span class="c-photo__ti">職人の手元</span>
-					<ul><li>保温材を巻く／板金を押さえる瞬間</li><li>正方形で切れるよう手を中央に、寄る</li><li>ピントは指先。手袋と工具を写す</li></ul>
-					<span class="c-photo__rt">1:1</span>
-				</figcaption>
-			</figure>
+			<figure class="c-photo p-hero__main js-fadein js-fadein--diag js-inview-sheen c-photo--has" style="--d:220ms;--pos:50% 45%"><span class="c-photo__grid"></span><img src="img/photos/hero-main.webp" alt="保温された配管とダクトが並ぶ機械室" loading="eager" fetchpriority="high" decoding="async"></figure>
+			<figure class="c-photo c-photo--circ c-photo--tiny p-hero__circ js-fadein js-fadein--pop c-photo--has" style="--d:700ms;--pos:50% 50%"><img src="img/photos/measure-hand.webp" alt="金属板に定規を当てて墨付けをする手元" loading="lazy" decoding="async"></figure>
 			<p class="p-hero__stamp js-fadein js-fadein--wipe-u" style="--d:920ms">
-				<span class="c-eyebrow c-eyebrow--client">Since three generations</span>
+				<span class="c-eyebrow c-eyebrow--client">Three generations</span>
 				<b class="u-dp7">創業から約50年、三代</b>
 			</p>
 		</div>
@@ -134,7 +117,7 @@
 		<div class="p-doors__client js-fadein js-fadein--wipe-l">
 			<p class="c-eyebrow c-eyebrow--client">For clients <i>／</i> 工事をご依頼・ご相談の方</p>
 			<h2 class="u-dp p-doors__ttl">保温・断熱・板金のご相談はこちら</h2>
-			<p class="p-doors__lead">見積もりだけでも、図面がなくても構いません。まずは現場の状況を聞かせてください。担当の藤井が直接うかがいます。</p>
+			<p class="p-doors__lead">お見積もりだけでも、図面がお手元になくてもご相談いただけます。まずは現場の状況をお聞かせください。担当の藤井が直接うかがいます。</p>
 			<p class="p-doors__links">
 				<a href="#services">→ 事業内容</a><a href="#works">→ 施工実績</a><a href="#flow">→ 対応の流れ</a><a href="#faq">→ よくあるご質問</a>
 			</p>
@@ -143,7 +126,7 @@
 		<div class="p-doors__recruit js-fadein js-fadein--wipe-r" style="--d:100ms">
 			<p class="c-eyebrow c-eyebrow--recruit">For applicants <i>／</i> 藤井冷熱で働くことをお考えの方</p>
 			<h2 class="p-doors__ttl--sm">採用情報はこちら</h2>
-			<p class="p-doors__lead p-doors__lead--sm">未経験からでも、他の職種からでも。3年後にどうなっていたいかから話します。</p>
+			<p class="p-doors__lead p-doors__lead--sm">未経験の方も、他業種からの転職も歓迎します。3年後にどうなっていたいか、という話から始めます。</p>
 			<p class="p-doors__links">
 				<a href="recruit.html#work">→ 仕事を知る</a><a href="recruit.html#salary">→ キャリアと給与</a><a href="recruit.html#req">→ 募集要項</a>
 			</p>
@@ -158,12 +141,12 @@
 			<div class="p-pillars__cell js-fadein js-fadein--open">
 				<span class="c-eyebrow c-eyebrow--client">01</span>
 				<b class="u-dp7">保温から板金まで、一社で</b>
-				<p>保温と板金を、別々の業者に分ける必要がありません。打ち合わせの手間も、工程の待ち時間も減ります。現場での納まりの相談も、その場で完結します。</p>
+				<p>保温と板金を別々の業者へ発注する必要はありません。打ち合わせの手間と、工程の待ち時間を減らせます。現場での納まりのご相談も、その場で判断します。</p>
 			</div>
 			<div class="p-pillars__cell js-fadein js-fadein--open">
 				<span class="c-eyebrow c-eyebrow--client">02</span>
 				<b class="u-dp7">約50年、三代で受け継いだ技術</b>
-				<p>創業から約50年、親子三代にわたって続く保温板金の会社です。現場で覚えたことを、次の世代へ渡してきました。品質を落とさずに続けてきたことが、いちばんの実績です。</p>
+				<p>創業から約50年、親子三代にわたって保温板金一筋で続けてきました。現場で身につけた技術を、次の世代へ渡し続けています。品質を落とさずに三代続けてきたことが、いちばんの実績です。</p>
 			</div>
 		</div>
 	</div>
@@ -174,53 +157,46 @@
 		<div class="c-sechead js-fadein">
 			<p class="c-eyebrow c-eyebrow--client">For clients <i>／</i> Services</p>
 			<h2 class="u-dp js-inview-lines">保温・断熱・板金。<br>この三つに、絞ってきました。</h2>
-			<p class="c-sechead__lead">設備工事を幅広く請け負う会社ではありません。三つに絞ってきたからこそ、任せていただける仕事があります。</p>
+			<p class="c-sechead__lead">設備工事全般を扱うのではなく、保温・断熱・板金の三つを専門にしてきました。絞ってきたからこそ、お任せいただける仕事があります。</p>
 		</div>
 
 		<div class="p-services__main" data-stagger="110">
 			<article class="p-services__card js-fadein">
-				<figure class="c-photo c-photo--tiny p-services__thumb js-inview-sheen">
-					<figcaption class="c-photo__note"><span class="c-photo__hd">Photo 03</span><span class="c-photo__ti">配管の保温</span><ul><li>直管ではなく曲がり・分岐が入った箇所</li><li>やや斜めから。奥行きを出す</li></ul><span class="c-photo__rt">4:3</span></figcaption>
-				</figure>
+				<figure class="c-photo c-photo--tiny p-services__thumb js-inview-sheen c-photo--has" style="--pos:50% 50%"><img src="img/photos/svc-piping.webp" alt="保温した配管の曲がりとバルブまわり" loading="lazy" decoding="async"></figure>
 				<div class="p-services__body">
 					<span class="c-tag c-tag--blue">Piping</span>
 					<b class="u-dp7">配管の保温・断熱</b>
-					<p>冷温水管や蒸気配管に保温材を施し、熱の損失を抑え、配管表面の結露を防ぎます。対象の温度と設置環境から、材と厚みを決めます。</p>
+					<p>冷温水管や蒸気配管に保温材を施工し、配管表面の結露を抑えます。結露を放置すると水が垂れ、天井材や設備の劣化につながります。流体の温度と設置環境に応じて、材質と厚みを選定します。</p>
 				</div>
 			</article>
 			<article class="p-services__card js-fadein">
-				<figure class="c-photo c-photo--tiny p-services__thumb js-inview-sheen">
-					<figcaption class="c-photo__note"><span class="c-photo__hd">Photo 04</span><span class="c-photo__ti">ダクトの保温</span><ul><li>天井裏を走る角ダクト。継ぎ目が見える角度で</li><li>広めに引いて、規模を伝える</li></ul><span class="c-photo__rt">4:3</span></figcaption>
-				</figure>
+				<figure class="c-photo c-photo--tiny p-services__thumb js-inview-sheen c-photo--has" style="--pos:50% 45%"><img src="img/photos/svc-duct.webp" alt="亀甲金網で仕上げた角ダクトの保温" loading="lazy" decoding="async"></figure>
 				<div class="p-services__body">
 					<span class="c-tag c-tag--blue">Duct</span>
 					<b class="u-dp7">ダクトの保温・断熱</b>
-					<p>空調ダクトを保温して、送る空気の温度を保ったまま各所へ届けます。天井裏や機械室など、作業しにくい場所の多い工事です。</p>
+					<p>空調ダクトを保温し、送風の温度を保ったまま各所へ届く状態にします。天井裏や機械室など、施工条件の厳しい場所が多い工事です。</p>
 				</div>
 			</article>
 			<article class="p-services__card js-fadein">
-				<figure class="c-photo c-photo--tiny p-services__thumb js-inview-sheen">
-					<figcaption class="c-photo__note"><span class="c-photo__hd">Photo 05</span><span class="c-photo__ti">ラッキング仕上げ</span><ul><li>板金が整列した仕上がりのアップ</li><li>光の反射が出る角度を探す。一番の看板写真</li></ul><span class="c-photo__rt">4:3</span></figcaption>
-				</figure>
+				<figure class="c-photo c-photo--tiny p-services__thumb js-inview-sheen c-photo--has" style="--pos:50% 45%"><img src="img/photos/svc-clad.webp" alt="鏡面ステンレスで仕上げたラッキング配管" loading="lazy" decoding="async"></figure>
 				<div class="p-services__body">
 					<span class="c-tag c-tag--blue">Cladding</span>
 					<b class="u-dp7">冷媒管のラッキング</b>
-					<p>冷媒管の保温材を金属板で覆い、外からの傷みや劣化から守ります。見える場所に残る工程なので、仕上がりの美しさまで含めて仕上げます。</p>
+					<p>冷媒管の保温材を金属板で覆い、雨風や紫外線による劣化から保護します。人の目に触れる場所に残る工程のため、納まりと仕上がりの美しさまで含めて施工します。</p>
 				</div>
 			</article>
 		</div>
 
 		<div class="p-services__sub" data-seq="70">
-			<div class="c-card js-fadein js-fadein--wipe-l"><span class="c-tag c-tag--blue">Lining</span><b class="u-dp7">ダクト内張り</b><p>ダクトの内側に材を貼り、送風にともなう音を抑えます。</p></div>
 			<div class="c-card js-fadein js-fadein--wipe-l"><span class="c-tag c-tag--blue">Outdoor</span><b class="u-dp7">屋外配管のラッキング</b><p>雨風や紫外線にさらされる屋外配管を、板金で保護します。</p></div>
-			<div class="c-card js-fadein js-fadein--wipe-l"><span class="c-tag c-tag--blue">Material</span><b class="u-dp7">保温材施工</b><p>対象と条件から材と厚みを決め、隙間なく納めます。</p></div>
-			<div class="c-card js-fadein js-fadein--wipe-l"><span class="c-tag c-tag--blue">Finish</span><b class="u-dp7">板金仕上げ</b><p>現場に合わせて板金を納め、見え方まで整えます。</p></div>
-			<div class="c-card c-card--other js-fadein js-fadein--wipe-l"><span class="c-tag c-tag--white">Other</span><b class="u-dp7">その他の保温・断熱工事</b><p>当てはまらない工事でも、まずはご相談ください。</p></div>
+			<div class="c-card js-fadein js-fadein--wipe-l"><span class="c-tag c-tag--blue">Material</span><b class="u-dp7">保温材施工</b><p>用途と条件から材質と厚みを選定し、隙間なく納めます。</p></div>
+			<div class="c-card js-fadein js-fadein--wipe-l"><span class="c-tag c-tag--blue">Finish</span><b class="u-dp7">板金仕上げ</b><p>現場の形状に合わせて板金を加工し、納まりまで整えます。</p></div>
+			<div class="c-card c-card--other js-fadein js-fadein--wipe-l"><span class="c-tag c-tag--white">Other</span><b class="u-dp7">その他の保温・断熱工事</b><p>上記に当てはまらない工事も、まずはご相談ください。</p></div>
 		</div>
 
 		<div class="p-services__foot js-fadein">
 			<a class="c-btn c-btn--oblue" href="#services"><span>事業内容をくわしく見る</span></a>
-			<span class="p-services__hint">どこまで対応できるか分からない場合も、まずはお電話ください。</span>
+			<span class="p-services__hint">対応可能かどうか判断がつかない工事も、まずはお電話ください。</span>
 		</div>
 	</div>
 </section>
@@ -236,63 +212,44 @@
 		</div>
 		<div class="p-works__grid">
 			<article class="p-works__lead js-fadein js-fadein--diag">
-				<figure class="c-photo p-works__leadph js-inview-sheen">
-					<span class="c-photo__grid"></span>
-					<figcaption class="c-photo__note">
-						<span class="c-photo__hd"><svg class="c-ic c-ic--16"><use href="#i-cam"/></svg>Photo 06 ／ 代表実績</span>
-						<span class="c-photo__ti">工場の配管保温。完成後の引き</span>
-						<ul>
-							<li>竣工直後に撮る。汚れや養生が残る前に</li>
-							<li>三脚で水平を出す。柱や配管の垂直線を歪ませない</li>
-							<li>同じ現場の「着工前」も撮っておくと比較で使える</li>
-							<li>施主名や機器の銘板が写る場合は事前に確認</li>
-						</ul>
-						<span class="c-photo__rt">横 16:10 ／ 長辺 2400px 以上</span>
-					</figcaption>
-				</figure>
+				<figure class="c-photo p-works__leadph js-inview-sheen c-photo--has" style="--pos:50% 55%"><span class="c-photo__grid"></span><img src="img/photos/works-lead.webp" alt="アルミガラスクロスと亀甲金網で保温した空調機まわり" loading="lazy" decoding="async"></figure>
 				<div class="p-works__cap">
 					<span class="c-tag c-tag--blue">Piping</span>
-					<b class="u-dp7">工場｜配管の保温工事</b>
+					<b class="u-dp7">機械室｜空調機・配管の保温工事</b>
 					<p class="p-works__meta">
-						<span>対象物 <b>［ 配管 ］</b></span>
-						<span>業種 <b>［ 工場 ］</b></span>
-						<span>規模 <b>［ ］</b></span>
-						<span>工期 <b>［ ］</b></span>
+						<span>対象物 <b>配管・ダクト</b></span>
+						<span>仕上げ <b>保温材＋亀甲金網</b></span>
 					</p>
 				</div>
 			</article>
 			<div class="p-works__side" data-seq="170">
 				<article class="p-works__item js-fadein js-fadein--wipe-r">
-					<figure class="c-photo c-photo--tiny p-works__itemph">
-						<figcaption class="c-photo__note"><span class="c-photo__hd">Photo 07</span><span class="c-photo__ti">テナントのダクト保温</span><ul><li>天井を開けた状態で、上向きに</li><li>フラッシュではなく投光器で</li></ul><span class="c-photo__rt">4:3</span></figcaption>
-					</figure>
-					<div class="p-works__itemcap"><span class="c-tag c-tag--blue">Duct</span><b class="u-dp7">テナント｜ダクト保温</b></div>
+					<figure class="c-photo c-photo--tiny p-works__itemph c-photo--has" style="--pos:50% 50%"><img src="img/photos/works-duct.webp" alt="分岐した角ダクトの保温仕上げ" loading="lazy" decoding="async"></figure>
+					<div class="p-works__itemcap"><span class="c-tag c-tag--blue">Duct</span><b class="u-dp7">空調ダクト｜保温・断熱工事</b></div>
 				</article>
 				<article class="p-works__item js-fadein js-fadein--wipe-r">
-					<figure class="c-photo c-photo--tiny p-works__itemph">
-						<figcaption class="c-photo__note"><span class="c-photo__hd">Photo 08</span><span class="c-photo__ti">屋外配管のラッキング</span><ul><li>晴天の順光。金属の面がきれいに出る</li><li>青空を少し入れると抜けが出る</li></ul><span class="c-photo__rt">4:3</span></figcaption>
-					</figure>
-					<div class="p-works__itemcap"><span class="c-tag c-tag--blue">Cladding</span><b class="u-dp7">屋外配管｜ラッキング</b></div>
+					<figure class="c-photo c-photo--tiny p-works__itemph c-photo--has" style="--pos:50% 50%"><img src="img/photos/works-outdoor.webp" alt="屋外機械スペースのラッキング配管とバルブ" loading="lazy" decoding="async"></figure>
+					<div class="p-works__itemcap"><span class="c-tag c-tag--blue">Cladding</span><b class="u-dp7">屋外配管｜ラッキング仕上げ</b></div>
 				</article>
 			</div>
 		</div>
-		<p class="p-works__note">※ 施工写真は準備中です。対象物・業種・規模・材料・工期・現場での課題と対応を、一件ずつ記録して掲載していきます。</p>
+		<p class="p-works__note">※ 掲載しているのは実績の一部です。対象物・業種・規模・材料・工期・現場での課題と対応を、一件ずつ記録して追加していきます。</p>
 	</div>
 </section>
 
 <section class="l-section l-section--bg p-flow" id="flow">
 	<div class="l-inner">
-		<div class="c-sechead js-fadein" style="margin-bottom:40px">
+		<div class="c-sechead js-fadein">
 			<p class="c-eyebrow c-eyebrow--client">For clients <i>／</i> Flow</p>
 			<h2 class="u-dp js-inview-lines c-sechead__h--sm">電話一本から、<br>施工まで。</h2>
-			<p class="c-sechead__lead">何が起きるか分からないまま連絡するのは、気が重いと思います。流れを先に出しておきます。</p>
+			<p class="c-sechead__lead">ご連絡をいただいたあと、どう進むのか。先にお伝えしておきます。</p>
 		</div>
 		<ol class="p-flow__list">
 			<li class="p-flow__rail js-fadein js-fadein--growx" aria-hidden="true"></li>
-			<li class="p-flow__item js-fadein js-fadein--pop" style="--d:100ms"><span class="p-flow__num">01</span><b class="u-dp7">お電話でご相談</b><p>工事の内容と現場の状況をうかがいます。図面がなくても構いません。この段階で費用は発生しません。</p></li>
-			<li class="p-flow__item js-fadein js-fadein--pop" style="--d:260ms"><span class="p-flow__num">02</span><b class="u-dp7">現場を見せていただく</b><p>必要に応じて現場へうかがい、対象と範囲、納まりを確認します。材と厚みもここで決めます。</p></li>
-			<li class="p-flow__item js-fadein js-fadein--pop" style="--d:300ms"><span class="p-flow__num">03</span><b class="u-dp7">お見積もり</b><p>内容を確認したうえでご案内します。相見積もりでも構いません。費用が発生する場合は事前に説明します。</p></li>
-			<li class="p-flow__item js-fadein js-fadein--pop" style="--d:580ms"><span class="p-flow__num">04</span><b class="u-dp7">施工</b><p>日程を調整して着工します。工程の中で変更が出た場合も、その都度ご相談しながら進めます。</p></li>
+			<li class="p-flow__item js-fadein js-fadein--pop" style="--d:100ms"><span class="p-flow__num">01</span><b class="u-dp7">お電話でご相談</b><p>工事の内容と現場の状況をうかがいます。図面はなくても差し支えありません。この段階で費用は発生しません。</p></li>
+			<li class="p-flow__item js-fadein js-fadein--pop" style="--d:260ms"><span class="p-flow__num">02</span><b class="u-dp7">現場を見せていただく</b><p>必要に応じて現場へうかがい、対象・範囲・納まりを確認します。材質と厚みも、この段階で決定します。</p></li>
+			<li class="p-flow__item js-fadein js-fadein--pop" style="--d:300ms"><span class="p-flow__num">03</span><b class="u-dp7">お見積もり</b><p>内容を確認したうえで、お見積もりをご提示します。相見積もりもご遠慮なくお申し付けください。費用が発生する場合は、事前にご説明します。</p></li>
+			<li class="p-flow__item js-fadein js-fadein--pop" style="--d:580ms"><span class="p-flow__num">04</span><b class="u-dp7">施工</b><p>日程を調整のうえ着工します。工程の途中で変更が生じた場合も、その都度ご相談しながら進めます。</p></li>
 		</ol>
 	</div>
 </section>
@@ -302,28 +259,18 @@
 		<div class="js-fadein js-fadein--left">
 			<p class="c-eyebrow c-eyebrow--client">For clients <i>／</i> About us</p>
 			<h2 class="u-dp p-about__ttl js-inview-lines">三代分の技術を、<br>これからの形にする。</h2>
-			<p class="p-about__lead">藤井冷熱は、名古屋市中川区で創業から約50年、親子三代にわたって続く保温・断熱・板金工事の会社です。職人の技術は、簡単に身につくものではありません。だからこそ受け継いできたものを大切にしながら、これからの建設業に合った会社へ変わっていくことも、同じくらい大切にしています。</p>
+			<p class="p-about__lead">藤井冷熱は、名古屋市中川区で創業から約50年、親子三代にわたって続く保温・断熱・板金工事の会社です。職人の技術は、短期間で身につくものではありません。受け継いだものを守りながら、これからの建設業に合う会社へ変わっていく。その両方に、同じだけ力を入れています。</p>
 			<div class="p-about__words" data-seq="80">
 				<div class="js-fadein js-fadein--flip">技術</div><div class="js-fadein js-fadein--flip">スピード</div><div class="js-fadein js-fadein--flip">信頼</div><div class="js-fadein js-fadein--flip">新しい時代への対応</div>
 			</div>
 			<div class="p-about__goal js-fadein js-fadein--wipe-d" style="--d:240ms">
-				<b class="u-dp7">日本で一番信頼される保温・断熱会社へ。</b>
-				<p>施工品質、仕事のスピード、対応力、約束を守ること、丁寧なやりとり。その一つひとつの積み重ねの先に、日本でいちばん信頼される会社があると考えています。</p>
+				<b class="u-dp7">日本で一番、技術力のある保温会社へ。</b>
+				<p>施工品質、工期の正確さ、現場での対応力、約束を守ること。その積み重ねの先に、日本で一番技術力のある保温会社になる道があると考えています。</p>
 			</div>
 		</div>
 		<div class="p-about__visual">
-			<figure class="c-photo p-about__ph1 js-fadein js-fadein--wipe-d js-inview-sheen">
-				<span class="c-photo__grid"></span>
-				<figcaption class="c-photo__note" style="max-width:300px">
-					<span class="c-photo__hd">Photo 09</span>
-					<span class="c-photo__ti">職人が作業している縦位置</span>
-					<ul><li>脚立の上、配管に向き合っている姿を下から</li><li>顔は横顔でよい。手と姿勢を見せる</li><li>背景に配管が続いていると奥行きが出る</li></ul>
-					<span class="c-photo__rt">縦 3:4</span>
-				</figcaption>
-			</figure>
-			<figure class="c-photo c-photo--tiny p-about__ph2 js-fadein js-fadein--pop" style="--d:300ms">
-				<figcaption class="c-photo__note"><span class="c-photo__hd">Photo 10</span><span class="c-photo__ti">社員の集合／二人</span><ul><li>明るい屋外。必ず顔が見えるように</li><li>並ばせすぎない。話している最中が良い</li></ul><span class="c-photo__rt">1:1</span></figcaption>
-			</figure>
+			<figure class="c-photo p-about__ph1 js-fadein js-fadein--wipe-d js-inview-sheen c-photo--has" style="--pos:50% 40%"><span class="c-photo__grid"></span><img src="img/photos/worker-vert.webp" alt="作業台で金属板を加工する職人" loading="lazy" decoding="async"></figure>
+			<figure class="c-photo c-photo--tiny p-about__ph2 js-fadein js-fadein--pop c-photo--has" style="--d:300ms;--pos:50% 40%"><img src="img/photos/r-team.webp" alt="現場前で打ち合わせをする職人たち" loading="lazy" decoding="async"></figure>
 		</div>
 	</div>
 </section>
@@ -346,7 +293,7 @@
 			<div class="p-profile__cell js-fadein js-fadein--wipe-d"><dt class="p-profile__k">Representative</dt><dd class="p-profile__v">藤井　築路（フジイ　チクミチ）</dd></div>
 			<div class="p-profile__cell js-fadein js-fadein--wipe-d"><dt class="p-profile__k">Business</dt><dd class="p-profile__v">熱絶縁工事（保温・断熱・板金）</dd></div>
 			<div class="p-profile__cell js-fadein js-fadein--wipe-d"><dt class="p-profile__k">Address</dt><dd class="p-profile__v">〒454-0925<br>愛知県名古屋市中川区中須町字藤六28-39</dd></div>
-			<div class="p-profile__cell js-fadein js-fadein--wipe-d"><dt class="p-profile__k">Tel</dt><dd class="p-profile__v"><a class="u-tabnum" href="tel:0523537997">052-353-7997</a><br><span style="font-size:12.5px;color:var(--mut)">本社代表</span></dd></div>
+			<div class="p-profile__cell js-fadein js-fadein--wipe-d"><dt class="p-profile__k">Tel</dt><dd class="p-profile__v"><span class="u-tabnum">052-353-7997</span><br><span style="font-size:12.5px;color:var(--mut)">本社代表</span></dd></div>
 			<div class="p-profile__cell js-fadein js-fadein--wipe-d"><dt class="p-profile__k">License</dt><dd class="p-profile__v">愛知県知事許可　第105680号</dd></div>
 		</dl>
 	</div>
@@ -357,13 +304,107 @@
 		<div class="js-fadein">
 			<p class="c-eyebrow c-eyebrow--client">For clients <i>／</i> FAQ</p>
 			<h2 class="u-dp p-faq__ttl js-inview-lines">工事について<br>よくあるご質問</h2>
-			<a class="p-faq__more" href="#faq">すべての質問を見る</a>
 		</div>
-		<div class="p-faq__list" data-seq="90">
-			<dl class="p-faq__item js-fadein js-fadein--wipe-l"><dt class="p-faq__q">Q</dt><dd><b class="u-dp7">見積もりだけでもお願いできますか？</b></dd><dt class="p-faq__a">A</dt><dd><p>可能です。まずは工事内容を確認したうえで、お見積もりをご案内します。</p></dd></dl>
-			<dl class="p-faq__item js-fadein js-fadein--wipe-l"><dt class="p-faq__q">Q</dt><dd><b class="u-dp7">相見積もりでも大丈夫ですか？</b></dd><dt class="p-faq__a">A</dt><dd><p>問題ありません。内容を確認したうえで、適正な施工方法と金額をご提案します。</p></dd></dl>
-			<dl class="p-faq__item js-fadein js-fadein--wipe-l"><dt class="p-faq__q">Q</dt><dd><b class="u-dp7">相談しただけで高額な費用を請求されませんか？</b></dd><dt class="p-faq__a">A</dt><dd><p>相談の段階で突然費用が発生するような進め方はしません。費用がかかる場合は、事前に説明します。</p></dd></dl>
-			<dl class="p-faq__item js-fadein js-fadein--wipe-l"><dt class="p-faq__q">Q</dt><dd><b class="u-dp7">急ぎの工事でも相談できますか？</b></dd><dt class="p-faq__a">A</dt><dd><p>日程や現場状況によりますが、まずはご連絡ください。可能な範囲で対応を検討します。</p></dd></dl>
+		<div class="c-acc c-acc--client js-fadein" data-seq="70">
+			<div class="c-acc__item">
+				<button type="button" class="c-acc__q">
+					<span class="c-acc__mark">Q</span>
+					<span class="c-acc__t">見積もりだけでもお願いできますか？</span>
+					<span class="c-acc__ic" aria-hidden="true"></span>
+				</button>
+				<div class="c-acc__panel"><div class="c-acc__inner"><div class="c-acc__a">
+					<span>A</span>
+					<div><p>可能です。まずは工事内容を確認したうえで、お見積もりをご案内します。</p></div>
+				</div></div></div>
+			</div>
+			<div class="c-acc__item">
+				<button type="button" class="c-acc__q">
+					<span class="c-acc__mark">Q</span>
+					<span class="c-acc__t">相見積もりでも大丈夫ですか？</span>
+					<span class="c-acc__ic" aria-hidden="true"></span>
+				</button>
+				<div class="c-acc__panel"><div class="c-acc__inner"><div class="c-acc__a">
+					<span>A</span>
+					<div><p>問題ありません。内容を確認したうえで、適正な施工方法と金額をご提案します。</p></div>
+				</div></div></div>
+			</div>
+			<div class="c-acc__item">
+				<button type="button" class="c-acc__q">
+					<span class="c-acc__mark">Q</span>
+					<span class="c-acc__t">図面がなくても相談できますか？</span>
+					<span class="c-acc__ic" aria-hidden="true"></span>
+				</button>
+				<div class="c-acc__panel"><div class="c-acc__inner"><div class="c-acc__a">
+					<span>A</span>
+					<div><p>図面はなくても差し支えありません。必要に応じて現場へうかがい、対象と範囲、納まりを確認します。</p></div>
+				</div></div></div>
+			</div>
+			<div class="c-acc__item">
+				<button type="button" class="c-acc__q">
+					<span class="c-acc__mark">Q</span>
+					<span class="c-acc__t">現場を見てもらうのに費用はかかりますか？</span>
+					<span class="c-acc__ic" aria-hidden="true"></span>
+				</button>
+				<div class="c-acc__panel"><div class="c-acc__inner"><div class="c-acc__a">
+					<span>A</span>
+					<div><p>かかりません。お電話でのご相談から現地確認までの段階で、費用は発生しません。費用が発生する場合は、事前にご説明します。</p></div>
+				</div></div></div>
+			</div>
+			<div class="c-acc__item">
+				<button type="button" class="c-acc__q">
+					<span class="c-acc__mark">Q</span>
+					<span class="c-acc__t">相談しただけで高額な費用を請求されませんか？</span>
+					<span class="c-acc__ic" aria-hidden="true"></span>
+				</button>
+				<div class="c-acc__panel"><div class="c-acc__inner"><div class="c-acc__a">
+					<span>A</span>
+					<div><p>相談の段階で突然費用が発生するような進め方はしません。費用がかかる場合は、事前にご説明します。</p></div>
+				</div></div></div>
+			</div>
+			<div class="c-acc__item">
+				<button type="button" class="c-acc__q">
+					<span class="c-acc__mark">Q</span>
+					<span class="c-acc__t">保温と板金を別々の業者に頼む必要はありますか？</span>
+					<span class="c-acc__ic" aria-hidden="true"></span>
+				</button>
+				<div class="c-acc__panel"><div class="c-acc__inner"><div class="c-acc__a">
+					<span>A</span>
+					<div><p>その必要はありません。保温材の施工から板金仕上げまで一社で対応します。打ち合わせの手間と、工程の待ち時間を減らせます。</p></div>
+				</div></div></div>
+			</div>
+			<div class="c-acc__item">
+				<button type="button" class="c-acc__q">
+					<span class="c-acc__mark">Q</span>
+					<span class="c-acc__t">対応エリアはどこまでですか？</span>
+					<span class="c-acc__ic" aria-hidden="true"></span>
+				</button>
+				<div class="c-acc__panel"><div class="c-acc__inner"><div class="c-acc__a">
+					<span>A</span>
+					<div><p>愛知県・岐阜県・三重県の東海3県が中心です。そのほかの地域も、まずはご相談ください。</p></div>
+				</div></div></div>
+			</div>
+			<div class="c-acc__item">
+				<button type="button" class="c-acc__q">
+					<span class="c-acc__mark">Q</span>
+					<span class="c-acc__t">新築でも改修でも対応できますか？</span>
+					<span class="c-acc__ic" aria-hidden="true"></span>
+				</button>
+				<div class="c-acc__panel"><div class="c-acc__inner"><div class="c-acc__a">
+					<span>A</span>
+					<div><p>どちらも対応します。工場、ビル・テナント、病院・施設、商業施設、屋外まで、新築・改修を問わず承ります。</p></div>
+				</div></div></div>
+			</div>
+			<div class="c-acc__item">
+				<button type="button" class="c-acc__q">
+					<span class="c-acc__mark">Q</span>
+					<span class="c-acc__t">急ぎの工事でも相談できますか？</span>
+					<span class="c-acc__ic" aria-hidden="true"></span>
+				</button>
+				<div class="c-acc__panel"><div class="c-acc__inner"><div class="c-acc__a">
+					<span>A</span>
+					<div><p>日程や現場状況によりますが、まずはご連絡ください。可能な範囲で対応を検討します。</p></div>
+				</div></div></div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -372,7 +413,7 @@
 	<div class="l-inner p-contact__inner">
 		<p class="c-eyebrow c-eyebrow--client js-fadein">For clients <i>／</i> Contact</p>
 		<h2 class="u-dp p-contact__ttl js-inview-lines">担当の藤井が、<br>直接うかがいます。</h2>
-		<p class="p-contact__lead js-fadein">「こんな工事できる？」の一言で構いません。折り返しではなく、その場でお話をうかがいます。</p>
+		<p class="p-contact__lead js-fadein">「こんな工事はできますか」の一言からで結構です。折り返しをお待たせすることなく、その場でお話をうかがいます。</p>
 		<div class="c-tel js-fadein js-fadein--pop">
 			<button type="button" class="c-btn c-btn--blue c-tel__trigger" aria-expanded="false">
 				<svg class="c-btn__ic c-btn__ic--ring"><use href="#i-phone"/></svg><span>お電話でご相談</span>
@@ -380,7 +421,7 @@
 			<div class="c-tel__panel" hidden>
 				<span class="c-eyebrow c-eyebrow--client c-eyebrow--xs">担当 藤井 蓮</span>
 				<a class="c-tel__num" href="tel:09047994123">090-4799-4123</a>
-				<span class="c-tel__hours">受付 8:00-19:00 ／ 土日祝も対応可能</span>
+				<span class="c-tel__hours">受付 9:00-19:00 ／ 土日祝も対応可能</span>
 				<a class="c-btn c-btn--blue c-btn--sm" href="tel:09047994123"><svg class="c-btn__ic c-btn__ic--ring"><use href="#i-phone"/></svg><span>この番号にかける</span></a>
 			</div>
 		</div>
@@ -393,7 +434,7 @@
 		<div>
 			<p class="c-eyebrow c-eyebrow--dark">New initiative</p>
 			<h2 class="u-dp p-initiative__ttl js-inview-lines" style="--d:260ms">工事会社が、<br>システムをつくる。</h2>
-			<p class="p-initiative__lead">藤井冷熱には、工事とは別にシステム開発の取り組みがあります。現場を知っている人間がつくるからこそ、現場で本当に使えるものになる。そう考えています。</p>
+			<p class="p-initiative__lead">藤井冷熱では、工事と並行してシステム開発にも取り組んでいます。現場を知る人間がつくるからこそ、現場で本当に使えるものになる。そう考えています。</p>
 			<div class="p-initiative__tiles" data-seq="70" data-seq-from="300">
 				<p class="p-initiative__tile js-fadein js-fadein--wipe-l">建設業・設備業向けアプリ開発</p>
 				<p class="p-initiative__tile js-fadein js-fadein--wipe-l">現場業務を効率化するシステム</p>
@@ -401,9 +442,7 @@
 			</div>
 			<a class="p-initiative__more" href="#">新しい取り組みについて見る</a>
 		</div>
-		<figure class="c-photo c-photo--dark p-initiative__ph js-fadein js-fadein--wipe-l" style="--d:300ms">
-			<figcaption class="c-photo__note"><span class="c-photo__hd">Photo 11</span><span class="c-photo__ti">現場でタブレットを見ている場面</span><ul><li>画面の中身が読める角度で。UIを合成してもよい</li><li>背景は現場。屋内なら明るい場所を選ぶ</li><li>手だけでも成立する</li></ul><span class="c-photo__rt">16:9</span></figcaption>
-		</figure>
+		<figure class="c-photo c-photo--dark p-initiative__ph js-fadein js-fadein--wipe-l c-photo--has" style="--d:300ms;--pos:50% 55%"><img src="img/photos/r-tablet.webp" alt="現場でタブレットの図面を確認する二人" loading="lazy" decoding="async"></figure>
 	</div>
 </section>
 
@@ -423,18 +462,23 @@
 				<span class="p-band__slotbadge">採用予定 残り2名</span>
 			</div>
 			<h2 class="u-dp p-band__ttl js-inview-lines" style="--d:180ms">3年後の自分が、<br>見える会社に。</h2>
-			<p class="p-band__lead">未経験からでも、他の職種からでも。技術を磨く道も、チームを持つ道も、現場を管理する道も、ITに関わる道もあります。どこへ進みたいかを聞いたうえで、必要な経験を一緒に考えます。</p>
-			<div class="p-band__paths" data-seq="65" data-seq-from="300">
-				<p class="p-band__path js-fadein js-fadein--wipe-l">現場<br>スペシャリスト</p>
-				<p class="p-band__path js-fadein js-fadein--wipe-l">職長・<br>チームリーダー</p>
-				<p class="p-band__path js-fadein js-fadein--wipe-l">現場管理・<br>教育</p>
-				<p class="p-band__path js-fadein js-fadein--wipe-l">IT・<br>システム部門</p>
+			<p class="p-band__lead">未経験の方も、他業種からの転職も歓迎します。技術を磨く道、チームを持つ道、現場を管理する道、ITに関わる道。どこへ進みたいかをうかがったうえで、必要な経験を一緒に考えます。</p>
+			<div class="p-tree2" data-seq="65" data-seq-from="300">
+				<p class="p-tree2__root js-fadein"><b>入社</b><span>安全・道具・材料から</span></p>
+				<p class="p-tree2__base js-fadein"><b>基礎を身につける</b><span>先輩について現場を覚える</span></p>
+				<p class="p-tree2__fork js-fadein">ここから、進む道が分かれます</p>
+				<ul class="p-tree2__paths">
+					<li class="p-tree2__path js-fadein js-fadein--wipe-u"><b>現場<br>スペシャリスト</b><span>難しい形ほど任される職人へ</span></li>
+					<li class="p-tree2__path js-fadein js-fadein--wipe-u"><b>職長・<br>チームリーダー</b><span>自分のチームで現場を回す</span></li>
+					<li class="p-tree2__path js-fadein js-fadein--wipe-u"><b>現場管理・<br>教育</b><span>後輩を育てる側にまわる</span></li>
+					<li class="p-tree2__path js-fadein js-fadein--wipe-u"><b>IT・<br>システム部門</b><span>現場を知る人がつくる側へ</span></li>
+				</ul>
 			</div>
 		</div>
 		<div class="p-band__cta js-fadein">
 			<a class="c-btn c-btn--white" href="recruit.html"><span>採用情報を見る</span></a>
 			<a class="c-btn c-btn--ow" href="recruit.html#entry"><span>まずは話を聞いてみる</span></a>
-			<p class="p-band__note">会社見学だけでも大丈夫です。<br>入社を決めていなくても構いません。</p>
+			<p class="p-band__note">会社見学だけでもご連絡ください。<br>入社を決めていない段階で構いません。</p>
 		</div>
 	</div>
 </section>
@@ -445,14 +489,14 @@
 	<div class="l-inner l-footer__inner">
 		<div class="l-footer__brand">
 			<span class="l-footer__logo">
-				<img class="l-footer__mark" src="img/logo-white.png" width="240" height="141" alt="">
+				<img class="l-footer__mark" src="img/logo-silver.png" alt="藤井冷熱" width="240" height="141" alt="">
 				<span class="l-footer__wordmark"><b>藤井冷熱</b><i>FUJII REINETSU</i></span>
 			</span>
 			<p class="l-footer__biz">保温工事・断熱工事・板金工事（熱絶縁工事）</p>
-			<p class="l-footer__ph">〒454-0925　愛知県名古屋市中川区中須町字藤六28-39<br>愛知県知事許可 第105680号　／　対応エリア：愛知・岐阜・三重</p>
+			<p class="l-footer__ph">〒454-0925　愛知県名古屋市中川区中須町字藤六28-39<br>愛知県知事許可 第105680号<span class="l-footer__sep">　／　</span><span class="l-footer__area">対応エリア：愛知・岐阜・三重</span></p>
 			<div class="l-footer__tels">
 				<span class="l-footer__telrow">
-					<a class="l-footer__tel" href="tel:0523537997">052-353-7997</a>
+					<span class="l-footer__tel l-footer__tel--flat">052-353-7997</span>
 					<span class="l-footer__hours">本社代表</span>
 				</span>
 				<div class="c-tel c-tel--foot">
@@ -462,7 +506,7 @@
 					<div class="c-tel__panel" hidden>
 						<span class="c-eyebrow c-eyebrow--recruit c-eyebrow--xs">工事のご相談・採用　担当 藤井 蓮</span>
 						<a class="c-tel__num" href="tel:09047994123">090-4799-4123</a>
-						<span class="c-tel__hours">8:00-19:00 ／ 土日祝も対応</span>
+						<span class="c-tel__hours">9:00-19:00 ／ 土日祝も対応</span>
 						<a class="c-btn c-btn--cop c-btn--sm" href="tel:09047994123"><svg class="c-btn__ic c-btn__ic--ring"><use href="#i-phone"/></svg><span>この番号にかける</span></a>
 					</div>
 				</div>
@@ -482,9 +526,40 @@
 				<a href="recruit.html">採用情報</a>
 			</div>
 		</nav>
+		<p class="l-footer__note">※ サイト内の一部の写真はイメージです。</p>
 	</div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=8ffd2830"></script>
+<div class="l-drawer" id="drawer" hidden>
+	<div class="l-drawer__sheet">
+		<nav class="l-drawer__nav" aria-label="サイト内メニュー">
+			<p class="c-eyebrow c-eyebrow--client c-eyebrow--xs">工事のご依頼</p>
+			<div class="l-drawer__links">
+				<a href="index.html#services">事業内容</a>
+				<a href="index.html#works">施工実績</a>
+				<a href="index.html#flow">対応の流れ</a>
+				<a href="index.html#about">私たちについて</a>
+				<a href="index.html#profile">会社概要</a>
+				<a href="index.html#faq">よくあるご質問</a>
+			</div>
+			<p class="c-eyebrow c-eyebrow--recruit c-eyebrow--xs l-drawer__sub">採用情報</p>
+			<div class="l-drawer__links l-drawer__links--sub">
+				<a href="recruit.html">採用トップ</a>
+				<a href="recruit-work.html">働き方と未来</a>
+				<a href="recruit-job.html">仕事を知る</a>
+				<a href="recruit-about.html">藤井冷熱について</a>
+				<a href="recruit-faq.html">よくある質問</a>
+			</div>
+		</nav>
+		<div class="l-drawer__foot">
+			<a class="c-btn c-btn--blue" href="recruit.html"><span>採用情報を見る</span></a>
+			<a class="l-drawer__tel" href="tel:09047994123">
+				<svg class="c-ic c-ic--18"><use href="#i-phone"/></svg>
+				<span><b>090-4799-4123</b><i>担当 藤井 蓮 ／ 9:00-19:00</i></span>
+			</a>
+		</div>
+	</div>
+</div>
 </body>
 </html>

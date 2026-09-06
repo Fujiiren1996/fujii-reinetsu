@@ -25,6 +25,11 @@
 	--cop-2: #e08a55;
 	--cop-3: #f6c3a0;
 	--cop-4: #ffe3d0;
+	/* Cタイプ用。A=藍 B=銅 C=緑 の3択を一目で見分けるため。 */
+	--grn: #3d6b57;
+	--grn-l: #eaf1ee;
+	--grn-d: #2b4d3f;
+	--grn-m: #b3ccc0;
 	/* ニュートラル */
 	--w: #fff;
 	--bg: #f5f7fb;
@@ -229,11 +234,6 @@ body {
 	transition: transform .45s var(--e-out);
 }
 
-.l-header__nav a:hover::after {
-	transform: scaleX(1);
-	transform-origin: left;
-}
-
 .l-header__doors {
 	display: flex;
 	align-items: stretch;
@@ -368,10 +368,6 @@ body {
 	transition: color .3s var(--e-out);
 }
 
-.l-footer__tel:hover {
-	color: #a9bce2;
-}
-
 .l-footer__hours {
 	font-size: 12px;
 	color: #656d84;
@@ -394,17 +390,8 @@ body {
 	transition: color .3s var(--e-out), transform .3s var(--e-out);
 }
 
-.l-footer__col a:hover {
-	color: var(--w);
-	transform: translateX(3px);
-}
-
 .l-footer__col--recruit a {
 	color: #e4a57f;
-}
-
-.l-footer__col--recruit a:hover {
-	color: #f6d2bb;
 }
 
 .l-footer__spacer {
@@ -570,16 +557,6 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	transition: width .62s var(--e-out), height .62s var(--e-out), opacity .3s linear;
 }
 
-.c-btn:hover::before,
-.c-btn:focus-visible::before {
-	width: 260%;
-	height: 700%;
-}
-
-.c-btn:hover {
-	transform: translateY(-2px);
-}
-
 .c-btn:active {
 	transform: translateY(0) scale(.978);
 	transition-duration: .09s;
@@ -597,24 +574,11 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	transition: transform .55s var(--e-out);
 }
 
-/* 受話器は「鳴る」。矢印は「進む」。目は「開く」。役割で動きを変える。 */
-.c-btn:hover .c-btn__ic--ring {
-	animation: ring .7s var(--e-io);
-}
-
 @keyframes ring {
 	0%, 100% { transform: rotate(0); }
 	22% { transform: rotate(-13deg); }
 	44% { transform: rotate(10deg); }
 	66% { transform: rotate(-6deg); }
-}
-
-.c-btn:hover .c-btn__ic--go {
-	transform: translateX(4px);
-}
-
-.c-btn:hover .c-btn__ic--zoom {
-	transform: scale(1.14);
 }
 
 .c-btn--sm {
@@ -631,10 +595,6 @@ h2.c-sechead__h--sm { font-size: 34px; }
 
 .c-btn--blue::before { background: var(--blue-d); }
 
-.c-btn--blue:hover {
-	box-shadow: 0 14px 28px -14px rgba(46, 76, 135, .95);
-}
-
 .c-btn--blue:active {
 	box-shadow: 0 1px 4px -3px rgba(46, 76, 135, .9);
 }
@@ -647,10 +607,6 @@ h2.c-sechead__h--sm { font-size: 34px; }
 }
 
 .c-btn--cop::before { background: var(--cop-d); }
-
-.c-btn--cop:hover {
-	box-shadow: 0 14px 28px -14px rgba(180, 85, 42, .95);
-}
 
 .c-btn--cop:active {
 	box-shadow: 0 1px 4px -3px rgba(180, 85, 42, .9);
@@ -690,28 +646,15 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	pointer-events: none;
 }
 
-.c-btn--oblue:hover::after,
-.c-btn--ocop:hover::after,
-.c-btn--ow:hover::after,
-.c-btn--oblue:focus-visible::after,
-.c-btn--ocop:focus-visible::after,
-.c-btn--ow:focus-visible::after {
-	clip-path: inset(0 0 0 0);
-}
-
 .c-btn--oblue {
 	color: var(--blue);
 	border-color: var(--blue-m);
 }
 
-.c-btn--oblue:hover { color: var(--blue-d); }
-
 .c-btn--ocop {
 	color: var(--cop);
 	border-color: var(--cop-m);
 }
-
-.c-btn--ocop:hover { color: var(--cop-d); }
 
 .c-btn--ow {
 	color: var(--w);
@@ -753,12 +696,6 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	transition: background .4s var(--e-out), border-color .4s var(--e-out), transform .4s var(--e-out);
 }
 
-.c-chip:hover {
-	background: rgba(255, 255, 255, .13);
-	border-color: var(--cop-3);
-	transform: translateY(-2px);
-}
-
 .c-chip--light {
 	background: var(--w);
 	border-color: var(--cop-m);
@@ -782,6 +719,7 @@ h2.c-sechead__h--sm { font-size: 34px; }
 .c-ic--16 { width: 16px; height: 16px; }
 .c-ic--18 { width: 18px; height: 18px; }
 .c-ic--20 { width: 20px; height: 20px; }
+.c-ic--28 { width: 28px; height: 28px; }
 
 .c-icbox {
 	display: inline-flex;
@@ -1104,17 +1042,8 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	transition: transform .35s var(--e-out), color .3s var(--e-out);
 }
 
-.p-doors__links a:hover {
-	transform: translateX(4px);
-	color: var(--blue-d);
-}
-
 .p-doors__recruit .p-doors__links a {
 	color: var(--cop);
-}
-
-.p-doors__recruit .p-doors__links a:hover {
-	color: var(--cop-d);
 }
 
 .p-doors__btn {
@@ -1169,11 +1098,6 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	transition: transform .5s var(--e-out), box-shadow .5s var(--e-out);
 }
 
-.p-services__card:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 22px 40px -28px rgba(13, 20, 26, .45);
-}
-
 .p-services__thumb {
 	height: 196px;
 	border: 0;
@@ -1209,10 +1133,6 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	padding: 22px 20px 24px;
 	gap: 9px;
 	transition: background .4s var(--e-out);
-}
-
-.p-services__sub .c-card:hover {
-	background: var(--bg);
 }
 
 .p-services__sub b {
@@ -1374,10 +1294,6 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	color: var(--blue-m);
 	line-height: 1;
 	transition: color .5s var(--e-out);
-}
-
-.p-flow__item:hover .p-flow__num {
-	color: var(--blue);
 }
 
 .p-flow__item b {
@@ -1684,17 +1600,9 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	transition: color .3s var(--e-out);
 }
 
-.c-tel__num:hover {
-	color: var(--blue);
-}
-
 .c-tel__hours {
 	font-size: 12.5px;
 	color: var(--mut);
-}
-
-.c-tel__panel--cop .c-tel__num:hover {
-	color: var(--cop);
 }
 
 /* ヘッダー用：小さく、押したら真下に開く */
@@ -1791,11 +1699,6 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	color: #d8dcea;
 	line-height: 1.7;
 	transition: border-color .4s var(--e-out), transform .4s var(--e-out);
-}
-
-.p-initiative__tile:hover {
-	border-color: #3c5563;
-	transform: translateY(-3px);
 }
 
 .p-initiative__more {
@@ -1908,10 +1811,6 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	transition: background .4s var(--e-out);
 }
 
-.p-band__path:hover {
-	background: rgba(255, 255, 255, .18);
-}
-
 .p-band__cta {
 	display: flex;
 	flex-direction: column;
@@ -1933,18 +1832,39 @@ h2.c-sechead__h--sm { font-size: 34px; }
 .p-rhero {
 	position: relative;
 	overflow: hidden;
+	/* 銅色を1点に集めず、上から下へ 淡→濃の階調にして奥行きを出す */
 	background:
-		radial-gradient(920px 560px at 78% 18%, rgba(224, 138, 85, .34) 0%, rgba(224, 138, 85, 0) 62%),
-		radial-gradient(700px 520px at 12% 88%, rgba(180, 85, 42, .22) 0%, rgba(180, 85, 42, 0) 60%),
-		linear-gradient(158deg, #fff 0%, #fff7f2 46%, #fbeadf 100%);
+		radial-gradient(1100px 620px at 84% 6%, rgba(224, 138, 85, .30) 0%, rgba(224, 138, 85, 0) 64%),
+		radial-gradient(760px 560px at 6% 96%, rgba(140, 62, 28, .20) 0%, rgba(140, 62, 28, 0) 62%),
+		linear-gradient(166deg, #fffdfb 0%, #fdf3ec 40%, #f7e3d6 76%, #f2d8c8 100%);
 }
 
+/* 背景の質感は、抽象的な模様ではなく実際に扱っている材料から取る。
+   亀甲金網（IMG_0786 の実写）をハイパスで線だけ抜いたもの。
+   AIで作った背景はどの会社でも成立してしまうが、これは藤井冷熱の現場にしかない。 */
+.p-rhero::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background-image: url("../img/tex-mesh.webp");
+	background-size: 760px auto;
+	background-position: 68% 12%;
+	background-repeat: repeat;
+	opacity: .085;
+	mix-blend-mode: multiply;
+	/* 文字の後ろは薄く、外側ほど出す。読みやすさを最優先する */
+	-webkit-mask-image: radial-gradient(900px 620px at 22% 46%, transparent 0%, transparent 34%, #000 78%);
+	mask-image: radial-gradient(900px 620px at 22% 46%, transparent 0%, transparent 34%, #000 78%);
+}
+
+/* 縦罫は残すが、テクスチャと喧嘩しないよう間隔を広げて薄くする */
 .p-rhero::after {
 	content: "";
 	position: absolute;
 	inset: 0;
 	pointer-events: none;
-	background: repeating-linear-gradient(to right, rgba(180, 85, 42, .055) 0 1px, transparent 1px 80px);
+	background: repeating-linear-gradient(to right, rgba(140, 62, 28, .045) 0 1px, transparent 1px 120px);
 }
 
 .p-rhero__inner {
@@ -1953,17 +1873,17 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	width: var(--page);
 	margin-inline: auto;
 	display: grid;
-	grid-template-columns: 730px 710px;
+	grid-template-columns: 790px 650px;
 	align-items: center;
 	min-height: 700px;
 }
 
 .p-rhero__body {
-	padding: 0 56px 0 120px;
+	padding: 0 48px 0 120px;
 }
 
 .p-rhero__ttl {
-	font-size: 62px;
+	font-size: 46px;
 	margin-top: 22px;
 }
 
@@ -2004,7 +1924,7 @@ h2.c-sechead__h--sm { font-size: 34px; }
 .p-rhero__main {
 	position: absolute;
 	top: 112px;
-	left: 72px;
+	left: 40px;
 	width: 368px;
 	height: 368px;
 	border: 8px solid var(--w);
@@ -2023,9 +1943,9 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	position: absolute;
 }
 
-.p-rhero__sat--1 { right: 74px; top: 82px; width: 134px; height: 134px; padding: 10px; }
-.p-rhero__sat--2 { right: 24px; bottom: 196px; width: 158px; height: 158px; padding: 12px; }
-.p-rhero__sat--3 { left: 22px; bottom: 110px; width: 118px; height: 118px; padding: 9px; }
+.p-rhero__sat--1 { right: 30px; top: 62px; width: 178px; height: 178px; padding: 12px; }
+.p-rhero__sat--2 { right: -6px; bottom: 168px; width: 206px; height: 206px; padding: 14px; }
+.p-rhero__sat--3 { left: 6px; bottom: 88px; width: 160px; height: 160px; padding: 11px; }
 
 .p-slot {
 	display: inline-flex;
@@ -2096,10 +2016,6 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	transition: transform .5s var(--e-out);
 }
 
-.p-timeline__item:hover .p-timeline__pin {
-	transform: scale(1.08);
-}
-
 .p-timeline__pin--on {
 	background: var(--cop);
 	color: var(--w);
@@ -2137,15 +2053,6 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	border-radius: 8px;
 	overflow: hidden;
 	transition: transform .5s var(--e-out), box-shadow .5s var(--e-out);
-}
-
-.p-rwork__card:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 22px 40px -28px rgba(13, 20, 26, .45);
-}
-
-.p-rwork__card:hover .c-icbox {
-	transform: rotate(-6deg) scale(1.06);
 }
 
 .p-rwork__thumb {
@@ -2187,14 +2094,6 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	align-items: center;
 	gap: 16px;
 	transition: background .4s var(--e-out);
-}
-
-.p-who__cell:hover {
-	background: var(--cop-l);
-}
-
-.p-who__cell:hover .c-icbox {
-	transform: scale(1.08);
 }
 
 .p-who__cell b {
@@ -2339,15 +2238,6 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	gap: 12px;
 	border-top: 3px solid var(--cop);
 	transition: transform .5s var(--e-out), box-shadow .5s var(--e-out);
-}
-
-.p-tree__card:hover {
-	transform: translateY(-6px);
-	box-shadow: 0 24px 44px -28px rgba(139, 62, 27, .5);
-}
-
-.p-tree__card:hover .c-icbox {
-	transform: rotate(-6deg) scale(1.06);
 }
 
 .p-tree__card b {
@@ -2626,10 +2516,6 @@ h2.c-sechead__h--sm { font-size: 34px; }
 	transition: background .4s var(--e-out);
 }
 
-.p-training__cell:hover {
-	background: var(--cop-l);
-}
-
 .p-training__cell svg {
 	color: var(--cop);
 	margin-top: 3px;
@@ -2820,10 +2706,6 @@ h2.p-life__ttl {
 	transition: transform .6s var(--e-out);
 }
 
-.p-life__scatter .c-photo:hover {
-	transform: translateY(-6px) rotate(-1deg);
-}
-
 .p-life__p1 { left: 0; top: 26px; width: 420px; height: 280px; border-radius: 8px; }
 .p-life__p2 { left: 392px; top: 0; width: 196px; height: 196px; border: 6px solid var(--w); padding: 14px; }
 .p-life__p3 { left: 456px; top: 224px; width: 330px; height: 250px; border-radius: 8px; }
@@ -2880,11 +2762,6 @@ h2.p-life__ttl {
 	flex-direction: column;
 	gap: 12px;
 	transition: border-color .4s var(--e-out), transform .4s var(--e-out);
-}
-
-.p-tech__tile:hover {
-	border-color: #3c5563;
-	transform: translateY(-4px);
 }
 
 .p-tech__tile b {
@@ -3033,10 +2910,6 @@ h2.p-life__ttl {
 	color: var(--cop);
 	margin-top: 4px;
 	transition: transform .45s var(--e-out);
-}
-
-.p-rfaq__item:hover svg {
-	transform: translateX(4px);
 }
 
 /* --- エントリー ------------------------------------------------------------------ */
@@ -3332,9 +3205,6 @@ h2.p-life__ttl {
 .p-doors__client::before { background: var(--blue); }
 .p-doors__recruit::before { background: var(--cop); transform-origin: right; }
 
-.p-doors__client:hover::before,
-.p-doors__recruit:hover::before { transform: scaleX(1); }
-
 /* テキストリンクの矢印は、送り出して入れ替える */
 .p-doors__links a {
 	overflow: hidden;
@@ -3345,8 +3215,6 @@ h2.p-life__ttl {
 .p-who__cell {
 	transition: background-color .45s var(--e-out), transform .45s var(--e-out);
 }
-
-.p-profile__cell:hover { background: var(--blue-l); }
 
 /* --- 保険 ----------------------------------------------------------------
    演出の所要時間を過ぎたら、クリップも変形も外して確実に見える状態にする。
@@ -3424,6 +3292,7 @@ h2.p-life__ttl {
 	.l-header {
 		position: static;
 	}
+
 }
 
 @media screen and (max-width: 768px) {
@@ -3862,4 +3731,2819 @@ h2.p-life__ttl {
 	.p-entry__cta { flex-direction: column; width: 100%; }
 	.c-tel { width: 100%; }
 	.c-tel__trigger { width: 100%; }
+}
+
+/* ==========================================================================
+   10. 求人サイト用の部品
+   ========================================================================== */
+
+/* --- パンくずの旧定義は削除 -------------------------------------------
+   下層ページ用の .c-crumb が後方（l-pagehead の直前）にあり、そちらが実体。
+   旧定義の padding:14px 0 だけが残って余白が二重に付いていた。 */
+
+.c-crumb b {
+	color: var(--ink);
+	font-weight: 500;
+}
+
+/* --- 3つの選択肢カード ---------------------------------------------------- */
+.p-choice {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 22px;
+	margin-top: 44px;
+}
+
+.p-choice__card {
+	display: flex;
+	flex-direction: column;
+	background: var(--w);
+	border: 1px solid var(--line);
+	border-radius: 10px;
+	overflow: hidden;
+	transition: transform .55s var(--e-out), box-shadow .55s var(--e-out), border-color .4s var(--e-out);
+}
+
+.p-choice__top {
+	height: 5px;
+}
+
+.p-choice__ph {
+	height: 190px;
+	border: 0;
+	border-bottom: 1px solid var(--line);
+}
+
+.p-choice__body {
+	padding: 26px 26px 28px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	flex: 1;
+}
+
+.p-choice__k {
+	display: inline-flex;
+	align-items: center;
+	gap: 9px;
+	align-self: flex-start;
+	font-family: var(--ff-lt);
+	font-weight: 700;
+	font-size: 10.5px;
+	letter-spacing: .18em;
+	text-transform: uppercase;
+	padding: 6px 11px;
+	border-radius: 3px;
+}
+
+.p-choice__ttl {
+	font-family: var(--ff-dp);
+	font-weight: 900;
+	font-size: 24px;
+	line-height: 1.4;
+	letter-spacing: -.025em;
+}
+
+.p-choice__quote {
+	font-size: 14px;
+	color: var(--ink-2);
+	line-height: 1.9;
+	padding-left: 15px;
+	border-left: 2px solid var(--line);
+}
+
+.p-choice__list {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin-top: 2px;
+}
+
+.p-choice__list li {
+	display: flex;
+	gap: 9px;
+	font-size: 13.5px;
+	color: var(--ink-2);
+	line-height: 1.75;
+}
+
+.p-choice__list svg {
+	width: 16px;
+	height: 16px;
+	flex: none;
+	margin-top: 4px;
+	stroke-width: 2;
+	fill: none;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.p-choice__foot {
+	margin-top: auto;
+	padding-top: 6px;
+}
+
+.p-choice__foot .c-btn { width: 100%; }
+
+/* A＝藍 */
+.p-choice__card--a .p-choice__top { background: var(--blue); }
+.p-choice__card--a .p-choice__k { background: var(--blue-l); color: var(--blue); }
+.p-choice__card--a .p-choice__list svg { stroke: var(--blue); }
+/* B＝銅 */
+.p-choice__card--b .p-choice__top { background: var(--cop); }
+.p-choice__card--b .p-choice__k { background: var(--cop-l); color: var(--cop-d); }
+.p-choice__card--b .p-choice__list svg { stroke: var(--cop); }
+/* C＝緑 */
+.p-choice__card--c .p-choice__top { background: var(--grn); }
+.p-choice__card--c .p-choice__k { background: var(--grn-l); color: var(--grn-d); }
+.p-choice__card--c .p-choice__list svg { stroke: var(--grn); }
+
+.c-btn--grn {
+	background: var(--grn);
+	color: var(--w);
+	border-color: var(--grn);
+	box-shadow: 0 2px 10px -6px rgba(61, 107, 87, .8);
+}
+
+.c-btn--grn::before { background: var(--grn-d); }
+
+/* --- 「この3つだけが正解ではありません」 ----------------------------------- */
+.p-other {
+	margin-top: 40px;
+	background: var(--bg);
+	border: 1px solid var(--line);
+	border-radius: 10px;
+	padding: 40px 44px 44px;
+	text-align: center;
+}
+
+.p-other__lead {
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	font-size: 19px;
+	color: var(--ink);
+}
+
+.p-other__tags {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 9px;
+	margin: 24px auto 28px;
+	max-width: 720px;
+}
+
+.p-other__tags span {
+	background: var(--w);
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	padding: 9px 17px;
+	font-size: 13.5px;
+	color: var(--ink-2);
+}
+
+.p-other__q {
+	font-family: var(--ff-dp);
+	font-weight: 900;
+	font-size: 34px;
+	letter-spacing: -.025em;
+	line-height: 1.45;
+}
+
+/* --- 目標を一緒に立てる（循環） -------------------------------------------- */
+.p-cycle {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 16px;
+	margin-top: 40px;
+	position: relative;
+}
+
+.p-cycle__step {
+	background: var(--w);
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	padding: 24px 22px 26px;
+	display: flex;
+	flex-direction: column;
+	gap: 11px;
+	position: relative;
+}
+
+.p-cycle__n {
+	font-family: var(--ff-lt);
+	font-weight: 700;
+	font-size: 11px;
+	letter-spacing: .16em;
+	color: var(--cop);
+}
+
+.p-cycle__step b {
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	font-size: 17px;
+	line-height: 1.5;
+}
+
+.p-cycle__step p {
+	font-size: 13.5px;
+	color: var(--ink-2);
+	line-height: 1.8;
+}
+
+.p-cycle__step::after {
+	content: "";
+	position: absolute;
+	right: -11px;
+	top: 50%;
+	width: 8px;
+	height: 8px;
+	border-top: 2px solid var(--cop-m);
+	border-right: 2px solid var(--cop-m);
+	transform: translateY(-50%) rotate(45deg);
+}
+
+.p-cycle__step:last-child::after { display: none; }
+
+.p-cycle__back {
+	margin-top: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	background: var(--cop-l);
+	border: 1px solid var(--cop-m);
+	border-radius: 8px;
+	padding: 16px 24px;
+	font-size: 14px;
+	color: var(--cop-d);
+}
+
+.p-cycle__back b { font-family: var(--ff-dp); font-weight: 700; }
+
+/* --- 次に見るもの --------------------------------------------------------- */
+.p-next {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 18px;
+	margin-top: 34px;
+}
+
+.p-next__card {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	background: var(--w);
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	padding: 26px 24px 24px;
+	transition: transform .5s var(--e-out), border-color .4s var(--e-out), box-shadow .5s var(--e-out);
+}
+
+.p-next__card b {
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	font-size: 19px;
+}
+
+.p-next__card p {
+	font-size: 13.5px;
+	color: var(--mut);
+	line-height: 1.8;
+}
+
+.p-next__go {
+	margin-top: auto;
+	padding-top: 12px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13.5px;
+	font-weight: 700;
+	color: var(--cop);
+}
+
+.p-next__go svg {
+	width: 16px;
+	height: 16px;
+	stroke: currentColor;
+	fill: none;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	transition: transform .45s var(--e-out);
+}
+
+/* --- アコーディオンの旧定義は削除 ------------------------------------------
+   FAQのマークアップは <span class="c-acc__mark">Q</span> と
+   <span class="c-acc__ic"></span> に分かれているのに、旧定義が
+   .c-acc__mark::before / ::after でプラス記号を描いており、
+   「Q」の文字の上に ＋ が重なって表示されていた。
+   実体は下の「アコーディオン（FAQ）」の定義のみ。ここでは <b> の指定だけ残す。 */
+.c-acc__a b {
+	color: var(--ink);
+	font-weight: 700;
+}
+
+/* --- カテゴリのタブ ------------------------------------------------------- */
+.c-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 6px;
+}
+
+.c-tabs button {
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	font-size: 14px;
+	padding: 11px 20px;
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	color: var(--ink-2);
+	background: var(--w);
+	transition: background .35s var(--e-out), color .35s var(--e-out), border-color .35s var(--e-out), transform .35s var(--e-out);
+}
+
+.c-tabs button.is-active {
+	background: var(--cop);
+	border-color: var(--cop);
+	color: var(--w);
+}
+
+.c-tabs button span {
+	font-family: var(--ff-lt);
+	font-size: 11px;
+	opacity: .65;
+	margin-left: 6px;
+}
+
+.c-tabpanel[hidden] { display: none; }
+
+/* --- SP用の固定バー ------------------------------------------------------- */
+.c-bar { display: none; }
+
+/* --- セクションの導入（問い） ---------------------------------------------- */
+.p-ask {
+	text-align: center;
+}
+
+.p-ask__q {
+	font-family: var(--ff-dp);
+	font-weight: 900;
+	font-size: 40px;
+	letter-spacing: -.03em;
+	line-height: 1.4;
+	margin-top: 18px;
+}
+
+.p-ask__lead {
+	font-size: 15.5px;
+	color: var(--ink-2);
+	margin: 18px auto 0;
+	max-width: 52ch;
+}
+
+/* --- 会社の未来 × あなたの未来 --------------------------------------------- */
+.p-two {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	gap: 28px;
+	align-items: center;
+	margin-top: 38px;
+}
+
+.p-two__side {
+	background: var(--w);
+	border: 1px solid var(--line);
+	border-radius: 10px;
+	padding: 30px 32px 32px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.p-two__side b {
+	font-family: var(--ff-dp);
+	font-weight: 900;
+	font-size: 22px;
+	line-height: 1.45;
+	letter-spacing: -.02em;
+}
+
+.p-two__side p {
+	font-size: 14px;
+	color: var(--ink-2);
+	line-height: 1.9;
+}
+
+.p-two__x {
+	font-family: var(--ff-lt);
+	font-weight: 700;
+	font-size: 26px;
+	color: var(--cop);
+}
+
+.p-two__out {
+	margin-top: 24px;
+	background: linear-gradient(150deg, #b4552a 0%, #9a431f 60%, #7c3416 100%);
+	border-radius: 10px;
+	padding: 34px 38px;
+	text-align: center;
+	color: var(--w);
+}
+
+.p-two__out b {
+	font-family: var(--ff-dp);
+	font-weight: 900;
+	font-size: 26px;
+	letter-spacing: -.02em;
+	line-height: 1.5;
+}
+
+.p-two__out p {
+	font-size: 14.5px;
+	color: #f7e5da;
+	margin-top: 12px;
+}
+
+/* ==========================================================================
+   10. 下層ページ（採用）
+   ========================================================================== */
+
+/* --- ページ見出し＋パンくず ------------------------------------------------ */
+.l-pagehead {
+	position: relative;
+	overflow: hidden;
+	padding: 46px 0 54px;
+	background:
+		radial-gradient(720px 420px at 82% 14%, rgba(224, 138, 85, .26) 0%, rgba(224, 138, 85, 0) 62%),
+		linear-gradient(160deg, #fff 0%, #fff7f2 52%, #fbeadf 100%);
+}
+
+.l-pagehead::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background: repeating-linear-gradient(to right, rgba(180, 85, 42, .05) 0 1px, transparent 1px 80px);
+}
+
+.l-pagehead__inner {
+	position: relative;
+	z-index: 2;
+}
+
+.c-crumb {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 12.5px;
+	color: var(--mut);
+	margin-bottom: 18px;
+}
+
+.c-crumb a {
+	color: var(--cop);
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	transition: transform .35s var(--e-out);
+}
+.c-crumb svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transform: scaleX(-1); }
+.c-crumb span { color: var(--mut); }
+
+.l-pagehead__ttl {
+	font-size: 44px;
+	margin-top: 4px;
+}
+
+.l-pagehead__lead {
+	font-size: 15.5px;
+	color: var(--ink-2);
+	margin-top: 18px;
+	max-width: 60ch;
+}
+
+/* --- ページ内アンカー ------------------------------------------------------ */
+.c-anchor {
+	position: sticky;
+	top: 88px;
+	z-index: 30;
+	/* 背後を隠すための帯なので不透明にする。
+	   backdrop-filter は「ぼかす」だけで「隠さない」ため、
+	   半透明のままだと下を流れる文字の輪郭が残る。 */
+	background: var(--w);
+	border-bottom: 1px solid var(--line);
+}
+
+.c-anchor__inner {
+	display: flex;
+	gap: 4px;
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+
+.c-anchor__inner::-webkit-scrollbar { display: none; }
+
+.c-anchor a {
+	position: relative;
+	flex: none;
+	padding: 16px 18px;
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	font-size: 13.5px;
+	color: var(--ink-2);
+	white-space: nowrap;
+	transition: color .3s var(--e-out);
+}
+
+.c-anchor a::after {
+	content: "";
+	position: absolute;
+	left: 12px;
+	right: 12px;
+	bottom: 0;
+	height: 2px;
+	background: var(--cop);
+	transform: scaleX(0);
+	transition: transform .4s var(--e-out);
+}
+
+/* --- 働き方の詳細ブロック --------------------------------------------------- */
+.p-type {
+	scroll-margin-top: 150px;
+	background: var(--w);
+	border: 1px solid var(--line);
+	border-radius: 12px;
+	overflow: hidden;
+}
+
+.p-type + .p-type { margin-top: 34px; }
+
+.p-type__head {
+	display: grid;
+	grid-template-columns: 1fr 340px;
+	gap: 40px;
+	padding: 34px 38px 30px;
+	align-items: center;
+}
+
+.p-type__k {
+	font-family: var(--ff-lt);
+	font-weight: 700;
+	font-size: 11px;
+	letter-spacing: .2em;
+	text-transform: uppercase;
+	padding: 6px 11px;
+	border-radius: 3px;
+	align-self: flex-start;
+	display: inline-block;
+}
+
+.p-type--a .p-type__k { background: var(--blue-l); color: var(--blue); }
+.p-type--b .p-type__k { background: var(--cop-l); color: var(--cop-d); }
+.p-type--c .p-type__k { background: #e6f2ec; color: #2c6b4f; }
+
+.p-type__ttl {
+	font-size: 32px;
+	margin-top: 14px;
+}
+
+.p-type__lead {
+	font-size: 15px;
+	color: var(--ink-2);
+	margin-top: 14px;
+}
+
+.p-type__ph { height: 220px; border-radius: 8px; }
+
+.p-type__body {
+	border-top: 1px solid var(--line);
+	padding: 30px 38px 34px;
+	background: var(--bg);
+}
+
+.p-type__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1px;
+	background: var(--line);
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.p-type__cell {
+	background: var(--w);
+	padding: 22px 22px 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 9px;
+}
+
+.p-type__cell b { font-family: var(--ff-dp); font-weight: 700; font-size: 16px; }
+.p-type__cell p { font-size: 13.5px; color: var(--ink-2); line-height: 1.8; }
+
+.p-type__note {
+	margin-top: 20px;
+	display: flex;
+	gap: 14px;
+	align-items: flex-start;
+	background: var(--w);
+	border: 1px solid var(--cop-m);
+	border-radius: 8px;
+	padding: 18px 22px;
+}
+
+.p-type__note svg { color: var(--cop); flex: none; margin-top: 2px; }
+.p-type__note p { font-size: 14px; color: var(--ink-2); }
+
+/* --- 役割のタグ群（Type C） ------------------------------------------------- */
+.p-roles {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 9px;
+	margin-top: 18px;
+}
+
+.p-roles span {
+	background: var(--w);
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	padding: 9px 16px;
+	font-size: 13.5px;
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	color: var(--ink-2);
+	transition: border-color .35s var(--e-out), transform .35s var(--e-out), color .35s var(--e-out);
+}
+
+/* --- アコーディオン（FAQ） -------------------------------------------------- */
+.c-acc {
+	border-top: 1px solid var(--line);
+}
+
+.c-acc__item { border-bottom: 1px solid var(--line); }
+
+.c-acc__q {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 26px 1fr 22px;
+	gap: 0 16px;
+	align-items: start;
+	padding: 19px 4px;
+	text-align: left;
+	background: none;
+	border: 0;
+	cursor: pointer;
+	transition: color .3s var(--e-out);
+}
+
+.c-acc__mark {
+	font-family: var(--ff-lt);
+	font-weight: 700;
+	font-size: 14px;
+	color: var(--cop);
+	line-height: 1.7;
+}
+
+.c-acc__t {
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	font-size: 16.5px;
+	line-height: 1.65;
+}
+
+.c-acc__ic {
+	position: relative;
+	width: 18px;
+	height: 18px;
+	margin-top: 5px;
+	flex: none;
+}
+
+.c-acc__ic::before,
+.c-acc__ic::after {
+	content: "";
+	position: absolute;
+	background: var(--cop);
+	border-radius: 1px;
+	transition: transform .4s var(--e-out), opacity .3s var(--e-out);
+}
+
+.c-acc__ic::before { left: 0; right: 0; top: 8px; height: 2px; }
+.c-acc__ic::after { top: 0; bottom: 0; left: 8px; width: 2px; }
+
+.c-acc__item.is-open .c-acc__ic::after { transform: scaleY(0); }
+
+.c-acc__panel {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows .42s var(--e-out);
+}
+
+.c-acc__item.is-open .c-acc__panel { grid-template-rows: 1fr; }
+
+.c-acc__inner { overflow: hidden; }
+
+.c-acc__a {
+	display: grid;
+	grid-template-columns: 26px 1fr;
+	gap: 0 16px;
+	padding: 0 4px 20px;
+}
+
+.c-acc__a > span {
+	font-family: var(--ff-lt);
+	font-weight: 700;
+	font-size: 14px;
+	color: var(--mut);
+	line-height: 1.7;
+}
+
+.c-acc__a p {
+	font-size: 14.5px;
+	color: var(--ink-2);
+	line-height: 1.9;
+}
+
+.c-acc__a p + p { margin-top: 8px; }
+
+/* --- FAQのカテゴリ --------------------------------------------------------- */
+.p-faqcat { scroll-margin-top: 150px; }
+.p-faqcat + .p-faqcat { margin-top: 52px; }
+
+.p-faqcat__h {
+	display: flex;
+	align-items: baseline;
+	gap: 14px;
+	margin-bottom: 6px;
+}
+
+.p-faqcat__h b {
+	font-family: var(--ff-dp);
+	font-weight: 900;
+	font-size: 26px;
+	letter-spacing: -.02em;
+}
+
+.p-faqcat__h span {
+	font-family: var(--ff-lt);
+	font-weight: 600;
+	font-size: 11px;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+	color: var(--cop);
+}
+
+/* --- ストーリー（これまで／いま／これから） ----------------------------------- */
+.p-story { display: flex; flex-direction: column; gap: 0; }
+
+.p-story__row {
+	display: grid;
+	grid-template-columns: 190px 1fr;
+	gap: 40px;
+	padding: 34px 0;
+	border-top: 1px solid var(--line);
+	align-items: start;
+}
+
+.p-story__row:last-child { border-bottom: 1px solid var(--line); }
+
+.p-story__k {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	position: sticky;
+	top: 120px;
+}
+
+.p-story__k em {
+	font-style: normal;
+	font-family: var(--ff-lt);
+	font-weight: 700;
+	font-size: 11px;
+	letter-spacing: .2em;
+	text-transform: uppercase;
+	color: var(--cop);
+}
+
+.p-story__k b {
+	font-family: var(--ff-dp);
+	font-weight: 900;
+	font-size: 24px;
+	letter-spacing: -.02em;
+}
+
+.p-story__row p { font-size: 15px; color: var(--ink-2); }
+.p-story__row p + p { margin-top: 12px; }
+
+/* --- 本文＋写真の2カラム ---------------------------------------------------
+   インラインstyleで組むとメディアクエリに勝ってしまい、SPで崩れる。
+   必ずクラスにする。 */
+.p-lead2 {
+	display: grid;
+	grid-template-columns: 1fr 470px;
+	gap: 64px;
+	align-items: center;
+}
+
+/* --- 道具・持ち物 ----------------------------------------------------------- */
+.p-tools {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1px;
+	background: var(--line);
+	border: 1px solid var(--line);
+	margin-top: 28px;
+}
+
+.p-tools div {
+	background: var(--w);
+	padding: 20px 20px 22px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.p-tools b { font-family: var(--ff-dp); font-weight: 700; font-size: 15.5px; }
+.p-tools p { font-size: 12.5px; color: var(--mut); line-height: 1.75; }
+
+/* --- 施工前後の比較 --------------------------------------------------------- */
+.p-ba {
+	display: grid;
+	grid-template-columns: 1fr 40px 1fr;
+	gap: 0;
+	align-items: center;
+	margin-top: 28px;
+}
+
+.p-ba__arrow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--cop);
+}
+
+.p-ba figure { height: 280px; border-radius: 8px; }
+
+.p-ba__cap {
+	display: block;
+	margin-top: 10px;
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	font-size: 14px;
+	text-align: center;
+}
+
+/* ==========================================================================
+   11. 下層ページ SP
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+	.l-pagehead { padding: 30px 0 34px; }
+	.l-pagehead__ttl { font-size: 28px; }
+	.l-pagehead__lead { font-size: 14.5px; margin-top: 14px; }
+	.c-crumb { font-size: 12px; margin-bottom: 12px; }
+
+	.c-anchor { top: 60px; }
+	.c-anchor__inner { padding-inline: 20px; }
+	.c-anchor a { padding: 13px 12px; font-size: 12.5px; }
+
+	.p-type { border-radius: 8px; scroll-margin-top: 112px; }
+	.p-type + .p-type { margin-top: 22px; }
+	.p-type__head { grid-template-columns: 1fr; gap: 20px; padding: 24px 20px 22px; }
+	.p-type__ttl { font-size: 24px; }
+	.p-type__ph { height: 180px; }
+	.p-type__body { padding: 22px 20px 24px; }
+	.p-type__grid { grid-template-columns: 1fr; }
+	.p-type__cell { padding: 18px 18px 20px; }
+	.p-type__note { padding: 15px 17px; }
+
+	.c-acc__q { grid-template-columns: 20px 1fr 18px; gap: 0 11px; padding: 15px 2px; }
+	.c-acc__t { font-size: 15px; }
+	.c-acc__a { grid-template-columns: 20px 1fr; gap: 0 11px; padding: 0 2px 16px; }
+	.c-acc__a p { font-size: 14px; }
+
+	.p-faqcat + .p-faqcat { margin-top: 36px; }
+	.p-faqcat__h { flex-direction: column; align-items: flex-start; gap: 4px; }
+	.p-faqcat__h b { font-size: 21px; }
+	.p-faqcat { scroll-margin-top: 112px; }
+
+	.p-story__row { grid-template-columns: 1fr; gap: 14px; padding: 24px 0; }
+	.p-story__k { position: static; flex-direction: row; align-items: baseline; gap: 10px; }
+	.p-story__k b { font-size: 20px; }
+	.p-story__row p { font-size: 14.5px; }
+
+	.p-lead2 { grid-template-columns: 1fr; gap: 24px; }
+	.p-cycle { grid-template-columns: 1fr; gap: 12px; }
+	.p-cycle__step::after { display: none; }
+	.p-tools { grid-template-columns: 1fr 1fr; }
+	.p-tools div { padding: 16px 16px 18px; }
+
+	.p-ba { grid-template-columns: 1fr; gap: 14px; }
+	.p-ba figure { height: 200px; }
+	.p-ba__arrow { transform: rotate(90deg); height: 30px; }
+
+	.p-roles span { font-size: 12.5px; padding: 8px 13px; }
+}
+
+/* ==========================================================================
+   12. 実写真が入った枠
+   仮枠（ハッチング＋撮影メモ）から、実写真へ切り替えるための指定。
+   figure に --has を足して、中に <img> を入れるだけで置き換わる。
+   ========================================================================== */
+.c-photo--has {
+	background: var(--bg-2);
+	padding: 0;
+	align-items: stretch;
+	justify-content: stretch;
+}
+
+.c-photo--has > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: var(--pos, 50% 50%);
+	display: block;
+}
+
+/* 円形の枠に入れたとき、注記用のパディングを打ち消す */
+.c-photo--has.c-photo--circ { padding: 0; }
+
+/* 撮影メモは実写真が入ったら出さない */
+.c-photo--has .c-photo__note { display: none; }
+
+/* 縦グリッド線は写真の上にも残す（設計された面に見せるため） */
+.c-photo--has .c-photo__grid { display: none; }  /* 実写真が入ったら仮枠のグリッドは不要 */
+
+/* 暗いセクションの中では、写真をわずかに沈ませて文字を読みやすく */
+.c-photo--dark.c-photo--has > img { filter: brightness(.88) saturate(.95); }
+
+
+/* ---------------------------------------------------------------
+   13. 写真の注記
+   AI生成画像を使っている枠があるため、実在の社員・実績と
+   受け取られないように明示する。小さくするが、読める大きさは保つ。
+--------------------------------------------------------------- */
+.l-footer__note {
+	margin-top: 26px;
+	padding-top: 18px;
+	border-top: 1px solid rgba(255,255,255,.10);
+	font-size: 11.5px;
+	line-height: 1.7;
+	letter-spacing: .04em;
+	color: rgba(255,255,255,.42);
+}
+.p-day__note {
+	margin-top: 18px;
+	font-size: 11.5px;
+	line-height: 1.7;
+	color: var(--ink-2);
+	opacity: .8;
+}
+
+/* ---------------------------------------------------------------
+   14. 採用トップ SP
+   セクション6（採用ページ用）の定義が、上のSPメディアクエリより後ろに
+   書かれているため上書きできていなかった。ここで明示的に1列へ落とす。
+   （375pxで .p-choice が97px幅になり、見出しが1文字ずつ改行されていた）
+--------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+	.p-choice { grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
+	.p-next   { grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
+
+	.p-two {
+		grid-template-columns: 1fr;
+		gap: 14px;
+		margin-top: 26px;
+	}
+	/* 「×」は縦並びでは行と行のあいだの記号として中央に置く */
+	.p-two__x {
+		text-align: center;
+		font-size: 20px;
+		line-height: 1;
+	}
+}
+
+/* ---------------------------------------------------------------
+   15. 改行と行長
+   計測して分かった3点を直す。
+   ・PCで1行が最長84字になっていた（日本語の可読上限は40〜45字）
+   ・最終行に「す。」だけが残る泣き別れが多発（スマホで39件）
+   ・小書き仮名（っ ゃ ゅ ょ）が行頭に来る禁則違反
+--------------------------------------------------------------- */
+
+/* 行頭・行末の禁則を厳密に。既定の line-break:auto は小書き仮名の
+   行頭を許してしまうため、strict にして「っ」「ゃ」等を送る。 */
+body { line-break: strict; }
+
+/* 最終行に1〜2文字だけ残るのを避ける（Chrome 117+ / Safari 17.4+）。
+   非対応ブラウザでは無視されるだけなので安全に足せる。 */
+p, li, dd, dt, figcaption, .c-sechead__lead, .c-acc__a {
+	text-wrap: pretty;
+}
+
+/* 見出しとボタンラベルは行数が少ないので、均等割りのほうが収まりが良い */
+h1, h2, h3, .c-btn span, .c-eyebrow {
+	text-wrap: balance;
+}
+
+/* 本文の行長の上限。日本語は 1em ≒ 1文字なので em で指定する。
+   左寄せのブロックは左端を維持し、中央寄せのブロックだけ中央に置く。 */
+.c-acc__a p,
+.p-story__row p,
+.p-faq__item dd,
+.p-cycle__back p,
+.p-type__note p,
+.p-tree__msg p,
+.p-works__note,
+.p-entry__hint,
+.p-type__lead,
+.p-rhero__note,
+.p-salary__disc,
+.p-choice__quote,
+.p-day__note,
+.p-req__aside,
+.p-contact__sub,
+.p-hero__note {
+	max-width: 42em;
+}
+.p-two__out p {
+	max-width: 42em;
+	margin-inline: auto;   /* 親が text-align:center のため中央に置く */
+}
+
+/* 泣き別れの個別対応（計測で出たものを1件ずつ潰す） */
+
+/* 数値＋単位が「約50／年」と割れていた */
+.p-numbers__v { white-space: nowrap; }
+
+/* FAQの質問文が「〜ません／か？」で割れていた。span なので明示的にブロック化する */
+.c-acc__t { display: block; text-wrap: pretty; }
+
+/* 見出し的な問いかけ、表のセルも同様に */
+.p-other__q { text-wrap: balance; }
+td, th { text-wrap: pretty; }
+
+/* フッター住所：スマホでは「／」で改行し「三重」だけが残るのを避ける */
+@media screen and (max-width: 768px) {
+	.l-footer__sep { display: none; }
+	.l-footer__area { display: block; }
+}
+
+/* タブレット幅（〜768px）で本文の1行が45emを超えていた。
+   内側コンテナに上限を設けて、行長を44em以内に収める。
+   スマホ（335px）では元々下回るので影響しない。 */
+@media screen and (max-width: 768px) {
+	.l-inner { max-width: 664px; }
+}
+
+/* 短いラベル・箇条書きは最終行に2文字だけ残りやすいので均等割りにする */
+.p-initiative__tile,
+.p-choice__list li,
+.p-tree__branch li,
+.p-band__path { text-wrap: balance; }
+
+/* スマホでは 34px だと1行7文字しか入らず、20文字の問いかけが4行に割れて
+   最終行に「か？」だけが残っていた。3行に収まる大きさへ落とす。 */
+@media screen and (max-width: 768px) {
+	.p-other__q { font-size: 26px; }
+}
+
+/* ---------------------------------------------------------------
+   16. 語の分断を止める
+   計測で「増やす→増や／す」「ラッキング→ラッキ／ング」のような
+   語中改行が97件見つかった。auto-phrase は文節単位で折り返すので
+   これを全体に効かせる。非対応ブラウザ（Safari等）では通常の
+   折り返しに戻るだけなので、安全に適用できる。
+--------------------------------------------------------------- */
+body {
+	word-break: auto-phrase;
+	/* 文節が1行に入りきらない時だけ語中でも折る。無いと画面からはみ出す。 */
+	overflow-wrap: break-word;
+}
+
+/* 小さいボタンのラベルが「実績一覧を／見る」と割れていた。
+   短いラベルなので折り返さず、収まらない時だけ字間を詰める。 */
+.c-btn.c-btn--sm span,
+.c-btn span { white-space: nowrap; }
+@media screen and (max-width: 768px) {
+	.c-btn--sm { font-size: 12.5px; letter-spacing: 0; }
+}
+
+/* ---------------------------------------------------------------
+   17. スマホのタップ領域
+   実測で75箇所が44px未満だった（フッターのリンクが26px、
+   パンくずが23px、電話ボタンが32pxなど）。指で押す領域は
+   44×44pxが目安。
+   疑似要素で当たり判定を広げる方法は overflow:hidden の要素の
+   中では切られて効かないので、実際に padding で高さを確保する。
+--------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+
+	/* 縦に並ぶテキストリンク。要素間の gap を padding に振り替える */
+	.l-footer__col a { padding-block: 9px; }
+	.l-footer__col   { gap: 0; }
+
+	.p-doors__links a { padding-block: 10px; }
+	.p-doors__links   { gap: 0; }
+
+	.c-crumb a { padding-block: 11px; }
+
+	.p-profile__v.u-tabnum,
+	.l-header__logo {
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
+	}
+
+	/* ボタン類は高さそのものを44px以上に */
+	.c-btn,
+	.l-footer__tel,
+	.p-faq__more,
+	.p-initiative__more,
+	.c-tel__trigger {
+		min-height: 44px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.l-footer__tel { justify-content: flex-start; }
+}
+
+/* ---------------------------------------------------------------
+   18. ホバー演出は、ホバーできる環境だけに
+   :hover が53箇所あり、すべて素のまま書かれていた。
+   タッチ端末では指を離したあともホバー状態が残るため、
+   ボタンの塗りや矢印の移動が押しっぱなしのように見えてしまう。
+   （うち34箇所は transform / clip-path を動かすもの）
+   ルールごと @media (hover: hover) に入れて、マウスのある環境
+   だけで効くようにする。
+--------------------------------------------------------------- */
+@media (hover: hover) {
+	.l-header__nav a:hover::after {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+
+	.l-footer__tel:hover {
+		color: #a9bce2;
+	}
+
+	.l-footer__col a:hover {
+		color: var(--w);
+		transform: translateX(3px);
+	}
+
+	.l-footer__col--recruit a:hover {
+		color: #f6d2bb;
+	}
+
+	.c-btn:hover::before,
+	.c-btn:focus-visible::before {
+		width: 260%;
+		height: 700%;
+	}
+
+	.c-btn:hover {
+		transform: translateY(-2px);
+	}
+
+	/* 受話器は「鳴る」。矢印は「進む」。目は「開く」。役割で動きを変える。 */
+	.c-btn:hover .c-btn__ic--ring {
+		animation: ring .7s var(--e-io);
+	}
+
+	.c-btn:hover .c-btn__ic--go {
+		transform: translateX(4px);
+	}
+
+	.c-btn:hover .c-btn__ic--zoom {
+		transform: scale(1.14);
+	}
+
+	.c-btn--blue:hover {
+		box-shadow: 0 14px 28px -14px rgba(46, 76, 135, .95);
+	}
+
+	.c-btn--cop:hover {
+		box-shadow: 0 14px 28px -14px rgba(180, 85, 42, .95);
+	}
+
+	.c-btn--oblue:hover::after,
+	.c-btn--ocop:hover::after,
+	.c-btn--ow:hover::after,
+	.c-btn--oblue:focus-visible::after,
+	.c-btn--ocop:focus-visible::after,
+	.c-btn--ow:focus-visible::after {
+		clip-path: inset(0 0 0 0);
+	}
+
+	.c-btn--oblue:hover { color: var(--blue-d); }
+
+	.c-btn--ocop:hover { color: var(--cop-d); }
+
+	.c-chip:hover {
+		background: rgba(255, 255, 255, .13);
+		border-color: var(--cop-3);
+		transform: translateY(-2px);
+	}
+
+	.p-doors__links a:hover {
+		transform: translateX(4px);
+		color: var(--blue-d);
+	}
+
+	.p-doors__recruit .p-doors__links a:hover {
+		color: var(--cop-d);
+	}
+
+	.p-services__card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 22px 40px -28px rgba(13, 20, 26, .45);
+	}
+
+	.p-services__sub .c-card:hover {
+		background: var(--bg);
+	}
+
+	.p-flow__item:hover .p-flow__num {
+		color: var(--blue);
+	}
+
+	.c-tel__num:hover {
+		color: var(--blue);
+	}
+
+	.c-tel__panel--cop .c-tel__num:hover {
+		color: var(--cop);
+	}
+
+	.p-initiative__tile:hover {
+		border-color: #3c5563;
+		transform: translateY(-3px);
+	}
+
+	.p-band__path:hover {
+		background: rgba(255, 255, 255, .18);
+	}
+
+	.p-timeline__item:hover .p-timeline__pin {
+		transform: scale(1.08);
+	}
+
+	.p-rwork__card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 22px 40px -28px rgba(13, 20, 26, .45);
+	}
+
+	.p-rwork__card:hover .c-icbox {
+		transform: rotate(-6deg) scale(1.06);
+	}
+
+	.p-who__cell:hover {
+		background: var(--cop-l);
+	}
+
+	.p-who__cell:hover .c-icbox {
+		transform: scale(1.08);
+	}
+
+	.p-tree__card:hover {
+		transform: translateY(-6px);
+		box-shadow: 0 24px 44px -28px rgba(139, 62, 27, .5);
+	}
+
+	.p-tree__card:hover .c-icbox {
+		transform: rotate(-6deg) scale(1.06);
+	}
+
+	.p-training__cell:hover {
+		background: var(--cop-l);
+	}
+
+	.p-life__scatter .c-photo:hover {
+		transform: translateY(-6px) rotate(-1deg);
+	}
+
+	.p-tech__tile:hover {
+		border-color: #3c5563;
+		transform: translateY(-4px);
+	}
+
+	.p-rfaq__item:hover svg {
+		transform: translateX(4px);
+	}
+
+	.p-doors__client:hover::before,
+	.p-doors__recruit:hover::before { transform: scaleX(1); }
+
+	.p-profile__cell:hover { background: var(--blue-l); }
+
+	.p-choice__card:hover {
+		transform: translateY(-6px);
+		box-shadow: 0 28px 50px -30px rgba(13, 20, 26, .42);
+	}
+
+	.p-choice__card--a:hover { border-color: var(--blue-m); }
+
+	.p-choice__card--b:hover { border-color: var(--cop-m); }
+
+	.p-choice__card--c:hover { border-color: var(--grn-m); }
+
+	.c-btn--grn:hover { box-shadow: 0 14px 28px -14px rgba(61, 107, 87, .95); }
+
+	.p-next__card:hover {
+		transform: translateY(-4px);
+		border-color: var(--cop-m);
+		box-shadow: 0 22px 40px -28px rgba(139, 62, 27, .4);
+	}
+
+	.p-next__card:hover .p-next__go svg { transform: translateX(4px); }
+
+	.c-tabs button:hover {
+		border-color: var(--cop-m);
+		transform: translateY(-2px);
+	}
+
+	.c-crumb a:hover { transform: translateX(-3px); }
+
+	.c-anchor a:hover { color: var(--cop); }
+
+	.c-anchor a:hover::after { transform: scaleX(1); }
+
+	.p-roles span:hover {
+		border-color: var(--cop);
+		color: var(--cop-d);
+		transform: translateY(-2px);
+	}
+
+	.c-acc__q:hover { color: var(--cop); }
+}
+
+/* ---------------------------------------------------------------
+   19. アンカー帯の固定位置
+   769〜1360px では、ページを1360px幅に固定して横スクロールさせる都合上
+   .l-header の固定を切っている（横スクロールで sticky を使うと
+   ヘッダーが横方向に取り残されるため）。
+   ところがアンカー帯は top:88px（＝ヘッダーの高さ）のままだったので、
+   居ないヘッダーの分だけ帯が下に浮き、画面上端に88pxの空白ができて
+   そこを本文が素通りしていた。ヘッダーが無い幅では帯を上端に付ける。
+
+   なお .c-anchor の基本定義はこのファイルの後半にあるため、
+   上のメディアクエリ内に書くと後勝ちで負ける。ここに置く必要がある。
+--------------------------------------------------------------- */
+@media screen and (max-width: 1360px) and (min-width: 769px) {
+	.c-anchor { top: 0; }
+}
+
+/* ---------------------------------------------------------------
+   20. スマホの余白と視線誘導
+   375pxで実測したところ、セクション境界の空白帯が15箇所で
+   161〜204px（812px画面の20〜25%）あった。原因は、SP用の
+   padding 上書きの対象セレクタから .l-section--r / .p-entry /
+   .p-band / .p-initiative / .p-tech が漏れていて、PC値のまま
+   表示されていたこと。境界の空白は96〜112pxを上限とする。
+--------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+
+	/* --- セクションの上下余白（汎用 → 個別の順に置く） --------------------- */
+	.l-section,
+	.l-section--sm,
+	.p-flow, .p-faq, .p-contact, .p-numbers, .p-req, .p-rfaq { padding-block: 44px; }
+	.l-section--r  { padding-block: 48px; }
+	.p-initiative,
+	.p-tech        { padding-block: 52px; }
+	.p-entry       { padding-block: 56px; }
+	.p-band        { padding-block: 60px; }
+
+	/* --- 見出しから本文までの距離を1つに揃える（実測24〜56pxとばらついていた） --- */
+	.c-sechead { margin-bottom: 32px; }
+	.p-salary__head { margin-bottom: 32px; }
+
+	/* --- 1〜2語のカードを1列で積んでいた。横に290px空いていたので2列にする --- */
+	.p-numbers__grid,
+	.p-who__grid,
+	.p-training__grid {
+		grid-template-columns: 1fr 1fr;
+		gap: 12px;
+	}
+	/* 2列にすると1セルが約157pxになる。元の余白とアイコンのままだと
+	   文字に使える幅が3em ほどしか残らず「病院・／施設」と割れるので、
+	   横方向だけ詰めてアイコンを一回り小さくする。 */
+	.p-who__cell {
+		padding: 14px 12px;
+		gap: 9px;
+	}
+	.p-who__cell b { font-size: 14.5px; }
+	.p-who__cell .c-icbox { width: 32px; height: 32px; flex: none; }
+	.p-who__cell .c-icbox .c-ic { width: 16px; height: 16px; }
+	.p-numbers__cell { padding: 18px 14px 20px; }
+	.p-numbers__cell p { font-size: 12px; }
+	.p-training__grid li { padding-inline: 14px; }
+
+	/* --- 採用トップのヒーロー：写真240pxに対して箱が320pxで、
+	       下に80pxの空箱ができていた。中身に合わせる --- */
+	.p-rhero__visual { height: auto; }
+	.p-rhero__inner  { padding-block: 36px 40px; }
+}
+
+/* 代表名。円形マスクの中に置くと円に切られて2行目が読めなくなるため、
+   figure の外に出して写真の下に置く。 */
+.p-rhero__name {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 3px;
+	margin-top: 18px;
+	text-align: center;
+}
+.p-rhero__name b { font-family: var(--ff-dp); font-weight: 700; font-size: 16px; color: var(--ink); }
+.p-rhero__name span { font-size: 11px; letter-spacing: .08em; color: var(--mut); }
+
+/* アンカーで飛んだ先の見出しが、固定ヘッダー＋固定バーの下に隠れないように。
+   実測で26箇所中20箇所が隠れていた（最悪48px）。 */
+section[id] { scroll-margin-top: 148px; }
+@media screen and (max-width: 768px) {
+	section[id] { scroll-margin-top: 112px; }
+}
+
+/* ---------------------------------------------------------------
+   21. スマホの追従CTA
+   採用下層3ページは、最初の応募導線が y=7,690〜10,932（ページ深度
+   88〜92％、9.5〜13.5画面ぶんスクロールした先）にしか無かった。
+   ヘッダーのCTAもSPではラベルが消えて46×44pxのアイコンだけになる。
+   画面下に常時1本置いて、どこからでも辿れるようにする。
+--------------------------------------------------------------- */
+.c-spcta { display: none; }
+
+@media screen and (max-width: 768px) {
+	.c-spcta {
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 60;
+		display: grid;
+		grid-template-columns: 122px 1fr;
+		gap: 8px;
+		padding: 9px 12px calc(9px + env(safe-area-inset-bottom));
+		background: rgba(255, 255, 255, .96);
+		backdrop-filter: blur(10px);
+		border-top: 1px solid var(--line);
+		box-shadow: 0 -6px 24px -18px rgba(13, 20, 26, .5);
+	}
+	.c-spcta a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 7px;
+		min-height: 46px;
+		border-radius: 2px;
+		font-family: var(--ff-dp);
+		font-weight: 700;
+		font-size: 13.5px;
+		letter-spacing: .02em;
+	}
+	.c-spcta__tel {
+		color: var(--cop-d);
+		border: 1px solid var(--cop-m);
+		background: var(--w);
+	}
+	.c-spcta__tel svg { stroke: currentColor; fill: none; stroke-width: 1.8; }
+	.c-spcta__btn {
+		color: var(--w);
+		background: var(--cop);
+	}
+	/* バーの高さぶん、ページ末尾に余白を足して最後の行が隠れないようにする */
+	body { padding-bottom: 72px; }
+}
+
+/* ---------------------------------------------------------------
+   22. お客様向けFAQをアコーディオンに
+   答えを開いたままにしていたため、4問で縦を使い切っていた。
+   折りたたんで9問に増やす。採用側と同じ c-acc を使い、
+   アクセント色だけ客側の青に差し替える。
+--------------------------------------------------------------- */
+.c-acc--client { border-top-color: var(--line); }
+.c-acc--client .c-acc__mark { color: var(--blue); }
+.c-acc--client .c-acc__ic::before,
+.c-acc--client .c-acc__ic::after { background: var(--blue); }
+.c-acc--client .c-acc__q:hover { color: var(--blue); }
+.c-acc--client .c-acc__a > span { color: var(--blue-m); }
+
+/* 見出しが左、質問が右の2カラム。見出し側は上に固定して読ませる */
+@media screen and (min-width: 769px) {
+	.p-faq__inner > div:first-child { position: sticky; top: 120px; align-self: start; }
+}
+
+/* ---------------------------------------------------------------
+   23. キャリアの枝分かれ図（トップの採用帯）
+   4つの行き先を横一列のセルで並べていたが、それだと
+   「4つの選択肢がある」ことしか伝わらず、
+   「入社 → 基礎 → そこから分かれる」という順序が読めなかった。
+   幹と枝を線で描いて、時間の流れが分かるようにする。
+--------------------------------------------------------------- */
+.p-tree2 {
+	margin-top: 30px;
+	--line: rgba(255, 255, 255, .34);
+}
+
+/* 幹（入社 → 基礎）。下に伸びる縦線でつなぐ */
+.p-tree2__root,
+.p-tree2__base {
+	position: relative;
+	display: inline-flex;
+	align-items: baseline;
+	gap: 10px;
+	padding: 9px 16px;
+	background: rgba(255, 255, 255, .12);
+	border: 1px solid rgba(255, 255, 255, .22);
+	border-radius: 2px;
+}
+.p-tree2__root b,
+.p-tree2__base b { font-family: var(--ff-dp); font-weight: 700; font-size: 14px; color: var(--w); }
+.p-tree2__root span,
+.p-tree2__base span { font-size: 11.5px; color: rgba(255, 255, 255, .72); }
+
+/* 縦の接続線 */
+.p-tree2__root::after,
+.p-tree2__base::after {
+	content: "";
+	position: absolute;
+	left: 26px;
+	top: 100%;
+	width: 1px;
+	height: 18px;
+	background: var(--line);
+}
+.p-tree2__base { margin-top: 18px; }
+
+.p-tree2__fork {
+	margin-top: 18px;
+	font-size: 11.5px;
+	letter-spacing: .06em;
+	color: rgba(255, 255, 255, .72);
+}
+
+/* 枝。上辺の横線と、各枝へ降りる縦線を引く */
+.p-tree2__paths {
+	position: relative;
+	margin-top: 26px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1px;
+	background: rgba(255, 255, 255, .18);
+}
+.p-tree2__paths::before {
+	content: "";
+	position: absolute;
+	left: 12.5%;
+	right: 12.5%;
+	top: -14px;
+	height: 1px;
+	background: var(--line);
+}
+.p-tree2__path {
+	position: relative;
+	background: rgba(255, 255, 255, .08);
+	padding: 15px 14px 16px;
+	transition: background-color .4s var(--e-out);
+}
+.p-tree2__path::before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: -14px;
+	width: 1px;
+	height: 14px;
+	background: var(--line);
+}
+.p-tree2__path b {
+	display: block;
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	font-size: 13.5px;
+	line-height: 1.5;
+	color: var(--w);
+}
+.p-tree2__path span {
+	display: block;
+	margin-top: 7px;
+	font-size: 11.5px;
+	line-height: 1.65;
+	color: rgba(255, 255, 255, .74);
+}
+
+@media (hover: hover) {
+	.p-tree2__path:hover { background: rgba(255, 255, 255, .18); }
+}
+
+@media screen and (max-width: 768px) {
+	.p-tree2 { margin-top: 24px; }
+	.p-tree2__root, .p-tree2__base { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; padding: 9px 14px; }
+	.p-tree2__root::after, .p-tree2__base::after { left: 22px; }
+	/* 4列だと1セル約80pxで文字が縦に割れるため2列にする */
+	.p-tree2__paths { grid-template-columns: 1fr 1fr; margin-top: 22px; }
+	.p-tree2__paths::before { left: 25%; right: 25%; top: -12px; }
+	.p-tree2__path::before { height: 12px; top: -12px; }
+	/* 2列にすると下段の枝は横線から離れるので、縦線は上段だけに出す */
+	.p-tree2__path:nth-child(n+3)::before { display: none; }
+	.p-tree2__path { padding: 13px 12px 14px; }
+}
+
+/* 本社代表番号は表示のみ。リンクではないので、押せそうな見た目にしない */
+.l-footer__tel--flat { cursor: default; }
+.l-footer__tel--flat:hover { color: inherit; }
+
+/* ---------------------------------------------------------------
+   24. 「この3つだけが正解ではありません」の見せ方
+   9個を並べて4/4/1で折り返していたため、最後の1個が余って
+   収まりが悪く、しかも「9個で全部」に見えていた。
+   本文は「これだけではない」と言っているので、見た目もそう作る。
+   ・2列を逆方向へゆっくり流し、両端をぼかして枠の外へ続かせる
+   ・一つひとつを吹き出しにして、いろんな人が言っているように見せる
+     （顔写真は使わない。実在しない社員を作ることになるため、
+       声の違いは吹き出しの向き・濃さ・高さのばらつきだけで表す）
+--------------------------------------------------------------- */
+.p-other__flow {
+	margin: 30px -44px 34px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	overflow: hidden;
+	-webkit-mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+	mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+}
+
+.p-other__row {
+	display: flex;
+	flex: none;
+	align-items: center;
+	gap: 14px;
+	width: max-content;
+	padding-block: 10px;
+	will-change: transform;
+}
+.p-other__row--a { animation: otherflow-a 46s linear infinite; }
+.p-other__row--b { animation: otherflow-b 54s linear infinite; }
+
+/* 同じ並びを2回置いてあるので、-50% で継ぎ目なく循環する */
+@keyframes otherflow-a { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
+@keyframes otherflow-b { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+/* --- 吹き出し本体 --- */
+.p-other__row span {
+	position: relative;
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	background: var(--w);
+	border: 1px solid var(--line);
+	border-radius: 14px;
+	padding: 11px 18px;
+	font-size: 13.5px;
+	line-height: 1.5;
+	color: var(--ink-2);
+	white-space: nowrap;
+	box-shadow: 0 3px 10px -7px rgba(13, 20, 26, .3);
+}
+
+/* 尻尾。上段は下向き、下段は上向きにして、
+   画面の上下それぞれから声が来ているように見せる */
+.p-other__row span::before,
+.p-other__row span::after {
+	content: "";
+	position: absolute;
+	left: 26px;
+	width: 0;
+	height: 0;
+	border-inline: 7px solid transparent;
+}
+.p-other__row--a span::before { top: 100%; border-top: 8px solid var(--line); }
+.p-other__row--a span::after  { top: calc(100% - 1px); border-top: 8px solid var(--w); }
+.p-other__row--b span::before { bottom: 100%; border-bottom: 8px solid var(--line); }
+.p-other__row--b span::after  { bottom: calc(100% - 1px); border-bottom: 8px solid var(--w); }
+
+/* --- 声の差を出す --- */
+/* 高さを少しずらす。一直線に並ぶと機械的に見える */
+.p-other__row span:nth-child(3n)   { transform: translateY(-6px); }
+.p-other__row span:nth-child(4n+2) { transform: translateY(5px); }
+
+/* 尻尾の位置もずらして、同じ人が喋っているように見えないようにする */
+.p-other__row span:nth-child(2n)::before,
+.p-other__row span:nth-child(2n)::after { left: auto; right: 26px; }
+
+/* 何人かは強めの声にする（銅色の面） */
+.p-other__row span:nth-child(5n+3) {
+	background: var(--cop-l);
+	border-color: var(--cop-m);
+	color: var(--cop-d);
+	font-weight: 700;
+}
+.p-other__row--a span:nth-child(5n+3)::before { border-top-color: var(--cop-m); }
+.p-other__row--a span:nth-child(5n+3)::after  { border-top-color: var(--cop-l); }
+.p-other__row--b span:nth-child(5n+3)::before { border-bottom-color: var(--cop-m); }
+.p-other__row--b span:nth-child(5n+3)::after  { border-bottom-color: var(--cop-l); }
+
+/* 文字の大きさにも幅を持たせる */
+.p-other__row span:nth-child(7n+1) { font-size: 14.5px; }
+.p-other__row span:nth-child(6n+4) { font-size: 12.5px; }
+
+/* 動きが苦手な人には流さない */
+@media (prefers-reduced-motion: reduce) {
+	.p-other__row { animation: none; }
+}
+@media (hover: hover) {
+	.p-other__flow:hover .p-other__row { animation-play-state: paused; }
+}
+
+@media screen and (max-width: 768px) {
+	.p-other__flow { margin-inline: -20px; gap: 14px; }
+	.p-other__row { gap: 11px; }
+	.p-other__row span { padding: 9px 14px; font-size: 12.5px; border-radius: 12px; }
+	.p-other__row span:nth-child(7n+1) { font-size: 13.5px; }
+	.p-other__row span:nth-child(6n+4) { font-size: 12px; }
+	.p-other__row span::before,
+	.p-other__row span::after { left: 18px; border-inline-width: 6px; }
+	.p-other__row span:nth-child(2n)::before,
+	.p-other__row span:nth-child(2n)::after { right: 18px; }
+}
+
+/* フッターのロゴは銀の実物版。46pxだと金属の階調が潰れるので一回り大きくする */
+.l-footer__mark { width: 58px; }
+@media screen and (max-width: 768px) {
+	.l-footer__mark { width: 50px; }
+}
+
+/* ---------------------------------------------------------------
+   25. スマホのメニュー（ドロワー）
+   スマホではヘッダーのナビが非表示になっていて、電話と相談の
+   アイコン2つしか無かった。他のページへ移動する手段が
+   フッターまでスクロールする以外に存在しなかったので、
+   ヘッダーから開けるメニューを足す。
+--------------------------------------------------------------- */
+.l-header__menu { display: none; }
+
+@media screen and (max-width: 768px) {
+	.l-header__menu {
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 4px;
+		width: 46px;
+		min-height: 44px;
+		margin-left: auto;
+		margin-right: 8px;
+		background: none;
+		border: 0;
+		cursor: pointer;
+	}
+	.l-header__menu__bars { display: block; width: 20px; }
+	.l-header__menu__bars i {
+		display: block;
+		height: 1.5px;
+		background: var(--ink);
+		border-radius: 1px;
+		transition: transform .35s var(--e-out), opacity .25s var(--e-out);
+	}
+	.l-header__menu__bars i + i { margin-top: 5px; }
+	.l-header__menu__txt { font-size: 9px; letter-spacing: .08em; color: var(--mut); }
+
+	/* 開いているあいだは×印にする */
+	.l-header__menu[aria-expanded="true"] .l-header__menu__bars i:first-child { transform: translateY(3.25px) rotate(45deg); }
+	.l-header__menu[aria-expanded="true"] .l-header__menu__bars i:last-child  { transform: translateY(-3.25px) rotate(-45deg); }
+}
+
+/* --- ドロワー本体 --- */
+.l-drawer {
+	position: fixed;
+	inset: 0;
+	z-index: 70;
+	background: rgba(13, 20, 26, .38);
+	opacity: 0;
+	transition: opacity .32s var(--e-out);
+}
+.l-drawer.is-open { opacity: 1; }
+
+.l-drawer__sheet {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	max-height: 100%;
+	overflow-y: auto;
+	padding: 74px 20px calc(24px + env(safe-area-inset-bottom));
+	background: var(--w);
+	transform: translateY(-14px);
+	opacity: 0;
+	transition: transform .38s var(--e-out), opacity .3s var(--e-out);
+}
+.l-drawer.is-open .l-drawer__sheet { transform: none; opacity: 1; }
+
+.l-drawer__links { display: grid; margin-top: 12px; }
+.l-drawer__links a {
+	display: flex;
+	align-items: center;
+	min-height: 50px;
+	padding: 4px 2px;
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	font-size: 16px;
+	color: var(--ink);
+	border-bottom: 1px solid var(--line);
+}
+.l-drawer__links a.is-current { color: var(--cop); }
+.l-drawer__links--sub a { font-size: 14.5px; font-weight: 500; color: var(--ink-2); min-height: 46px; }
+.l-drawer__sub { margin-top: 26px; }
+
+.l-drawer__foot { margin-top: 24px; display: grid; gap: 12px; }
+.l-drawer__foot .c-btn { width: 100%; }
+.l-drawer__tel {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-height: 52px;
+	padding: 8px 14px;
+	border: 1px solid var(--line);
+	border-radius: 2px;
+}
+.l-drawer__tel svg { stroke: var(--cop); fill: none; stroke-width: 1.8; flex: none; }
+.l-drawer__tel b { display: block; font-family: var(--ff-lt); font-weight: 700; font-size: 18px; color: var(--ink); }
+.l-drawer__tel i { display: block; font-style: normal; font-size: 11px; color: var(--mut); }
+
+@media (prefers-reduced-motion: reduce) {
+	.l-drawer, .l-drawer__sheet { transition: none; }
+}
+
+/* ドロワーを開いている間は、ヘッダーをその上に出す。
+   でないと閉じるボタン（ヘッダー内のメニューボタン）が
+   ドロワーの下に隠れて押せなくなる。 */
+.is-drawer-open .l-header { z-index: 80; }
+/* 背景を白くしてボタンを確実に見せる */
+@media screen and (max-width: 768px) {
+	.is-drawer-open .l-header { background: var(--w); }
+	/* ドロワーの中身はヘッダーの下から始める */
+	.l-drawer__sheet { padding-top: 78px; }
+}
+
+/* ---------------------------------------------------------------
+   26. スマホのヘッダーは、押したら何が起きるか分かる形にする
+   アイコンだけを3つ並べていたため、初めて見た人には
+   受話器も吹き出しも「押すと何になるのか」が分からなかった。
+   小さくてもラベルを出す。アイコンより言葉のほうが確実に伝わる。
+--------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+	.l-header__inner { gap: 6px; }
+	.l-header__doors { gap: 4px; }
+
+	/* 3つのボタンを同じ形（アイコンの下に文字）に揃える */
+	.l-header__door .c-btn {
+		flex-direction: column;
+		gap: 3px;
+		width: 54px;
+		min-height: 46px;
+		padding: 6px 2px;
+		border-radius: 3px;
+	}
+	.l-header__door .c-btn span {
+		display: block;              /* 隠していたラベルを出す */
+		font-size: 9.5px;
+		font-weight: 700;
+		letter-spacing: .02em;
+		line-height: 1;
+		white-space: nowrap;
+	}
+	.l-header__door .c-btn__ic { width: 17px; height: 17px; }
+	/* 開いた時に出る「閉じる」も同じ大きさで収まるようにする */
+	.l-header__door .c-tel__trigger span { font-size: 9.5px; }
+
+	.l-header__menu { width: 54px; margin-right: 2px; }
+	.l-header__menu__txt { font-size: 9.5px; font-weight: 700; color: var(--ink-2); }
+
+	/* ロゴは英字を落として幅を空ける。日本語だけで社名は伝わる */
+	.l-header__wordmark i { display: none; }
+	.l-header__wordmark b { font-size: 16px; }
+	.l-header__mark { width: 30px; }
+}
+
+/* 幅の狭い端末では社名を出さず、シンボルだけにして3つのボタンを守る */
+@media screen and (max-width: 374px) {
+	.l-header__wordmark { display: none; }
+}
+
+/* ラベルはPCとスマホで長さを変える。スマホは54px幅に収まる短い語にする */
+.l-header__lb--sp { display: none; }
+@media screen and (max-width: 768px) {
+	.l-header__door .c-btn .l-header__lb { display: none; }
+	.l-header__door .c-btn .l-header__lb--sp { display: block; }
+}
+
+/* ボタンが3つ並ぶお客様ページでは、幅を詰めて社名の場所を確保する */
+@media screen and (max-width: 768px) {
+	.l-header__wordmark b { white-space: nowrap; }
+}
+@media screen and (max-width: 420px) {
+	.l-header__door .c-btn { width: 48px; }
+	.l-header__menu { width: 46px; }
+	.l-header__wordmark b { font-size: 15px; }
+}
+
+/* ---------------------------------------------------------------
+   27. 代表紹介（折りたたみ）
+   顔と名前と職人歴だけを常に出しておき、
+   考え方と休日は開いた人にだけ見せる。
+   採用ページの入口で長い文章を読ませない。
+--------------------------------------------------------------- */
+.p-ceo {
+	background: var(--w);
+	border: 1px solid var(--line);
+	border-radius: 10px;
+	padding: 26px 30px;
+}
+
+.p-ceo__head {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+.p-ceo__face { width: 92px; height: 92px; flex: none; padding: 6px; }
+.p-ceo__id { flex: 1 1 auto; min-width: 0; }
+
+.p-ceo__name { display: flex; align-items: baseline; gap: 12px; margin-top: 8px; }
+.p-ceo__name b { font-family: var(--ff-dp); font-weight: 700; font-size: 24px; color: var(--ink); }
+.p-ceo__name span { font-size: 11px; letter-spacing: .08em; color: var(--mut); }
+
+.p-ceo__yrs { margin-top: 6px; font-size: 14px; color: var(--ink-2); }
+.p-ceo__yrs b { font-family: var(--ff-lt); font-weight: 700; font-size: 21px; color: var(--cop); margin-inline: 3px; }
+
+/* 開閉ボタン */
+.p-ceo__toggle {
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	min-height: 44px;
+	padding: 10px 18px;
+	background: none;
+	border: 1px solid var(--cop-m);
+	border-radius: 2px;
+	color: var(--cop-d);
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	font-size: 13.5px;
+	cursor: pointer;
+	transition: background-color .35s var(--e-out);
+}
+.p-ceo__toggle__ic { position: relative; width: 12px; height: 12px; flex: none; }
+.p-ceo__toggle__ic::before,
+.p-ceo__toggle__ic::after {
+	content: "";
+	position: absolute;
+	background: currentColor;
+	transition: transform .38s var(--e-out);
+}
+.p-ceo__toggle__ic::before { left: 0; right: 0; top: 5px; height: 2px; }
+.p-ceo__toggle__ic::after { top: 0; bottom: 0; left: 5px; width: 2px; }
+.p-ceo__toggle[aria-expanded="true"] .p-ceo__toggle__ic::after { transform: scaleY(0); }
+
+/* 中身。高さを直接動かさず 0fr → 1fr にする */
+.p-ceo__panel {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows .45s var(--e-out);
+}
+.p-ceo__panel.is-open { grid-template-rows: 1fr; }
+.p-ceo__inner { overflow: hidden; }
+
+.p-ceo__body { padding-top: 26px; margin-top: 24px; border-top: 1px solid var(--line); }
+.p-ceo__blk + .p-ceo__blk { margin-top: 26px; }
+.p-ceo__h {
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	font-size: 17px;
+	line-height: 1.6;
+	color: var(--ink);
+	margin-bottom: 10px;
+	text-wrap: pretty;
+}
+.p-ceo__blk p { font-size: 14.5px; line-height: 1.95; color: var(--ink-2); max-width: 44em; }
+.p-ceo__blk p + p { margin-top: 8px; }
+.p-ceo__blk p b { color: var(--ink); font-weight: 700; }
+
+/* 趣味 */
+.p-ceo__hobby {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 14px;
+	margin-top: 16px;
+}
+.p-ceo__hobby li { display: flex; flex-direction: column; gap: 9px; }
+.p-ceo__hobby .c-photo { aspect-ratio: 1 / 1; border-radius: 6px; }
+.p-ceo__hobby b {
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	font-size: 13.5px;
+	color: var(--ink-2);
+	text-align: center;
+}
+
+@media (hover: hover) {
+	.p-ceo__toggle:hover { background: var(--cop-l); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.p-ceo__panel { transition: none; }
+}
+
+@media screen and (max-width: 768px) {
+	.p-ceo { padding: 20px 18px; border-radius: 8px; }
+	.p-ceo__head { flex-wrap: wrap; gap: 14px; }
+	.p-ceo__face { width: 68px; height: 68px; padding: 5px; }
+	.p-ceo__name b { font-size: 20px; }
+	.p-ceo__yrs { font-size: 13px; }
+	.p-ceo__yrs b { font-size: 18px; }
+	.p-ceo__toggle { width: 100%; justify-content: center; }
+	.p-ceo__body { padding-top: 20px; margin-top: 18px; }
+	.p-ceo__h { font-size: 15.5px; }
+	.p-ceo__blk p { font-size: 14px; }
+	.p-ceo__hobby { grid-template-columns: 1fr 1fr; gap: 10px; }
+	.p-ceo__hobby li:last-child { grid-column: span 2; }
+	.p-ceo__hobby li:last-child .c-photo { aspect-ratio: 16 / 9; }
+}
+
+/* 代表紹介：閉じていても芯の一言だけは見せる。
+   顔と肩書だけでは「開く理由」が生まれないため。 */
+.p-ceo__lead {
+	margin-top: 12px;
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 1.75;
+	color: var(--ink);
+	text-wrap: pretty;
+}
+
+/* 約束は箇条書きにして、何を言っているかを一目で拾えるようにする */
+.p-ceo__promise { display: grid; gap: 16px; margin-top: 14px; }
+.p-ceo__promise li {
+	position: relative;
+	padding-left: 22px;
+	max-width: 44em;
+}
+.p-ceo__promise li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 9px;
+	width: 10px;
+	height: 10px;
+	border: 2px solid var(--cop);
+	border-radius: 50%;
+}
+.p-ceo__promise b {
+	display: block;
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	font-size: 15.5px;
+	line-height: 1.65;
+	color: var(--ink);
+}
+.p-ceo__promise span {
+	display: block;
+	margin-top: 5px;
+	font-size: 14px;
+	line-height: 1.9;
+	color: var(--ink-2);
+}
+
+.u-sp { display: none; }
+
+@media screen and (max-width: 768px) {
+	.p-ceo__lead { font-size: 14.5px; margin-top: 10px; }
+	.p-ceo__promise b { font-size: 14.5px; }
+	.p-ceo__promise span { font-size: 13.5px; }
+	.u-sp { display: inline; }
+}
+
+/* 代表紹介：読む場所をはっきりさせる。
+   見出しが4つ横並びだと、どこから読めばいいか分からなくなるため、
+   引用ブロックを1つだけ置いて視線の着地点を作る。 */
+.p-ceo__quote {
+	position: relative;
+	margin: 26px 0;
+	padding: 26px 30px 22px 54px;
+	background: var(--cop-l);
+	border-radius: 8px;
+}
+.p-ceo__quote::before {
+	content: "\201C";
+	position: absolute;
+	left: 18px;
+	top: 12px;
+	font-family: var(--ff-lt);
+	font-size: 52px;
+	line-height: 1;
+	color: var(--cop);
+	opacity: .38;
+}
+.p-ceo__quote p {
+	font-family: var(--ff-dp);
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 1.95;
+	color: var(--ink);
+}
+.p-ceo__quote p b { font-weight: 700; color: var(--cop-d); }
+.p-ceo__quote cite {
+	display: block;
+	margin-top: 12px;
+	font-style: normal;
+	font-size: 11.5px;
+	letter-spacing: .06em;
+	color: var(--cop-d);
+	opacity: .8;
+}
+
+@media screen and (max-width: 768px) {
+	.p-ceo__quote { margin: 20px 0; padding: 20px 18px 18px 20px; }
+	.p-ceo__quote::before { display: none; }
+	.p-ceo__quote p { font-size: 14.5px; line-height: 1.9; }
+	.p-ceo__quote p br { display: none; }
+}
+
+/* 休日の写真だけでは「趣味の紹介」で終わってしまうので、
+   なぜそれを見せているのかを本人の言葉で締める。
+   セクション全体の結びなので、少し大きく置く。 */
+.p-ceo__msg {
+	margin-top: 22px;
+	padding-top: 20px;
+	border-top: 1px solid var(--line);
+	max-width: 46em;
+}
+.p-ceo__msg p { font-size: 15px; line-height: 1.95; color: var(--ink-2); }
+.p-ceo__msg p + p { margin-top: 10px; }
+.p-ceo__msg b { color: var(--ink); font-weight: 700; }
+.p-ceo__msg__last {
+	margin-top: 14px !important;
+	font-family: var(--ff-dp);
+	font-weight: 500;
+	font-size: 16.5px !important;
+	line-height: 1.85 !important;
+	color: var(--ink) !important;
+}
+.p-ceo__msg__last b { color: var(--cop-d); font-weight: 700; }
+
+@media screen and (max-width: 768px) {
+	.p-ceo__msg { margin-top: 18px; padding-top: 16px; }
+	.p-ceo__msg p { font-size: 14px; }
+	.p-ceo__msg__last { font-size: 15px !important; }
+}
+
+/* ---------------------------------------------------------------
+   28. 代表紹介：写真は四角で大きく、左に置く
+   丸の小さいアイコンだと「添え物」に見えて、誰の話なのかが弱かった。
+   左に大きく据えて、名前・職人歴・芯の一言を右に並べる。
+   スマホは横に並べると写真が小さくなるので、上に大きく置く。
+--------------------------------------------------------------- */
+.p-ceo { padding: 30px; }
+/* stretch だと高さが文字量で決まってしまい、aspect-ratio が効かない */
+.p-ceo__head { align-items: center; gap: 30px; }
+
+.p-ceo__face {
+	width: 320px;
+	/* 旧定義の height:92px が残っていると高さが確定し、
+	   aspect-ratio が効かなくなる。明示的に auto に戻す。 */
+	height: auto;
+	flex: none;
+	aspect-ratio: 4 / 5;
+	border-radius: 8px;
+	padding: 0;
+}
+.p-ceo__face > img { border-radius: 8px; }
+
+/* 写真が大きくなったぶん、右側も文字を大きくして釣り合わせる */
+.p-ceo__id {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-width: 0;
+}
+.p-ceo__name { margin-top: 12px; }
+.p-ceo__name b { font-size: 34px; letter-spacing: -.01em; }
+.p-ceo__name span { font-size: 12px; }
+.p-ceo__yrs { margin-top: 10px; font-size: 15.5px; }
+.p-ceo__yrs b { font-size: 26px; }
+.p-ceo__lead { margin-top: 18px; font-size: 18px; line-height: 1.8; }
+.p-ceo__toggle { align-self: center; }
+
+@media screen and (max-width: 1100px) {
+	.p-ceo__face { width: 250px; height: auto; }
+	.p-ceo__name b { font-size: 28px; }
+	.p-ceo__lead { font-size: 16px; }
+}
+
+@media screen and (max-width: 768px) {
+	.p-ceo { padding: 0 0 20px; overflow: hidden; }
+	.p-ceo__head { flex-direction: column; gap: 0; }
+	/* 写真はカードの頭に幅いっぱいで置く */
+	.p-ceo__face {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 4 / 3;
+		border-radius: 0;
+	}
+	.p-ceo__face > img { border-radius: 0; }
+	.p-ceo__id { padding: 18px 18px 0; }
+	.p-ceo__name { margin-top: 8px; }
+	.p-ceo__name b { font-size: 23px; }
+	.p-ceo__yrs { font-size: 13.5px; margin-top: 8px; }
+	.p-ceo__yrs b { font-size: 19px; }
+	.p-ceo__lead { font-size: 15px; margin-top: 12px; }
+	.p-ceo__toggle { width: calc(100% - 36px); margin: 18px 18px 0; align-self: auto; }
+	.p-ceo__body { margin-inline: 18px; }
+}
+
+/* ---------------------------------------------------------------
+   29. ヒーローの代表写真を押せるようにする
+   丸写真をそのままボタンにしても、押せることに気づかれない。
+   下に名前と「タップで読む」の札を出して、押せると分かる形にする。
+--------------------------------------------------------------- */
+.p-rhero__open {
+	background: none;
+	border: 0;
+	padding: 0;
+	cursor: pointer;
+	display: block;
+}
+.p-rhero__ph {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: 8px solid var(--w);
+	outline: 1px solid var(--cop-m);
+	transition: transform .5s var(--e-out), outline-color .4s var(--e-out);
+}
+
+.p-rhero__tag {
+	position: absolute;
+	left: 50%;
+	bottom: -18px;
+	transform: translateX(-50%);
+	display: inline-flex;
+	align-items: center;
+	gap: 9px;
+	padding: 9px 16px;
+	background: var(--w);
+	border: 1px solid var(--cop-m);
+	border-radius: 999px;
+	box-shadow: 0 8px 24px -14px rgba(13, 20, 26, .45);
+	white-space: nowrap;
+	transition: transform .45s var(--e-out), box-shadow .45s var(--e-out);
+}
+.p-rhero__tag b { font-family: var(--ff-dp); font-weight: 700; font-size: 14px; color: var(--ink); }
+.p-rhero__tag i {
+	font-style: normal;
+	font-size: 10.5px;
+	letter-spacing: .04em;
+	color: var(--cop-d);
+	padding-left: 9px;
+	border-left: 1px solid var(--line);
+}
+.p-rhero__tag svg {
+	stroke: var(--cop);
+	fill: none;
+	stroke-width: 2;
+	/* 下の紹介へ降りることを示すので、矢印は下向きのまま */
+	animation: bob 2.6s var(--e-io) 1.4s infinite;
+}
+
+@media (hover: hover) {
+	.p-rhero__open:hover .p-rhero__ph { transform: scale(1.015); outline-color: var(--cop); }
+	.p-rhero__open:hover .p-rhero__tag { transform: translateX(-50%) translateY(3px); box-shadow: 0 12px 28px -14px rgba(13, 20, 26, .5); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.p-rhero__tag svg { animation: none; }
+}
+
+@media screen and (max-width: 768px) {
+	.p-rhero__ph { border-width: 6px; }
+	.p-rhero__tag { bottom: -16px; padding: 7px 13px; gap: 7px; }
+	.p-rhero__tag b { font-size: 12.5px; }
+	.p-rhero__tag i { font-size: 9.5px; padding-left: 7px; }
+	/* 札のぶん、下に余白を足す */
+	.p-rhero__visual { padding-bottom: 22px; }
+}
+
+/* --- ヒーローの代表ボタン：3点の修正 ------------------------------------- */
+
+/* ① 四角い枠が残っていた。
+   .p-rhero__main の border / outline / padding は、中の丸い写真側で
+   持たせているので、ボタン自身からは消す。 */
+.p-rhero__open {
+	border: 0;
+	outline: 0;
+	padding: 0;
+	background: none;
+	/* ② 札が衛星の丸写真の下に隠れていたので、手前に出す */
+	z-index: 5;
+}
+.p-rhero__open:focus-visible { outline: 2px solid var(--cop); outline-offset: 6px; }
+.p-rhero__tag { z-index: 6; }
+
+/* ③ スマホでは札を出さない。
+   すぐ下に代表紹介のセクションがあり、そちらに開くボタンが
+   はっきり出ているため、ここで二重に見せる必要がない。
+   写真自体は押せるままにしておく。 */
+@media screen and (max-width: 768px) {
+	.p-rhero__tag { display: none; }
+	.p-rhero__visual { padding-bottom: 0; }
+}
+
+/* ---------------------------------------------------------------
+   30. 代表の肩書まわりを名刺の体裁に
+   会社名・事業内容・役職・氏名・読み。名刺と同じ順に並べ、
+   細い罫で区切る。肩書が無いと「誰なのか」が伝わらないため。
+--------------------------------------------------------------- */
+.p-ceo__card {
+	padding-bottom: 18px;
+	border-bottom: 1px solid var(--line);
+}
+
+/* 会社名の行。ロゴを小さく添えて名刺の天面に見立てる */
+.p-ceo__co {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.p-ceo__co__mark { width: 30px; height: auto; flex: none; }
+.p-ceo__co b {
+	display: block;
+	font-family: var(--ff-dp);
+	font-weight: 700;
+	font-size: 15px;
+	letter-spacing: .04em;
+	color: var(--ink);
+	line-height: 1.4;
+}
+.p-ceo__co i {
+	display: block;
+	font-style: normal;
+	font-size: 11px;
+	letter-spacing: .04em;
+	color: var(--mut);
+	margin-top: 2px;
+}
+
+/* 役職 */
+.p-ceo__role {
+	margin-top: 18px;
+	font-size: 12.5px;
+	letter-spacing: .18em;
+	color: var(--cop-d);
+}
+
+.p-ceo__name { margin-top: 4px; align-items: baseline; }
+.p-ceo__yrs { margin-top: 12px; }
+
+.p-ceo__lead { margin-top: 18px; }
+
+@media screen and (max-width: 768px) {
+	.p-ceo__card { padding-bottom: 14px; }
+	.p-ceo__co__mark { width: 26px; }
+	.p-ceo__co b { font-size: 13.5px; }
+	.p-ceo__co i { font-size: 10px; }
+	.p-ceo__role { margin-top: 14px; font-size: 11.5px; }
+	.p-ceo__yrs { margin-top: 10px; }
+	.p-ceo__lead { margin-top: 14px; }
+}
+
+/* ---------------------------------------------------------------
+   31. ヒーローの丸写真を下から上へ流す
+   静止した装飾では目に留まらないので、泡のように
+   ゆっくり昇らせる。速度と開始時刻をばらけさせて、
+   同時に動いているように見せない。
+   代表の丸だけは動かさず、周りをじんわり光らせて
+   「押せる」ことに気づいてもらう。
+--------------------------------------------------------------- */
+@keyframes rhero-rise {
+	0%   { transform: translateY(330%) scale(.94); opacity: 0; }
+	14%  { opacity: 1; }
+	86%  { opacity: 1; }
+	100% { transform: translateY(-330%) scale(1.04); opacity: 0; }
+}
+
+/* 代表の丸のまわりが、ゆっくり息をするように光る */
+@keyframes rhero-glow {
+	0%, 100% { box-shadow: 0 0 0 0 rgba(196, 106, 58, .30), 0 0 26px 6px rgba(196, 106, 58, .10); }
+	50%      { box-shadow: 0 0 0 14px rgba(196, 106, 58, 0),  0 0 46px 14px rgba(196, 106, 58, .26); }
+}
+
+.p-rhero__sat {
+	position: absolute;
+	top: 50%;
+	/* 代表の丸（z-index:5）より後ろを通す。
+	   手前を横切ると衝突して見えるが、後ろなら奥行きになる。 */
+	z-index: 1;
+	border: 6px solid var(--w);
+	outline: 1px solid var(--cop-m);
+	padding: 8px;
+	animation: rhero-rise var(--dur, 26s) linear var(--dly, 0s) infinite;
+	will-change: transform, opacity;
+}
+
+/* 横位置と大きさ、速度をそれぞれ変える */
+.p-rhero__sat--1 { right: 4px;   width: 132px; height: 132px; --dur: 27s; --dly: 0s; }
+.p-rhero__sat--2 { right: 132px; width: 108px; height: 108px; --dur: 33s; --dly: -6s; }
+.p-rhero__sat--3 { right: -36px; width: 158px; height: 158px; --dur: 24s; --dly: -13s; }
+.p-rhero__sat--4 { right: 246px; width: 96px;  height: 96px;  --dur: 31s; --dly: -20s; }
+.p-rhero__sat--5 { left: -32px;  width: 124px; height: 124px; --dur: 29s; --dly: -9s; }
+.p-rhero__sat--6 { left: 62px;   width: 90px;  height: 90px;  --dur: 35s; --dly: -17s; }
+
+/* 代表の丸は動かさない。周りだけ光らせる */
+.p-rhero__ph {
+	border-radius: 50%;
+	animation: rhero-glow 3.6s var(--e-io) 1.2s infinite;
+}
+@media (hover: hover) {
+	.p-rhero__open:hover .p-rhero__ph { animation-play-state: paused; }
+}
+
+/* 動きが苦手な人には流さず、静かに並べる */
+@media (prefers-reduced-motion: reduce) {
+	.p-rhero__sat { animation: none; transform: none; opacity: 1; }
+	.p-rhero__sat--1 { top: 12%; }
+	.p-rhero__sat--2 { top: 58%; }
+	.p-rhero__sat--3 { top: 70%; }
+	.p-rhero__sat--4 { top: 30%; }
+	.p-rhero__sat--5 { top: 74%; }
+	.p-rhero__sat--6 { top: 22%; }
+	.p-rhero__ph { animation: none; }
+}
+
+/* スマホでは丸が重なって読めなくなるので出さない */
+@media screen and (max-width: 768px) {
+	.p-rhero__sat { display: none; }
+}
+
+/* ---------------------------------------------------------------
+   32. ヒーローの装飾を、丸写真から斜めのラインへ
+   丸を6つ浮かせると、代表の顔のまわりが落ち着かず、
+   主役と脇役の差も出なかった。
+   ロゴの葉の斜線、板金の折り目と同じ角度の細い線に置き換える。
+   薄く、ゆっくり流すだけにして、視線は代表に集める。
+--------------------------------------------------------------- */
+.p-rhero__lines {
+	position: absolute;
+	inset: -20% -10%;
+	pointer-events: none;
+	z-index: 1;
+	/* 太さと間隔を変えた2層を重ねて、等間隔の単調さを消す */
+	background-image:
+		repeating-linear-gradient(112deg,
+			rgba(140, 62, 28, .10) 0 1px,
+			transparent 1px 88px),
+		repeating-linear-gradient(112deg,
+			rgba(140, 62, 28, .055) 0 1px,
+			transparent 1px 23px);
+	/* 端は消して、線が唐突に切れないようにする */
+	-webkit-mask-image: radial-gradient(120% 90% at 62% 42%, #000 22%, transparent 78%);
+	mask-image: radial-gradient(120% 90% at 62% 42%, #000 22%, transparent 78%);
+	animation: rhero-lines 40s linear infinite;
+}
+
+/* 線が斜め方向へゆっくり流れる。1周ぶん動かすので継ぎ目は出ない */
+@keyframes rhero-lines {
+	from { transform: translate3d(0, 0, 0); }
+	to   { transform: translate3d(-88px, -218px, 0); }
+}
+
+/* 代表の丸は据え置き。まわりの光だけ残す */
+.p-rhero__open { z-index: 5; }
+
+@media (prefers-reduced-motion: reduce) {
+	.p-rhero__lines { animation: none; }
+}
+
+@media screen and (max-width: 768px) {
+	.p-rhero__lines {
+		inset: -10% -20%;
+		background-image:
+			repeating-linear-gradient(112deg, rgba(140, 62, 28, .085) 0 1px, transparent 1px 62px),
+			repeating-linear-gradient(112deg, rgba(140, 62, 28, .045) 0 1px, transparent 1px 17px);
+	}
+}
+
+/* ---------------------------------------------------------------
+   33. 「もう少し、見てみませんか。」に写真を添える
+   文字だけのカードは、内容が良くても素通りされる。
+   行き先が想像できる写真を1枚ずつ載せる。
+   動く要素は増やさない（ページ内に流れる帯が既にあるため）。
+--------------------------------------------------------------- */
+.p-next__card { overflow: hidden; }
+
+.p-next__ph {
+	display: block;
+	width: calc(100% + 40px);
+	margin: -26px -20px 20px;
+	aspect-ratio: 16 / 9;
+	border: 0;
+	border-radius: 0;
+	padding: 0;
+}
+.p-next__ph > img { transition: transform .7s var(--e-out); }
+
+/* アイコンは写真の上に少し乗せて、写真とカードをつなぐ */
+.p-next__card .c-icbox { position: relative; margin-top: -46px; z-index: 2; border: 3px solid var(--w); }
+
+@media (hover: hover) {
+	.p-next__card:hover .p-next__ph > img { transform: scale(1.05); }
+}
+
+@media screen and (max-width: 768px) {
+	.p-next__ph { width: calc(100% + 36px); margin: -22px -18px 16px; aspect-ratio: 2 / 1; }
+	.p-next__card .c-icbox { margin-top: -40px; }
+}
+
+/* ---------------------------------------------------------------
+   34. ヒーローを職場の写真の集合に
+   見出しは「働き方を、未来に合わせる」。人物のポートレートより、
+   実際の職場の空気が並んでいるほうが内容と合う。
+   代表は下の紹介セクションに一本化した。
+   浮かせず、格子に沿えて並べる。散らすと落ち着かないため。
+--------------------------------------------------------------- */
+.p-mosaic {
+	position: relative;
+	z-index: 2;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-auto-rows: 92px;
+	gap: 12px;
+	width: 100%;
+	max-width: 620px;
+	margin-inline: auto;
+}
+
+.p-mosaic__i {
+	border: 0;
+	border-radius: 10px;
+	padding: 0;
+	overflow: hidden;
+	box-shadow: 0 18px 40px -26px rgba(13, 20, 26, .5);
+}
+.p-mosaic__i > img { transition: transform .8s var(--e-out); }
+
+/* 大きい1枚を軸に、残りを回り込ませる。
+   人（a・c・e）と施工（b・d・f）が対角で交互になるように置く。 */
+.p-mosaic__i--a { grid-column: 1 / 5; grid-row: 1 / 4; }   /* 人・仲間 */
+.p-mosaic__i--b { grid-column: 5 / 7; grid-row: 1 / 3; }   /* 施工・ラッキング */
+.p-mosaic__i--c { grid-column: 5 / 7; grid-row: 3 / 5; }   /* 人・教える */
+.p-mosaic__i--d { grid-column: 1 / 3; grid-row: 4 / 6; }   /* 施工・ダクト */
+.p-mosaic__i--e { grid-column: 3 / 5; grid-row: 4 / 6; }   /* 人・休憩 */
+.p-mosaic__i--f { grid-column: 5 / 7; grid-row: 5 / 7; }   /* 施工・手元 */
+
+@media (hover: hover) {
+	.p-mosaic__i:hover > img { transform: scale(1.06); }
+}
+
+@media screen and (max-width: 1100px) {
+	.p-mosaic { grid-auto-rows: 76px; gap: 10px; }
+}
+
+@media screen and (max-width: 768px) {
+	.p-mosaic {
+		grid-auto-rows: 58px;
+		gap: 8px;
+		max-width: 100%;
+	}
+	.p-mosaic__i { border-radius: 7px; }
+	/* 6枚だと1枚あたりが小さくなりすぎるので、手元は落として4枚にする */
+	.p-mosaic__i--f { display: none; }
+	.p-mosaic__i--d { grid-column: 1 / 3; grid-row: 4 / 6; }
+	.p-mosaic__i--e { grid-column: 3 / 7; grid-row: 4 / 6; }
+}
+
+/* ---------------------------------------------------------------
+   35. ヒーローの写真にゆっくりした浮きを与える
+   静止していると「置いてあるだけ」に見える。
+   ごく小さく上下させ、周期と振れ幅を1枚ずつ変えて、
+   同時に動いているように見せない。
+   transform ではなく translate を使う。
+   出現アニメーション（clip-path / transform）と衝突させないため。
+--------------------------------------------------------------- */
+@keyframes mos-float {
+	0%, 100% { translate: 0 0; }
+	50%      { translate: 0 var(--amp, -8px); }
+}
+
+.p-mosaic__i {
+	animation: mos-float var(--fdur, 9s) var(--e-io) var(--fdly, 0s) infinite;
+}
+.p-mosaic__i--a { --fdur: 11s;  --fdly: 0s;    --amp: -7px; }
+.p-mosaic__i--b { --fdur: 8.5s; --fdly: -2.4s; --amp: -10px; }
+.p-mosaic__i--c { --fdur: 12s;  --fdly: -5.1s; --amp: -6px; }
+.p-mosaic__i--d { --fdur: 9.5s; --fdly: -1.2s; --amp: -9px; }
+.p-mosaic__i--e { --fdur: 13s;  --fdly: -6.8s; --amp: -5px; }
+.p-mosaic__i--f { --fdur: 10s;  --fdly: -3.6s; --amp: -11px; }
+
+/* 影も一緒に動かすと、浮いているように見える */
+.p-mosaic__i { transition: box-shadow .6s var(--e-out); }
+
+@media (hover: hover) {
+	.p-mosaic__i:hover {
+		animation-play-state: paused;
+		box-shadow: 0 26px 52px -24px rgba(13, 20, 26, .55);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.p-mosaic__i { animation: none; }
+}
+
+/* スマホは振れ幅を小さくする。画面が狭く、揺れが目立ちすぎるため */
+@media screen and (max-width: 768px) {
+	.p-mosaic__i--a { --amp: -4px; }
+	.p-mosaic__i--b { --amp: -6px; }
+	.p-mosaic__i--c { --amp: -4px; }
+	.p-mosaic__i--d { --amp: -5px; }
+	.p-mosaic__i--e { --amp: -3px; }
+	.p-mosaic__i--f { --amp: -6px; }
+}
+
+/* ---------------------------------------------------------------
+   36. ヒーローの写真を入れ替える
+   1枚ずつ固定だと、2回目に見た人には同じ画面になる。
+   1枠に3枚ずつ持たせ、ゆっくり入れ替える。
+   枠ごとに周期と開始位置を変えて、同時に切り替わらないようにする。
+   （同時だと画面全体が瞬いて落ち着かない）
+--------------------------------------------------------------- */
+.p-mosaic__i > img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: var(--p, 50% 50%);
+	opacity: 0;
+	animation: mos-cycle var(--cdur, 21s) linear var(--cdly, 0s) infinite;
+}
+
+/* 3枚を1/3ずつずらして回す。切り替わりは1.4秒かけて溶かす */
+@keyframes mos-cycle {
+	0%      { opacity: 1; }
+	26.7%   { opacity: 1; }
+	33.3%   { opacity: 0; }
+	93.3%   { opacity: 0; }
+	100%    { opacity: 1; }
+}
+.p-mosaic__i > img:nth-child(2) { animation-delay: calc(var(--cdly, 0s) - var(--cdur, 21s) / 3); }
+.p-mosaic__i > img:nth-child(3) { animation-delay: calc(var(--cdly, 0s) - var(--cdur, 21s) / 3 * 2); }
+
+/* 枠ごとに速さと開始をずらす。素数寄りの値にして周期が揃わないようにする */
+.p-mosaic__i--a { --cdur: 24s; --cdly: 0s; }
+.p-mosaic__i--b { --cdur: 19s; --cdly: -3s; }
+.p-mosaic__i--c { --cdur: 27s; --cdly: -7s; }
+.p-mosaic__i--d { --cdur: 21s; --cdly: -11s; }
+.p-mosaic__i--e { --cdur: 30s; --cdly: -5s; }
+.p-mosaic__i--f { --cdur: 23s; --cdly: -14s; }
+
+@media (hover: hover) {
+	/* 見ている枠は止める。切り替わると写真を追えないため */
+	.p-mosaic__i:hover > img { animation-play-state: paused; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.p-mosaic__i > img { animation: none; opacity: 0; }
+	.p-mosaic__i > img:first-child { opacity: 1; }
+}
+
+/* ---------------------------------------------------------------
+   37. 写真の下端を、文字の最終行に合わせる
+   写真の並びの高さが固定(700px)で、文字の量と無関係だったため
+   下がはみ出し、上は余白なしで天井に貼り付いていた。
+   写真の列を文字の列と同じ高さに伸ばし、上だけ少し空ける。
+--------------------------------------------------------------- */
+@media screen and (min-width: 769px) {
+	/* 2列を同じ高さに揃える。高さは文字の列が決める */
+	.p-rhero__inner {
+		align-items: stretch;
+		/* 700px のままだと行だけ伸びて写真の下端が文字より下に出る。
+		   かといって 0 にすると文字の高さだけで決まり、
+		   ヒーローが窮屈になる。間を取って下限を決め、
+		   足りないぶんは上下の余白で稼ぐ。 */
+		min-height: 0;
+		padding-block: 64px 72px;
+	}
+	/* 文字は上下いっぱいに置き、最終行を写真の下端にそろえる */
+	.p-rhero__body {
+		align-self: stretch;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		/* これが無いと、バッジやボタンが横いっぱいに引き伸ばされる */
+		align-items: flex-start;
+	}
+
+	.p-rhero__visual {
+		height: auto;
+		align-self: stretch;
+		display: flex;
+		/* 上だけ少し空ける。下は文字の最終行に合わせる */
+		padding-top: 26px;
+		padding-bottom: 0;
+	}
+
+	.p-mosaic {
+		flex: 1 1 auto;
+		max-width: none;
+		margin-inline: 0;
+		/* 行の高さを固定せず、与えられた高さを6行で分ける。
+		   これで下端が文字の最終行にそろう。 */
+		grid-auto-rows: unset;
+		grid-template-rows: repeat(6, 1fr);
+	}
+
+	/* 左側3枚を大きく見せるため、列の配分を左に寄せる */
+	.p-mosaic { grid-template-columns: repeat(7, 1fr); }
+	.p-mosaic__i--a { grid-column: 1 / 6; grid-row: 1 / 4; }
+	.p-mosaic__i--b { grid-column: 6 / 8; grid-row: 1 / 3; }
+	.p-mosaic__i--c { grid-column: 6 / 8; grid-row: 3 / 5; }
+	.p-mosaic__i--d { grid-column: 1 / 3; grid-row: 4 / 7; }
+	.p-mosaic__i--e { grid-column: 3 / 6; grid-row: 4 / 7; }
+	.p-mosaic__i--f { grid-column: 6 / 8; grid-row: 5 / 7; }
+}
+
+/* ---------------------------------------------------------------
+   38. スマホは2段の帯にする
+   スマホでモザイクを組むと1枚が小さくなりすぎ、
+   何が写っているか分からなくなる。
+   同じ大きさの写真を2段に並べ、上は右へ、下は左へ流す。
+   逆方向にすることで、止まっている錯覚が起きない。
+--------------------------------------------------------------- */
+.p-mflow { display: none; }
+
+@media screen and (max-width: 768px) {
+	.p-mosaic { display: none; }
+
+	/* 列がこの中身の最大幅まで広がらないよう、両方に下限を切る */
+	.p-rhero__inner > * { min-width: 0; }
+
+	.p-mflow {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		/* 画面の端いっぱいまで使う。
+		   幅を明示しないと、中の帯の最大幅まで列が広がってしまう。 */
+		width: 100vw;
+		max-width: 100vw;
+		margin-inline: calc(50% - 50vw);
+		overflow: hidden;
+		/* 両端を薄くして、帯が続いていることを示す */
+		-webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+		mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+	}
+
+	.p-mflow__row {
+		display: flex;
+		flex: none;
+		gap: 10px;
+		width: max-content;
+		will-change: transform;
+	}
+	/* 同じ並びを2回置いてあるので -50% で継ぎ目なく循環する */
+	.p-mflow__row--a { animation: mflow-r 38s linear infinite; }
+	.p-mflow__row--b { animation: mflow-l 44s linear infinite; }
+
+	@keyframes mflow-r { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+	@keyframes mflow-l { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
+
+	.p-mflow__i {
+		flex: none;
+		display: block;
+		width: 138px;
+		height: 138px;
+		border-radius: 8px;
+		overflow: hidden;
+		background: var(--bg-2);
+		box-shadow: 0 10px 24px -18px rgba(13, 20, 26, .5);
+	}
+	.p-mflow__i > img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: var(--p, 50% 50%);
+		display: block;
+	}
+
+	/* 帯のぶん、視覚エリアの高さ指定は外す */
+	.p-rhero__visual { height: auto; padding-top: 4px; }
+}
+
+@media screen and (max-width: 380px) {
+	.p-mflow__i { width: 118px; height: 118px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.p-mflow__row { animation: none; }
 }

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://REPLACE_WITH_SITE_URL/sitemap.xml
+Sitemap: https://fujiiren1996.github.io/fujii-reinetsu/sitemap.xml

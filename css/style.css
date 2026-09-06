@@ -6776,3 +6776,173 @@ h2.p-ceo__name { margin-top: 4px; }
 .c-photo--has > img,
 .p-mosaic__i > img,
 .p-mflow__i > img { width: 100%; height: 100%; }
+
+/* ==========================================================================
+   47. ページ遷移（スマホ）
+   ------------------------------------------------------------------------
+   ボタンを押してから次のページが出るまでを、ひとつづきの動きにする。
+   View Transitions API を使う。対応していないブラウザでは何も起きず、
+   従来どおり瞬時に切り替わるだけなので、動作が壊れることはない。
+
+   考え方
+     ・ヘッダーと追従CTAは動かさない。ここが据え置かれることで
+       「別のサイトに飛んだ」ではなく「同じサイトの中を移った」と読める。
+     ・演出はページ同士の関係で変える。ただし文法は共通にして、
+       表情だけを変える。
+         fwd    奥へ進む   … 次のページが下から手前に出る
+         back   戻る       … 次のページが上から下りてくる。少し速い
+         side   横へ動く   … 同じ階層。メニューの並び順の向きに滑る
+         world  導線をまたぐ … ロゴと同じ角度の斜めのワイプで覆う
+       world だけ長い。お客様の導線と採用の導線は意味が違うので、
+       ここは「切り替わった」と分かってよい。
+     ・transform と opacity と clip-path しか使わない。
+       レイアウトを起こさないので、遅い端末でも落ちない。
+
+   PC には一切かけない。@view-transition ごとメディアクエリの中に置き、
+   さらに 769px 以上では演出を明示的に消してある（二重の保険）。
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+
+	@view-transition { navigation: auto; }
+
+	/* 据え置くもの。名前を付けた要素はページの入れ替えから外れる。 */
+	.l-header { view-transition-name: vt-head; }
+	.c-spcta { view-transition-name: vt-cta; }
+
+	/* 既定の plus-lighter は、明るい地の2ページが重なると白く飛ぶ。
+	   下に旧ページ、上に新ページを素直に重ねる。 */
+	::view-transition-image-pair(root) { isolation: auto; }
+
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		mix-blend-mode: normal;
+		backface-visibility: hidden;
+	}
+
+	/* 対応ブラウザで data-vt が付かなかったときの保険。 */
+	::view-transition-old(root) { animation: vt-hold .3s linear both; }
+	::view-transition-new(root) { animation: vt-fade .3s var(--e-out) both; }
+
+	/* --- 奥へ進む ------------------------------------------------------ */
+	html[data-vt="fwd"]::view-transition-old(root) { animation: vt-recede .34s var(--e-io) both; }
+	html[data-vt="fwd"]::view-transition-new(root) { animation: vt-rise .34s var(--e-out) both; }
+
+	/* --- 戻る ---------------------------------------------------------- */
+	/* 戻る操作は待たされ感が出やすいので、進むより短くする。 */
+	html[data-vt="back"]::view-transition-old(root) { animation: vt-advance .3s var(--e-io) both; }
+	html[data-vt="back"]::view-transition-new(root) { animation: vt-drop .3s var(--e-out) both; }
+
+	/* --- 同じ階層を横へ ------------------------------------------------ */
+	html[data-vt="side"]::view-transition-old(root) { animation: vt-slip-l .3s var(--e-io) both; }
+	html[data-vt="side"]::view-transition-new(root) { animation: vt-come-r .3s var(--e-out) both; }
+	html[data-vt="side-r"]::view-transition-old(root) { animation: vt-slip-r .3s var(--e-io) both; }
+	html[data-vt="side-r"]::view-transition-new(root) { animation: vt-come-l .3s var(--e-out) both; }
+
+	/* --- 導線をまたぐ -------------------------------------------------- */
+	/* 斜めの面が下から上へ抜けて、次のページを置いていく。
+	   保温材の上からラッキングを被せる手の動きと、ロゴの斜線に合わせた。 */
+	html[data-vt="world"]::view-transition-old(root) { animation: vt-under .44s var(--e-io) both; }
+	html[data-vt="world"]::view-transition-new(root) { animation: vt-clad .44s var(--e-out) both; }
+
+	/* ヘッダーは面が通り過ぎる頃に表情を変える。
+	   RECRUIT のバッジやメニューが切り替わるのが、ここで見える。 */
+	html[data-vt="world"]::view-transition-old(vt-head) { animation: vt-fade-out .26s linear .16s both; }
+	html[data-vt="world"]::view-transition-new(vt-head) { animation: vt-fade .26s linear .16s both; }
+
+	@keyframes vt-hold { to { opacity: 1; } }
+	@keyframes vt-fade { from { opacity: 0; } }
+	@keyframes vt-fade-out { to { opacity: 0; } }
+
+	@keyframes vt-rise {
+		from { opacity: 0; transform: translate3d(0, 18px, 0); }
+		60% { opacity: 1; }
+		to { opacity: 1; transform: none; }
+	}
+	@keyframes vt-recede {
+		to { opacity: .5; transform: scale(.985); }
+	}
+	@keyframes vt-drop {
+		from { opacity: 0; transform: translate3d(0, -13px, 0); }
+		60% { opacity: 1; }
+		to { opacity: 1; transform: none; }
+	}
+	@keyframes vt-advance {
+		to { opacity: .5; transform: scale(1.012); }
+	}
+	@keyframes vt-come-r {
+		from { opacity: 0; transform: translate3d(22px, 0, 0); }
+		62% { opacity: 1; }
+		to { opacity: 1; transform: none; }
+	}
+	@keyframes vt-slip-l {
+		to { opacity: .5; transform: translate3d(-14px, 0, 0); }
+	}
+	@keyframes vt-come-l {
+		from { opacity: 0; transform: translate3d(-22px, 0, 0); }
+		62% { opacity: 1; }
+		to { opacity: 1; transform: none; }
+	}
+	@keyframes vt-slip-r {
+		to { opacity: .5; transform: translate3d(14px, 0, 0); }
+	}
+
+	/* 斜めの辺は左が先に上がる。ロゴの斜線と同じ向き。 */
+	@keyframes vt-clad {
+		from { clip-path: polygon(0 124%, 100% 108%, 100% 100%, 0 100%); opacity: .55; }
+		30% { opacity: 1; }
+		to { clip-path: polygon(0 -8%, 100% -24%, 100% 100%, 0 100%); opacity: 1; }
+	}
+	@keyframes vt-under {
+		to { transform: scale(.992); opacity: .82; }
+	}
+
+	/* 769px 以上で演出が漏れた場合に備えた打ち消し。 */
+}
+
+@media screen and (min-width: 769px) {
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) { animation: none !important; }
+	::view-transition-old(root) { display: none !important; }
+}
+
+/* 動きを減らす設定では、演出そのものを行わない。 */
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) { animation: none !important; }
+	::view-transition-old(root) { display: none !important; }
+}
+
+/* --------------------------------------------------------------------------
+   47-2. 押したことが分かる
+   タップした瞬間に沈む。遷移演出が始まるまでの空白を埋める役目なので、
+   時間は極端に短くする。指を離す前に戻り切っている必要がある。
+   -------------------------------------------------------------------------- */
+@media (hover: none) {
+
+	.c-btn:active,
+	.c-spcta__btn:active,
+	.c-spcta__tel:active,
+	.l-header__logo:active,
+	.c-crumb a:active {
+		transform: scale(.972);
+		transition-duration: .08s;
+	}
+
+	.c-acc__q:active,
+	.l-footer__nav a:active,
+	.l-drawer__links a:active {
+		opacity: .62;
+		transition-duration: .08s;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.c-btn:active,
+	.c-spcta__btn:active,
+	.c-spcta__tel:active,
+	.l-header__logo:active,
+	.c-crumb a:active { transform: none; }
+}

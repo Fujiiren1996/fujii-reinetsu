@@ -6607,3 +6607,6 @@ section[id] { scroll-margin-top: 148px; }
 	.p-tech__ttl, .p-training__ttl, .p-day__ttl,
 	.p-band__ttl, .p-entry__ttl, .p-salary__ttl { font-size: 23px; line-height: 1.5; }
 }
+
+/* 代表名は節の見出し（h2）だが、見た目は名刺のままにする */
+h2.p-ceo__name { margin-top: 4px; }

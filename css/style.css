@@ -6580,3 +6580,30 @@ section[id] { scroll-margin-top: 148px; }
 	visibility: hidden;
 	pointer-events: none;
 }
+
+/* ---------------------------------------------------------------
+   41. スマホでも改行位置を designer が決める
+   これまで SP では .ln を inline にして <br> を無効化し、
+   ブラウザ任せの折り返しにしていた。
+   その結果「藤井／冷熱」のように社名が割れていた。
+   <br> を行として効かせ、各行が375pxに収まる字送りに調整する。
+--------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+	.js-inview-lines .ln { display: block; overflow: hidden; }
+	.js .js-inview-lines .js-inview-ln { display: block; }
+
+	/* 1行が収まる大きさへ。見出しの迫力は保てる範囲で詰める */
+	.p-hero__title,
+	.p-rhero__ttl,
+	.l-pagehead__ttl { font-size: 25px; line-height: 1.45; }
+
+	h2.c-sechead__h--xl { font-size: 25px; }
+	h2.c-sechead__h--lg { font-size: 24px; }
+	h2.c-sechead__h--md { font-size: 23px; }
+	h2.c-sechead__h--sm { font-size: 22px; }
+	.c-sechead h2 { font-size: 23px; line-height: 1.5; }
+
+	.p-about__ttl, .p-contact__ttl, .p-initiative__ttl,
+	.p-tech__ttl, .p-training__ttl, .p-day__ttl,
+	.p-band__ttl, .p-entry__ttl, .p-salary__ttl { font-size: 23px; line-height: 1.5; }
+}

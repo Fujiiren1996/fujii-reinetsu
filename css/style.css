@@ -7094,3 +7094,82 @@ h2.p-ceo__name { margin-top: 4px; }
 	.p-intro__inner { padding: 28px 20px 30px; }
 	.p-intro__lead { font-size: 14px; line-height: 1.95; padding-left: 16px; margin-top: 12px; }
 }
+
+/* ==========================================================================
+   50. 採用トップのヒーロー
+   ------------------------------------------------------------------------
+   見出しはデザイン画の中にあるので、画像を1枚敷くだけにする。
+   箱を画像と同じ縦横比に固定してあるため、どの幅でも欠けない。
+   PCとスマホで縦横比が違うので、picture で出し分ける。
+
+   画像に描かれた見出しは、同じ文言を h1 として残してある
+   （目には出さないが、Googleと読み上げソフトは読む）。
+   本文とボタンは、画像の下から始める。
+   ========================================================================== */
+.p-rhero {
+	position: relative;
+	aspect-ratio: 1916 / 821;
+	background: var(--wd);
+	padding: 0;
+	overflow: hidden;
+}
+
+.p-rhero__art {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: fill;
+}
+
+.p-rhero__txt {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* 画像の下の帯。本文とボタン */
+.p-rlead {
+	background: linear-gradient(180deg, var(--cop-l) 0%, var(--w) 78%);
+	border-bottom: 1px solid var(--line);
+}
+
+.p-rlead__inner {
+	padding-block: 44px 52px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 20px;
+}
+
+.p-rlead__lead {
+	max-width: 40em;
+	font-size: 16px;
+	line-height: 2;
+	color: var(--ink-2);
+}
+
+.p-rlead__lead b { font-weight: 700; color: var(--ink); }
+
+.p-rlead__note {
+	max-width: 44em;
+	font-size: 13px;
+	line-height: 1.9;
+	color: var(--mut);
+}
+
+@media screen and (max-width: 768px) {
+	.p-rhero { aspect-ratio: 1 / 1; }
+
+	.p-rlead__inner {
+		padding: 24px 20px 32px;
+		gap: 16px;
+	}
+
+	.p-rlead__lead { font-size: 14.5px; line-height: 1.95; }
+	.p-rlead__note { font-size: 12px; }
+	.p-rhero__cta { display: flex; flex-direction: column; width: 100%; gap: 10px; }
+}

@@ -6954,15 +6954,21 @@ h2.p-ceo__name { margin-top: 4px; }
    ========================================================================== */
 .p-hero {
 	position: relative;
-	aspect-ratio: 1672 / 941;
+	/* 画像は 1672x941（16:9）。そのまま敷くと1440px幅で高さ810pxになり、
+	   ヘッダー89pxと合わせて画面がヒーローだけで埋まる。
+	   上端を14.6%切って 2.215:1 の帯にする。
+	   切った先にあるのは画像内のロゴ行で、サイトのヘッダーと重複していた。 */
+	aspect-ratio: 1672 / 755;
 	background: var(--w);
+	overflow: hidden;
 }
 
 .p-hero__art {
 	display: block;
 	width: 100%;
 	height: 100%;
-	object-fit: fill;
+	object-fit: cover;
+	object-position: 50% 74%;
 }
 
 /* 画像と同じ文言。目には出さないが、DOMには残す */
@@ -6979,10 +6985,12 @@ h2.p-ceo__name { margin-top: 4px; }
 }
 
 /* 画像に描かれたボタンの上に重ねる当たり判定 */
+/* 上端を切ったぶん、画像内のボタンの位置も繰り上がる。
+   1440pxで実測して 79.7〜87.5% に合わせた。 */
 .p-hero__hit {
 	position: absolute;
-	top: 79.6%;
-	height: 6.4%;
+	top: 79.7%;
+	height: 7.8%;
 	border-radius: 3px;
 }
 
@@ -7075,6 +7083,7 @@ h2.p-ceo__name { margin-top: 4px; }
 	/* スマホは正方形の専用画像に差し替わる。縦横比と
 	   ボタンの位置が変わるので、当たり判定も入れ替える。 */
 	.p-hero { aspect-ratio: 1 / 1; }
+	.p-hero__art { object-fit: fill; object-position: 50% 50%; }
 	.p-hero__hit--a,
 	.p-hero__hit--b { display: none; }
 

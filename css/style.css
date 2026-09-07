@@ -6960,19 +6960,24 @@ h2.p-ceo__name { margin-top: 4px; }
 	background: linear-gradient(166deg, #fff 0%, #f7f9fc 46%, #e9eef6 100%);
 }
 
-/* 写真。右端までぴったり。左端はマスクで背景へ溶かす */
+/* 写真。右端までぴったり。左端はマスクで背景へ溶かす。
+   幅を 60% に絞り、写真の中は object-position で右へ寄せる。
+   こうしないと写真左側の白い余白が画面中央に居座り、
+   文字と人物のあいだが間延びして見える。 */
 .p-hero__visual {
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
+	width: 60%;
 }
 
-/* 切り抜かず高さ基準で右に寄せる。手書きの一文まで写真の中にあるため */
 .p-hero__photo {
 	display: block;
-	width: auto;
+	width: 100%;
 	height: 100%;
+	object-fit: cover;
+	object-position: 78% 50%;
 	filter: saturate(1.08) brightness(1.04) contrast(.96);
 	-webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .18) 12%, rgba(0, 0, 0, .72) 26%, #000 42%);
 	mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .18) 12%, rgba(0, 0, 0, .72) 26%, #000 42%);
@@ -6989,8 +6994,8 @@ h2.p-ceo__name { margin-top: 4px; }
 }
 
 .p-hero__body {
-	width: min(54%, 760px);
-	padding: 56px 40px 56px 120px;
+	width: min(50%, 700px);
+	padding: 56px 24px 56px 120px;
 }
 
 /* 小見出し。欧文・字間広め・左に短い横線 */
@@ -7172,39 +7177,69 @@ h2.p-ceo__name { margin-top: 4px; }
    -------------------------------------------------------------------------- */
 @media screen and (max-width: 768px) {
 
+	/* 写真をヒーロー全面に敷き、その上に文字を重ねる。
+	   写真の左は明るい壁なので、白い膜を1枚かければ字が読める。
+	   下に置くと写真と見出しが切れて見えるため、重ねている。 */
 	.p-hero__visual {
-		position: relative;
-		height: auto;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 92vw;
+		min-height: 290px;
+		max-height: 420px;
 	}
 
 	.p-hero__photo {
 		width: 100%;
-		height: auto;
-		-webkit-mask-image: linear-gradient(to bottom, #000 78%, rgba(0, 0, 0, 0) 100%);
-		mask-image: linear-gradient(to bottom, #000 78%, rgba(0, 0, 0, 0) 100%);
+		height: 100%;
+		object-fit: cover;
+		object-position: 74% 34%;
+		-webkit-mask-image: none;
+		mask-image: none;
+	}
+
+	/* 左と下に白を寄せる。右上は素通しにして写真を殺さない */
+	.p-hero__visual::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(to top, #fff 0%, rgba(255, 255, 255, .62) 22%, rgba(255, 255, 255, 0) 54%),
+			linear-gradient(101deg, rgba(255, 255, 255, .94) 0%, rgba(255, 255, 255, .86) 30%, rgba(255, 255, 255, .38) 58%, rgba(255, 255, 255, 0) 80%);
 	}
 
 	.p-hero__inner {
+		position: relative;
+		z-index: 2;
 		display: block;
 		min-height: 0;
 		width: 100%;
 	}
 
 	.p-hero__body {
-		width: auto;
-		padding: 26px 20px 40px;
+		width: 100%;
+		padding: 24px 20px 34px;
 	}
+
+	/* 見出しまわりは写真の明るい側に収める */
+	.p-hero__eyebrow,
+	.p-hero__title,
+	.p-hero__sub { max-width: 70%; }
 
 	.p-hero__eyebrow {
 		font-size: 10px;
 		letter-spacing: .1em;
 	}
 
-	.p-hero__title { font-size: 25px; line-height: 1.5; }
-	.p-hero__title-accent { font-size: 1.12em; }
+	.p-hero__title { font-size: 21px; line-height: 1.5; letter-spacing: 0; }
+	.p-hero__title-accent { font-size: 1.14em; }
+
 
 	.p-hero__sub {
-		font-size: 15px;
+		font-size: 13px;
+		gap: 8px;
 		white-space: normal;
 	}
 

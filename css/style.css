@@ -6946,3 +6946,111 @@ h2.p-ceo__name { margin-top: 4px; }
 	.l-header__logo:active,
 	.c-crumb a:active { transform: none; }
 }
+
+/* ==========================================================================
+   48. お客様向けと採用の行き来
+   ------------------------------------------------------------------------
+   このサイトは「工事のご依頼」と「採用・求人」の2つの導線を持つ。
+   ところが採用側からお客様側へ戻る手段が、ロゴ以外に無かった。
+   ロゴは「トップへ」であって「別のサイトへ」とは読めない。
+
+   PC ヘッダーの右端に、行き先の世界の色でボタンを置く。
+   お客様側にいるときは銅（採用へ）、採用側にいるときは藍（お客様へ）。
+   左右対称なので、どちらにいても同じ位置で反転する。
+
+   スマホは 375px でヘッダーが既に満杯（右端359px）だったため、
+   ヘッダーには入れず、直下に幅いっぱいの切り替え帯を置く。
+   固定はしない。上に付けるとヘッダー61px＋帯48px＋アンカー帯51px で
+   画面の2割が動かない領域になり、本文が読めなくなる。
+   ========================================================================== */
+.c-worlds { display: none; }
+
+@media screen and (max-width: 768px) {
+
+	/* ヘッダーの中の切り替えボタンは、帯と役割が重なるので出さない。
+	   出すと index の右端が 359→411px になり、はみ出す。 */
+	.l-header__door--switch { display: none; }
+
+	.c-worlds {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		border-bottom: 1px solid var(--line);
+		background: var(--w);
+	}
+
+	.c-worlds__i {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1px;
+		padding: 9px 8px 10px;
+		text-align: center;
+		min-height: 48px;
+	}
+
+	.c-worlds__i b {
+		font-family: var(--ff-dp);
+		font-weight: 700;
+		font-size: 13px;
+		line-height: 1.2;
+	}
+
+	.c-worlds__i i {
+		font-style: normal;
+		font-size: 10px;
+		line-height: 1.2;
+		letter-spacing: .03em;
+		opacity: .8;
+	}
+
+	/* 現在いる側。白地に色の下線で「ここに居る」を示す。 */
+	.c-worlds__i.is-current { background: var(--w); }
+	.c-worlds__i.is-current b { color: var(--ink); }
+	.c-worlds__i.is-current i { color: var(--mut); }
+
+	.c-worlds__i.is-current::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -1px;
+		height: 2px;
+	}
+
+	.c-worlds__i--client.is-current::after { background: var(--blue); }
+	.c-worlds__i--recruit.is-current::after { background: var(--cop); }
+
+	/* 行ける側。行き先の色を敷いて、押せることを分からせる。 */
+	.c-worlds__i--client:not(.is-current) { background: var(--blue-l); }
+	.c-worlds__i--client:not(.is-current) b,
+	.c-worlds__i--client:not(.is-current) i { color: var(--blue); }
+
+	.c-worlds__i--recruit:not(.is-current) { background: var(--cop-l); }
+	.c-worlds__i--recruit:not(.is-current) b,
+	.c-worlds__i--recruit:not(.is-current) i { color: var(--cop-d); }
+
+	.c-worlds__ar {
+		position: absolute;
+		right: 9px;
+		top: 50%;
+		width: 13px;
+		height: 13px;
+		margin-top: -6.5px;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		opacity: .55;
+	}
+
+	/* 矢印はタブの外側を向く。左のタブは左へ、右のタブは右へ。
+	   #i-arrow は右向きなので、左のタブだけ反転する。 */
+	.c-worlds__i--client .c-worlds__ar { right: auto; left: 9px; transform: scaleX(-1); }
+}
+
+@media (hover: none) {
+	.c-worlds__i:active { opacity: .72; transition-duration: .08s; }
+}

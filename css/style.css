@@ -7173,3 +7173,16 @@ h2.p-ceo__name { margin-top: 4px; }
 	.p-rlead__note { font-size: 12px; }
 	.p-rhero__cta { display: flex; flex-direction: column; width: 100%; gap: 10px; }
 }
+
+/* 採用トップ：横に流れる写真の帯。
+   ヒーロー画像の直下に、区切りのアクセントとして置く。
+   スマホだけ。PCは画像そのものが横長なので要らない。 */
+.p-rband { display: none; }
+
+@media screen and (max-width: 768px) {
+	.p-rband {
+		display: block;
+		padding-block: 14px 4px;
+		background: var(--cop-l);
+	}
+}

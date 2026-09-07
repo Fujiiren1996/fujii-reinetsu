@@ -6943,208 +6943,67 @@ h2.p-ceo__name { margin-top: 4px; }
 /* ==========================================================================
    49. ヒーロー（トップページ最上部）
    ------------------------------------------------------------------------
-   人物写真を画面の右端まで敷き、左端をマスクで背景に溶かす。
-   カラムで割らずに「重ね＋グラデーションマスク」で作っているので、
-   幅が変わっても写真と文字の境目が破綻しない。
+   デザイン画をそのまま1枚の画像として敷く。
+   箱を画像と同じ縦横比に固定し、画像をぴったり伸ばすので、
+   画像の中のボタンは常に同じ％の位置にある。
+   当たり判定も％で置いてあるため、幅が変わってもズレない。
 
-   文字は画像に焼き込まない。見出しもキャッチもHTMLのテキストで持つ。
-   写真の中の手書き（つくるのは、あたりまえの快適さ。）だけは
-   筆の質感が必要なので画像に入っている。alt に同じ文言を入れてある。
-
-   検索対策に必要な「藤井冷熱は、〜の会社です」の一文は、
-   ヒーロー内に置くと窮屈になるため直下の帯（.p-intro）に置いた。
+   画像に描かれている文字は、同じ内容を .p-hero__txt にHTMLで持たせて
+   目に見えない形で残してある。中身が画像と同一なので隠しテキストには
+   当たらず、Googleと読み上げソフトはこれを読む。
    ========================================================================== */
 .p-hero {
 	position: relative;
-	overflow: hidden;
-	background: linear-gradient(166deg, #fff 0%, #f7f9fc 46%, #e9eef6 100%);
+	aspect-ratio: 1672 / 941;
+	background: var(--w);
 }
 
-/* 写真。右端までぴったり。左端はマスクで背景へ溶かす。
-   幅を 60% に絞り、写真の中は object-position で右へ寄せる。
-   こうしないと写真左側の白い余白が画面中央に居座り、
-   文字と人物のあいだが間延びして見える。 */
-.p-hero__visual {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	width: 60%;
-}
-
-.p-hero__photo {
+.p-hero__art {
 	display: block;
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
-	object-position: 78% 50%;
-	filter: saturate(1.08) brightness(1.04) contrast(.96);
-	-webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .18) 12%, rgba(0, 0, 0, .72) 26%, #000 42%);
-	mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .18) 12%, rgba(0, 0, 0, .72) 26%, #000 42%);
+	object-fit: fill;
 }
 
-.p-hero__inner {
-	position: relative;
-	z-index: 1;
-	display: flex;
-	align-items: center;
-	min-height: clamp(560px, 45vw, 720px);
-	width: min(var(--page), 100%);
-	margin-inline: auto;
-}
-
-.p-hero__body {
-	width: min(50%, 700px);
-	padding: 56px 24px 56px 120px;
-}
-
-/* 小見出し。欧文・字間広め・左に短い横線 */
-.p-hero__eyebrow {
-	display: flex;
-	align-items: center;
-	gap: 14px;
-	margin-bottom: clamp(16px, 1.6vw, 26px);
-	font-family: var(--ff-lt);
-	font-weight: 600;
-	font-size: clamp(10px, .85vw, 13px);
-	letter-spacing: .16em;
-	text-transform: uppercase;
-	color: var(--blue);
-	white-space: nowrap;
-}
-
-.p-hero__eyebrow::before {
-	content: "";
-	flex: 0 0 auto;
-	width: 34px;
-	height: 1px;
-	background: var(--blue-logo);
-}
-
-/* 大見出し。明朝で大きく。改行位置は <br> で固定する */
-.p-hero__title {
-	font-family: "Shippori Mincho B1", "Zen Kaku Gothic New", serif;
-	font-weight: 800;
-	font-size: clamp(29px, 4.5vw, 66px);
-	line-height: 1.26;
-	letter-spacing: .005em;
-}
-
-/* 指定した <br> 以外で折り返させない */
-.p-hero__title span { display: inline-block; }
-
-/* 社名だけ一回り大きく、視線が最後に止まるようにする */
-.p-hero__title-accent {
-	margin-top: .1em;
-	font-size: 1.18em;
-	letter-spacing: .01em;
-	color: var(--blue);
-}
-
-/* サブコピー。左右に短い横線を添える */
-.p-hero__sub {
-	display: flex;
-	align-items: center;
-	gap: clamp(10px, 1.1vw, 18px);
-	margin-top: clamp(18px, 1.8vw, 30px);
-	font-family: var(--ff-dp);
-	font-weight: 500;
-	font-size: clamp(14px, 1.35vw, 21px);
-	letter-spacing: .05em;
-	white-space: nowrap;
-	color: var(--blue);
-}
-
-.p-hero__sub::before,
-.p-hero__sub::after {
-	content: "";
-	flex: 0 0 auto;
-	width: clamp(16px, 2vw, 32px);
-	height: 1px;
-	background: var(--blue-logo);
-}
-
-/* 3つの強み。区切りは細い縦線 */
-.p-hero__points {
-	display: flex;
-	flex-wrap: wrap;
-	margin-top: clamp(20px, 2vw, 34px);
-}
-
-.p-hero__point {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	padding: 0 clamp(12px, 1.4vw, 24px);
-	border-left: 1px solid var(--line);
-}
-
-.p-hero__point:first-child {
-	padding-left: 0;
-	border-left: 0;
-}
-
-.p-hero__point > svg {
-	flex: 0 0 auto;
-	width: clamp(22px, 1.9vw, 30px);
-	height: clamp(22px, 1.9vw, 30px);
-	color: var(--blue);
-}
-
-.p-hero__point-name {
-	display: block;
-	font-family: var(--ff-dp);
-	font-weight: 700;
-	font-size: clamp(13px, 1vw, 16px);
-	line-height: 1.4;
-}
-
-.p-hero__point-desc {
-	display: block;
-	margin-top: 3px;
-	font-size: clamp(10.5px, .78vw, 12.5px);
-	line-height: 1.5;
-	color: var(--mut);
-}
-
-.p-hero__actions {
-	display: flex;
-	flex-wrap: wrap;
-	gap: clamp(12px, 1.4vw, 24px);
-	margin-top: clamp(22px, 2.3vw, 38px);
-}
-
-/* ヒーローのボタンだけ一回り大きい。骨格は既存の .c-btn のまま */
-.c-btn--hero {
-	padding: 21px 32px;
-	font-size: 16px;
-}
-
-.p-hero__note {
-	margin-top: 16px;
-	font-size: clamp(11.5px, .85vw, 13px);
-	line-height: 1.7;
-	color: var(--mut);
-}
-
-/* SCROLL。上に短い縦線を添える */
-.p-hero__scroll {
-	display: flex;
-	align-items: center;
-	gap: 14px;
-	margin-top: clamp(24px, 2.4vw, 40px);
-	font-family: var(--ff-lt);
-	font-weight: 500;
-	font-size: 11px;
-	letter-spacing: .28em;
-	color: var(--ink-2);
-}
-
-.p-hero__scroll::before {
-	content: "";
+/* 画像と同じ文言。目には出さないが、DOMには残す */
+.p-hero__txt {
+	position: absolute;
 	width: 1px;
-	height: 40px;
-	background: linear-gradient(180deg, var(--blue-logo), rgba(88, 112, 168, 0));
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* 画像に描かれたボタンの上に重ねる当たり判定 */
+.p-hero__hit {
+	position: absolute;
+	top: 79.6%;
+	height: 6.4%;
+	border-radius: 3px;
+}
+
+.p-hero__hit span {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+}
+
+.p-hero__hit--a { left: 5.2%; width: 17.6%; }
+.p-hero__hit--b { left: 24.2%; width: 18.0%; }
+
+.p-hero__hit:focus-visible {
+	outline: 2px solid var(--blue);
+	outline-offset: 3px;
+}
+
+@media (hover: hover) {
+	.p-hero__hit:hover { background: rgba(46, 76, 135, .10); }
 }
 
 /* --------------------------------------------------------------------------
@@ -7197,88 +7056,7 @@ h2.p-ceo__name { margin-top: 4px; }
    -------------------------------------------------------------------------- */
 @media screen and (max-width: 768px) {
 
-	/* 写真をヒーロー全面に敷き、その上に文字を重ねる。
-	   写真の左は明るい壁なので、白い膜を1枚かければ字が読める。
-	   下に置くと写真と見出しが切れて見えるため、重ねている。 */
-	.p-hero__visual {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		width: 100%;
-		height: 76vw;
-		min-height: 250px;
-		max-height: 340px;
-	}
-
-	.p-hero__photo {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: 80% 30%;
-		-webkit-mask-image: none;
-		mask-image: none;
-	}
-
-	/* 左と下に白を寄せる。右上は素通しにして写真を殺さない */
-	.p-hero__visual::after {
-		content: "";
-		position: absolute;
-		inset: 0;
-		background:
-			linear-gradient(to top, #fff 0%, #fff 26%, rgba(255, 255, 255, .80) 36%, rgba(255, 255, 255, 0) 55%),
-			linear-gradient(100deg, rgba(255, 255, 255, .97) 0%, rgba(255, 255, 255, .93) 24%, rgba(255, 255, 255, .58) 40%, rgba(255, 255, 255, 0) 54%);
-	}
-
-	.p-hero__inner {
-		position: relative;
-		z-index: 2;
-		display: block;
-		min-height: 0;
-		width: 100%;
-	}
-
-	.p-hero__body {
-		width: 100%;
-		padding: 24px 20px 34px;
-	}
-
-	/* 見出しは写真の明るい側に収める。
-	   小見出しは1行で成立する幅があるので、ここでは絞らない
-	   （絞ると nowrap のまま横にはみ出す）。 */
-	.p-hero__title { max-width: 56%; }
-	.p-hero__sub { max-width: 80%; }
-
-	.p-hero__eyebrow {
-		font-size: 10px;
-		letter-spacing: .1em;
-	}
-
-	.p-hero__title { font-size: 24px; line-height: 1.45; letter-spacing: -.01em; }
-	.p-hero__title-accent { font-size: 1.14em; }
-
-
-	.p-hero__sub {
-		font-size: 12px;
-		gap: 8px;
-		white-space: nowrap;
-	}
-
-	.p-hero__points {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 13px;
-	}
-
-	.p-hero__point {
-		padding: 0;
-		border-left: 0;
-	}
-
-	.p-hero__actions { flex-direction: column; }
-	.c-btn--hero { padding: 18px 24px; font-size: 15px; }
-
-	.p-hero__scroll { display: none; }
+	.p-hero__hit { border-radius: 2px; }
 
 	.p-intro__inner { padding: 28px 20px 30px; }
 	.p-intro__lead { font-size: 14px; line-height: 1.95; padding-left: 16px; margin-top: 12px; }

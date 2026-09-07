@@ -6997,8 +6997,21 @@ h2.p-ceo__name { margin-top: 4px; }
 .p-hero__hit--a { left: 5.2%; width: 17.6%; }
 .p-hero__hit--b { left: 24.2%; width: 18.0%; }
 
-/* スマホ用のボタン。PCでは画像の中のボタンを使うので出さない */
-.p-hero__sp { display: none; }
+/* スマホ用の画像は縦横比も配置も別物なので、当たり判定も別に持つ */
+.p-hero__hit--sa,
+.p-hero__hit--sb { display: none; }
+
+/* 押した瞬間に沈む。画像の中のボタンなので、
+   上に薄い墨を重ねて「押した」ことを返す。 */
+.p-hero__hit {
+	transition: background-color .16s var(--e-out), transform .16s var(--e-out);
+}
+
+.p-hero__hit:active {
+	background: rgba(13, 20, 26, .16);
+	transform: scale(.985);
+	transition-duration: .06s;
+}
 
 .p-hero__hit:focus-visible {
 	outline: 2px solid var(--blue);
@@ -7059,10 +7072,24 @@ h2.p-ceo__name { margin-top: 4px; }
    -------------------------------------------------------------------------- */
 @media screen and (max-width: 768px) {
 
-	/* 画像の中のボタンは390px幅で高さ14px。指では押せないので、
-	   当たり判定は切って、画像の下に本物のボタンを出す。 */
-	.p-hero__hit { display: none; }
-	.p-hero__sp { display: flex; flex-direction: column; gap: 10px; padding: 18px 20px 4px; }
+	/* スマホは正方形の専用画像に差し替わる。縦横比と
+	   ボタンの位置が変わるので、当たり判定も入れ替える。 */
+	.p-hero { aspect-ratio: 1 / 1; }
+	.p-hero__hit--a,
+	.p-hero__hit--b { display: none; }
+
+	.p-hero__hit--sa,
+	.p-hero__hit--sb {
+		display: block;
+		left: 3.7%;
+		width: 44.5%;
+		border-radius: 4px;
+	}
+
+	/* 画像の中のボタンは375px幅で高さ28px。指の基準（44px）に届かないので、
+	   見た目はそのままに、当たり判定だけ上下へ広げて隙間を埋める。 */
+	.p-hero__hit--sa { top: 75.4%; height: 11.9%; }
+	.p-hero__hit--sb { top: 87.3%; height: 11.7%; }
 
 	.p-intro__inner { padding: 28px 20px 30px; }
 	.p-intro__lead { font-size: 14px; line-height: 1.95; padding-left: 16px; margin-top: 12px; }

@@ -7223,8 +7223,9 @@ h2.p-ceo__name { margin-top: 4px; }
 		padding: 24px 20px 34px;
 	}
 
-	/* 見出しまわりは写真の明るい側に収める */
-	.p-hero__eyebrow,
+	/* 見出しは写真の明るい側に収める。
+	   小見出しは1行で成立する幅があるので、ここでは絞らない
+	   （絞ると nowrap のまま横にはみ出す）。 */
 	.p-hero__title,
 	.p-hero__sub { max-width: 70%; }
 

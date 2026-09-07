@@ -6997,6 +6997,9 @@ h2.p-ceo__name { margin-top: 4px; }
 .p-hero__hit--a { left: 5.2%; width: 17.6%; }
 .p-hero__hit--b { left: 24.2%; width: 18.0%; }
 
+/* スマホ用のボタン。PCでは画像の中のボタンを使うので出さない */
+.p-hero__sp { display: none; }
+
 .p-hero__hit:focus-visible {
 	outline: 2px solid var(--blue);
 	outline-offset: 3px;
@@ -7056,7 +7059,10 @@ h2.p-ceo__name { margin-top: 4px; }
    -------------------------------------------------------------------------- */
 @media screen and (max-width: 768px) {
 
-	.p-hero__hit { border-radius: 2px; }
+	/* 画像の中のボタンは390px幅で高さ14px。指では押せないので、
+	   当たり判定は切って、画像の下に本物のボタンを出す。 */
+	.p-hero__hit { display: none; }
+	.p-hero__sp { display: flex; flex-direction: column; gap: 10px; padding: 18px 20px 4px; }
 
 	.p-intro__inner { padding: 28px 20px 30px; }
 	.p-intro__lead { font-size: 14px; line-height: 1.95; padding-left: 16px; margin-top: 12px; }

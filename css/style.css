@@ -7182,7 +7182,23 @@ h2.p-ceo__name { margin-top: 4px; }
 @media screen and (max-width: 768px) {
 	.p-rband {
 		display: block;
-		padding-block: 14px 4px;
 		background: var(--cop-l);
+	}
+
+	/* 上は細いリボン。同じ厚みで2本挟むと、ヒーロー画像が
+	   240px下がって最初の一目に主役が入らなくなる。 */
+	.p-rband--top {
+		padding-block: 8px;
+		background: linear-gradient(180deg, var(--w), var(--cop-l));
+	}
+
+	.p-rband--top .p-mflow__i {
+		width: 82px;
+		height: 82px;
+	}
+
+	.p-rband--btm {
+		padding-block: 10px 12px;
+		background: linear-gradient(180deg, var(--cop-l), var(--cop-l));
 	}
 }

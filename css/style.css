@@ -7025,7 +7025,7 @@ h2.p-ceo__name { margin-top: 4px; }
 .p-hero__title {
 	font-family: "Shippori Mincho B1", "Zen Kaku Gothic New", serif;
 	font-weight: 800;
-	font-size: clamp(29px, 4.15vw, 62px);
+	font-size: clamp(29px, 4.5vw, 66px);
 	line-height: 1.26;
 	letter-spacing: .005em;
 }
@@ -7164,11 +7164,31 @@ h2.p-ceo__name { margin-top: 4px; }
 }
 
 .p-intro__lead {
-	max-width: 46em;
+	position: relative;
+	max-width: 44em;
+	margin-top: 16px;
+	padding-left: 22px;
 	font-size: clamp(14px, 1.05vw, 16px);
-	line-height: 2;
+	line-height: 2.05;
 	color: var(--ink-2);
 	text-wrap: pretty;
+}
+
+/* 書き出しに藍の縦線を引き、ただ置いただけに見えないようにする */
+.p-intro__lead::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: .35em;
+	bottom: .35em;
+	width: 2px;
+	background: linear-gradient(180deg, var(--blue), var(--blue-m));
+}
+
+/* 社名だけ濃く。目が最初にここへ落ちる */
+.p-intro__lead b {
+	font-weight: 700;
+	color: var(--ink);
 }
 
 /* --------------------------------------------------------------------------
@@ -7186,16 +7206,16 @@ h2.p-ceo__name { margin-top: 4px; }
 		left: 0;
 		right: 0;
 		width: 100%;
-		height: 92vw;
-		min-height: 290px;
-		max-height: 420px;
+		height: 104vw;
+		min-height: 320px;
+		max-height: 460px;
 	}
 
 	.p-hero__photo {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		object-position: 74% 34%;
+		object-position: 82% 34%;
 		-webkit-mask-image: none;
 		mask-image: none;
 	}
@@ -7206,8 +7226,8 @@ h2.p-ceo__name { margin-top: 4px; }
 		position: absolute;
 		inset: 0;
 		background:
-			linear-gradient(to top, #fff 0%, rgba(255, 255, 255, .62) 22%, rgba(255, 255, 255, 0) 54%),
-			linear-gradient(101deg, rgba(255, 255, 255, .94) 0%, rgba(255, 255, 255, .86) 30%, rgba(255, 255, 255, .38) 58%, rgba(255, 255, 255, 0) 80%);
+			linear-gradient(to top, #fff 0%, #fff 26%, rgba(255, 255, 255, .80) 36%, rgba(255, 255, 255, 0) 55%),
+			linear-gradient(100deg, rgba(255, 255, 255, .97) 0%, rgba(255, 255, 255, .93) 24%, rgba(255, 255, 255, .58) 40%, rgba(255, 255, 255, 0) 54%);
 	}
 
 	.p-hero__inner {
@@ -7226,22 +7246,22 @@ h2.p-ceo__name { margin-top: 4px; }
 	/* 見出しは写真の明るい側に収める。
 	   小見出しは1行で成立する幅があるので、ここでは絞らない
 	   （絞ると nowrap のまま横にはみ出す）。 */
-	.p-hero__title,
-	.p-hero__sub { max-width: 70%; }
+	.p-hero__title { max-width: 56%; }
+	.p-hero__sub { max-width: 80%; }
 
 	.p-hero__eyebrow {
 		font-size: 10px;
 		letter-spacing: .1em;
 	}
 
-	.p-hero__title { font-size: 21px; line-height: 1.5; letter-spacing: 0; }
+	.p-hero__title { font-size: 24px; line-height: 1.45; letter-spacing: -.01em; }
 	.p-hero__title-accent { font-size: 1.14em; }
 
 
 	.p-hero__sub {
-		font-size: 13px;
+		font-size: 12px;
 		gap: 8px;
-		white-space: normal;
+		white-space: nowrap;
 	}
 
 	.p-hero__points {
@@ -7261,5 +7281,5 @@ h2.p-ceo__name { margin-top: 4px; }
 	.p-hero__scroll { display: none; }
 
 	.p-intro__inner { padding: 28px 20px 30px; }
-	.p-intro__lead { font-size: 14px; line-height: 1.9; }
+	.p-intro__lead { font-size: 14px; line-height: 1.95; padding-left: 16px; margin-top: 12px; }
 }
